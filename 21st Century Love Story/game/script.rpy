@@ -11,7 +11,6 @@ define cashier = Character("Cashier")
 define teacher = Character("Mr. Teacher")
 
 # character sprites
-# image define mc neutral = "weeb_neutral.png"
 image define mc neutral = "side player neutral.png"
 
 
@@ -32,7 +31,7 @@ label start:
     
     scene bg cafe_outside with fade
 
-    mc neutral "Oh look, a cafe! So coincidental, I think I want a cup of coffee."
+    mc happy "Oh look, a cafe! So coincidental, I think I want a cup of coffee."
 
     scene bg cafe with None
 
@@ -61,13 +60,11 @@ label intro:
         jump intro2
     elif choice == "frappuccino":
         cashier "Are you sure? I think I'll give you a matcha latte instead."
-        mc neutral "Um..."
+        mc deadpan "Um..."
         menu:
             "That's fine.":
-                $ choice = "frappe"
                 jump intro2
             "No, I said what I said.":
-                $ choice = "matcha"
                 jump intro2
 
     return
@@ -96,7 +93,7 @@ label intro2:
         yalign 1.0
 
     cashier "I have an order for [playername]!"
-    mc neutral "Thank you kindly."
+    mc happy "Thank you kindly."
     cashier "Enjoy!"
 
     hide cashier_neutral
