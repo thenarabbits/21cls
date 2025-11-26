@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 28: Menu does not contain any choices.
-    menu:
-         ^
+File "game/script.rpy", line 9: 'zorder' is not a keyword argument or valid child of the add statement.
+    add "mc_neutral.jpg" xalign 0.0 yalign 1.0 zorder 100.0
+                                                     ^
 
 Ren'Py Version: Ren'Py 8.2.3.24061702
-Tue Nov 25 18:09:51 2025
+Tue Nov 25 19:11:20 2025

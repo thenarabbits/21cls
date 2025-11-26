@@ -5,6 +5,8 @@
 
 define mc = Character("[playername]")
 define cashier = Character("Cashier")
+screen mc_neutral():
+    add "mc_neutral.jpg" xalign 0.0 yalign 1.0 zorder 100.0
 image cashier_neutral = "cashier.png"
 image bg cafe = "cafe_memoria_inside_01_afternoon.png"
 
@@ -14,6 +16,7 @@ label start:
 
     $ playername = "You"
     scene bg cafe
+    show screen mc_neutral
 
     mc "Wow, I'm sooooo thirsty..."
     mc "Oh look, a cafe! So coincidental, I think I want a cup of coffee."
@@ -72,10 +75,14 @@ label intro2:
     "Surprisingly, even though this is a huge school in New York City, you are the only exchange student."
     "Hopefully, the year goes smoothly, and you can successfully focus on your academics to make your CEO father, lawyer mother, doctor brother, and engineer sister proud!"
 
-    show cashier_neutral
+    show cashier_neutral:
         zoom 1.5
         xcenter 0.5
         yalign 1.0
 
     cashier "I have an order for [playername]!"
     mc "Thank you kindly."
+    cashier "Enjoy!"
+
+    hide cashier_neutral
+
