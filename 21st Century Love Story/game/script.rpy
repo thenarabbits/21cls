@@ -104,7 +104,8 @@ label intro2:
     mc neutral "It's [playername]."
     cashier "Okay, I'll have it ready soon."
 
-    hide cashier_neutral with dissolve
+    hide cashier_neutral #with dissolve
+    # current style is show w/ dissolve but no transition when hiding
 
     "It hasn't been long since you have transferred here to Milkyway High School from a private school in Beijing."
     "Surprisingly, even though this is a huge school in New York City, you are the only exchange student."
@@ -280,6 +281,9 @@ label episode_2_football:
 
     return
 
+# lol i just realized i probably don't need to use show and hide so many times...
+# maybe i'll rewrite this later - Kaylee
+
 label episode_2_meeting:
 
     scene bg football_field with fade
@@ -306,11 +310,11 @@ label episode_2_meeting:
         "You notice the snobby guy's left eye twitch, but then he composes himself in a split second."
 
         $ narcissist = "Snobby Guy"
-        show narcissist_neutral 
+        show narcissist_neutral
         n "Hohoho! Why didn't you say so sooner?"
 
-        "The classmates playing football suddenly erupt with laughter (and some groans)."
-        hide narcissist_neutral with dissolve
+        "Amidst your conversation, it appears that the football game has just ended."
+        hide narcissist_neutral
         show cashier_neutral with dissolve:
             zoom 1.5
             xcenter 0.5
@@ -322,9 +326,12 @@ label episode_2_meeting:
             xcenter 0.5
             yalign 1.0
         teacher "You two, join the next game—or else I can't give you points for the day."
+        hide cashier_neutral
 
         mc neutral "Yes, sir."
+        show narcissist_neutral
         n "*mumbling* Hmph, I wouldn't join otherwise."
+        hide narcissist_neutral
 
         jump episode_2_join
 
@@ -341,6 +348,12 @@ label episode_2_join:
         #IDKWHY the shorthand isn't working
 
         # btw we will probably need to come back and tweak the transformations
+    "Though you don't get much action besides walking back and forth, it's already tiring to keep watching where the ball goes."
+    mc angry "Hey! Not everyone can be athletically gifted."
+    "...My bad."
+    "Interrupting you from zoning out, someone points their finger your way."
+    mc neutral "Huh?"
+
     show b1_neutral with dissolve:
         zoom 0.25
         xalign 0.5
@@ -358,9 +371,9 @@ label episode_2_join:
 
     if met_narcissist:
         mc deadpan "(Do these people also have a CEO father?)"
-    else:
-        "The commotion of your classmates catches your attention."
-        "Seems like they noticed you too!"
+    # else:
+    #     "The commotion of your classmates catches your attention."
+    #     "Seems like they noticed you too!"
 
     show b1_neutral with dissolve:
         zoom 0.25
@@ -368,6 +381,7 @@ label episode_2_join:
         yalign 0.0
     b1 "That's the new student! The one from Beijing!"
     hide b1_neutral
+    mc deadpan "(It's like I'm some kind of zoo animal (-_-;))"
     show b2_neutral with dissolve:
         zoom 0.3
         xalign 0.5
@@ -379,8 +393,57 @@ label episode_2_join:
         zoom 0.25
         xalign 0.5
         yalign 0.0
-    b1 "Oh, really?"
+    b1 "Oh, really? I wonder why she would move to New York..."
+
+    hide b1_neutral
     "Before any words leave your mouth, a voice from behind speaks up."
+
+    if met_narcissist == False:
+        $ narcissist = "???"
+
+    show narcissist_neutral with dissolve
+    n "Peasants, disperse!"
+    hide narcissist_neutral
+
+    "In some unexplainable supernatural phenomenon, a burst of light shines upon you."
+    mc shocked "What the..."
+    show b2_neutral with dissolve:
+        zoom 0.3
+        xalign 0.5
+        yalign 1.0
+    b2 "Ronan!!! Your drip!!!! The bling!!!! It's so blinding!!!!"
+    mc neutral "(Ronan? So that's his name.)"
+    hide b2_neutral
+
+    show b1_neutral with dissolve:
+        zoom 0.25
+        xalign 0.5
+        yalign 0.0
+    b1 "Hey, watch out-"
+    hide b1_neutral
+    "The peasant tries to warn the other of the incoming tackle, but their efforts are futile."
+    "A peasant is struck down before the two leave just as quickly as how you met them."
+
+    show narcissist_neutral with dissolve
+    n "Hmph! That's more like it."
+    
+    "Then, Ronan and you make eye contact."
+
+    # 2do: update character n so we can use the emotion shorthand thingies
+    show narcissist_neutral with dissolve
+    if met_narcissist:
+        n "Oh, it's that insolent brat."
+        menu:
+            "Excuse me?":
+                n "You're excused!"
+                mc shocked "..."
+            "(Pretend like you didn't hear anything.)":
+                mc neutral "..."
+        n "I forgive you for your transgressions."
+        n "After all, I'm young, rich, tall, handsome, and nice."
+        n "I recognize one of my kind when I see one."
+    else:
+        mc neutral "Uh, I'm [playername]. And I don't believe we've met before."
 
 
     "You've reached the end :p" # mark so i can still go back while testing the game

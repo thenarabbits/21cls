@@ -1,28 +1,28 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 238, in script
-    if met_narcissist:
-  File "game/script.rpy", line 238, in <module>
-    if met_narcissist:
-NameError: name 'met_narcissist' is not defined
+  File "game/script.rpy", line 394, in script
+    if met_narcissist = False:
+SyntaxError: invalid syntax (game/script.rpy, line 394)
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 238, in script
-    if met_narcissist:
+  File "game/script.rpy", line 394, in script
+    if met_narcissist = False:
   File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\ast.py", line 1845, in execute
     if renpy.python.py_eval(condition):
-  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\python.py", line 1209, in py_eval
-    return py_eval_bytecode(code, globals, locals)
-  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\python.py", line 1202, in py_eval_bytecode
-    return eval(bytecode, globals, locals)
-  File "game/script.rpy", line 238, in <module>
-    if met_narcissist:
-NameError: name 'met_narcissist' is not defined
+  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\python.py", line 1207, in py_eval
+    code = py_compile(code, 'eval')
+  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\python.py", line 1144, in py_compile
+    raise e
+  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\python.py", line 1081, in py_compile
+    raise orig_e
+  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\python.py", line 1073, in py_compile
+    tree = compile(source, filename, py_mode, ast.PyCF_ONLY_AST | flags, 1)
+SyntaxError: invalid syntax (game/script.rpy, line 394)
 
 Windows-10-10.0.26100 AMD64
 Ren'Py 8.2.3.24061702
 21st Century Love Story 1.0
-Thu Nov 27 13:38:35 2025
+Fri Nov 28 14:31:49 2025
