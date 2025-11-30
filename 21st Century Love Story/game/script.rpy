@@ -19,15 +19,23 @@ define b1 = Character("Bully 1", image="bully1")
 define b2 = Character("Bully 2", image="bully2")
 
 # character sprites
-image define mc neutral = "side player neutral.png"
-image define p neutral = "kyren neutral.png"
+image player neutral = "side player neutral.png"
+
+image kyren neutral = "kyren_neutral.png"
+image kyren angry = "kyren_angry.png"
+image kyren sad = "kyren_sad.png"
+image kyren happy = "kyren_happy.png"
+image kyren shocked = "kyren_shocked.png"
+
 image cashier_neutral = "cashier.png"
 image classmate_neutral = "billG.jpg"
-image performative_neutral = "kyren neutral.png"
-image performative_angry = "kyren angry.png"
-image performative_sad = "kyren sad.png"
-image performative_happy = "kyren happy.png"
-image performative_shocked = "kyren shocked.png"
+
+# image p_neutral = "kyren neutral.png"
+# image p_angry = "kyren angry.png"
+# image p_sad = "kyren sad.png"
+# image p_happy = "kyren happy.png"
+# image p_shocked = "kyren shocked.png"
+
 image narcissist_neutral = "narcissist_neutral.png"
 image weeb_neutral = "weeb_neutral.png"
 
@@ -132,7 +140,24 @@ label intro2:
 
     hide cashier_neutral
     
-    jump episode_1
+    # jump episode_1
+    jump testinglol
+    return
+
+label testinglol:
+    show kyren neutral with dissolve:
+        zoom 0.25
+        xcenter 0.5
+        yalign 1.0
+    # show p_neutral:
+    #     zoom 0.25
+    #     xcenter 0.5
+    #     yalign 1.0
+    p neutral "yo"
+    p happy "BRUH"
+    p sad "bruh..."
+
+    "END"
     return
 
 
@@ -162,7 +187,7 @@ label episode_1:
     "An unfamiliar voice directs itself to you. You look up to see who it is."
 
     $ performative = "Guy Wearing Quarter Zip-up"
-    show performative_neutral with dissolve:
+    show per_neutral with dissolve:
         zoom 0.25
         xcenter 0.5
         yalign 1.0
@@ -170,6 +195,7 @@ label episode_1:
     "Extending a napkin to you, the boy gently smiles as he takes a sip out of his own drink that seems to exude the faint scent of low quality matcha."
     
     mc neutral "Oh, thank you."
+    hide per_neutral
     p happy "Of course. Mind if I take a seat?"
     mc deadpan "...Go ahead."
     p neutral "Thank you."
@@ -525,7 +551,7 @@ label episode_2_join:
         zoom 0.25
         xalign 0.5
         yalign 0.0
-    b1_neutral "Oh my god."
+    b1_neutral "Oh my gosh." # :P
     b1_neutral "Olivia's gonna tweak if she hears about this."
     
 
