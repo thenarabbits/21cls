@@ -9,7 +9,7 @@ init:
 
 define mc = Character("[playername]", image="player")
 define cashier = Character("Cashier")
-define p = Character("[performative]")
+define p = Character("[performative]", image="kyren")
 define n = Character("[narcissist]")
 define w = Character("[weeb]")
 define teacher = Character("Mr. Teacher")
@@ -357,8 +357,8 @@ label episode_2_join:
 
         # btw we will probably need to come back and tweak the transformations
     "Though you don't get much action besides walking back and forth, it's already tiring to keep watching where the ball goes."
-    mc angry "Hey! Not everyone can be athletically gifted."
-    "...My bad."
+    # mc angry "Hey! Not everyone can be athletically gifted."
+    # "...My bad."
     "Interrupting you from zoning out, someone points their finger your way."
     mc neutral "Huh?"
 
@@ -445,14 +445,72 @@ label episode_2_join:
             "Excuse me?":
                 n "You're excused!"
                 mc shocked "..."
+                mc "(He's not supposed to be in elementary school, right...?)"
             "(Pretend like you didn't hear anything.)":
                 mc neutral "..."
-        n "I forgive you for your transgressions."
-        n "After all, I'm young, rich, tall, handsome, and nice."
-        n "I recognize one of my kind when I see one."
+        "Ronan slicks his hair back. It's, like, the equivalent of a cool girl's hair flip."
+        n "Hmph! I forgive you for your transgressions."
+        n "After all, I'm young, rich, tall, handsome, AND nice."
+        n "I recognize my kind when I see one."
+        "He sent you a wink~☆ but unfortunately, you blinked right then, so you didn't notice."
+        mc deadpan "What? (-_-;;)"
     else:
         mc neutral "Uh, I'm [playername]. And I don't believe we've met before."
+    n "Ho $ ho $ ho (rich laughter effect). My name is Ronan. Ronan X.Y. Sinclair, first in line to inherit the reputable Sinclair X.Y. Industries ☆"
 
+    mc neutral "(Sinclair X.Y. Industries...kind of rings a bell. I think they source parts from dad's company?)"
+
+    "Then Ronan looks at you expectantly, waiting for you to initiate the handshake and say \"It's an honor to meet you\" and whatnot."
+    "But pity, you can't read his mind. And he doesn't realize that not everyone can read his mind since his closest attendants are so used to his habits and daily schedule."
+    "So there's just 10 seconds of silent, awkward eye contact, until..."
+    
+    mc shocked "WATCH OUT!!!!!"
+    "*THWACK*"
+    "In a perfect parabolic path, the football flies by and slaps Ronan right in the cheek."
+    "As graceful as a swan, Ronan falls to the ground. And in slow motion, too. But at least he landed in the lush football field of fake grass."
+    
+    "*tweet*"
+    "It's Mr. Teacher, blowing the whistle and dashing over."
+
+    show cashier_neutral with dissolve:
+        zoom 1.5
+        xcenter 0.5
+        yalign 1.0
+    teacher "Tsk tsk. You guys can't just stand around and chit-chat!"
+
+    hide cashier_neutral
+    "Mr. Teacher glances down at the fallen Ronan, who's out cold. He presses his finger against his temple and sighs."
+    show cashier_neutral
+    show cashier_neutral with dissolve:
+        zoom 1.5
+        xcenter 0.5
+        yalign 1.0
+    teacher "[playername], could you take him to the nurse's office? I can excuse your participation points for the day."
+    mc shocked "Yes, sir. But where may I find the nurse's office?"
+    teacher "Right, sorry. You're new. The nurse's office is just over there, next to the teachers' office."
+    "Mr. Teacher points to the main building."
+    teacher "Take this as an opportunity to familiarize yourself with the campus."
+    mc neutral "Yes, sir."
+
+    "You load the fainted Ronan onto your back, and Mr. Teacher goes back to monitoring the football game."
+
+    "Of course, not without prying eyes."
+
+    show b2_neutral with dissolve:
+        zoom 0.3
+        xalign 0.5 
+        yalign 1.0
+    b2 "Hey, look."
+
+    hide b2_neutral
+
+    show b1_neutral with dissolve:
+        zoom 0.25
+        xalign 0.5
+        yalign 0.0
+    b1_neutral "OMG."
+    b1_neutral "Olivia is sooo gonna flip once she hears about this."
+    
 
     "You've reached the end :p" # mark so i can still go back while testing the game
     
