@@ -1,28 +1,24 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 394, in script
-    if met_narcissist = False:
-SyntaxError: invalid syntax (game/script.rpy, line 394)
+  File "game/script.rpy", line 30, in script
+    image performative_shocked = ""
+Exception: An empty string cannot be used as a displayable.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 394, in script
-    if met_narcissist = False:
-  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\ast.py", line 1845, in execute
-    if renpy.python.py_eval(condition):
-  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\python.py", line 1207, in py_eval
-    code = py_compile(code, 'eval')
-  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\python.py", line 1144, in py_compile
-    raise e
-  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\python.py", line 1081, in py_compile
-    raise orig_e
-  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\python.py", line 1073, in py_compile
-    tree = compile(source, filename, py_mode, ast.PyCF_ONLY_AST | flags, 1)
-SyntaxError: invalid syntax (game/script.rpy, line 394)
+  File "game/script.rpy", line 30, in script
+    image performative_shocked = ""
+  File "C:\Users\athen\Downloads\renpy-8.2.3-sdk\renpy\ast.py", line 926, in execute
+    renpy.exports.image(self.imgname, img)
+  File "C:\Users\athen\Downloads\renpy-8.2.3-sdk\renpy\exports.py", line 341, in image
+    d = renpy.easy.displayable(d)
+  File "C:\Users\athen\Downloads\renpy-8.2.3-sdk\renpy\easy.py", line 117, in displayable
+    raise Exception("An empty string cannot be used as a displayable.")
+Exception: An empty string cannot be used as a displayable.
 
-Windows-10-10.0.26100 AMD64
+Windows-10-10.0.26200 AMD64
 Ren'Py 8.2.3.24061702
 21st Century Love Story 1.0
-Fri Nov 28 14:31:49 2025
+Sat Nov 29 23:47:44 2025

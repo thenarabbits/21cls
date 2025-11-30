@@ -7,6 +7,7 @@ init:
     define config.layers = ['master', 'transient', 'screens', 'overlay', 'ontop']
 # tbh it's ok to remove lines 6-7 ^
 
+# character define
 define mc = Character("[playername]", image="player")
 define cashier = Character("Cashier")
 define p = Character("[performative]", image="kyren")
@@ -19,10 +20,14 @@ define b2 = Character("Bully 2", image="bully2")
 
 # character sprites
 image define mc neutral = "side player neutral.png"
-
+image define p neutral = "kyren neutral.png"
 image cashier_neutral = "cashier.png"
 image classmate_neutral = "billG.jpg"
-image performative_neutral = "performative_neutral.png"
+image performative_neutral = "kyren neutral.png"
+image performative_angry = "kyren angry.png"
+image performative_sad = "kyren sad.png"
+image performative_happy = "kyren happy.png"
+image performative_shocked = "kyren shocked.png"
 image narcissist_neutral = "narcissist_neutral.png"
 image weeb_neutral = "weeb_neutral.png"
 
@@ -152,42 +157,42 @@ label episode_1:
 
     $ performative = "???"
 
-    p "Excuse me, you needed a napkin, right?"
+    p neutral "Excuse me, you needed a napkin, right?"
 
     "An unfamiliar voice directs itself to you. You look up to see who it is."
 
     $ performative = "Guy Wearing Quarter Zip-up"
     show performative_neutral with dissolve:
-        zoom 2.0
+        zoom 0.25
         xcenter 0.5
         yalign 1.0
 
     "Extending a napkin to you, the boy gently smiles as he takes a sip out of his own drink that seems to exude the faint scent of low quality matcha."
     
     mc neutral "Oh, thank you."
-    p "Of course. Mind if I take a seat?"
+    p happy "Of course. Mind if I take a seat?"
     mc deadpan "...Go ahead."
-    p "Thank you."
+    p neutral "Thank you."
 
     "The strange boy takes a seat directly across from you, but not before you notice a strange keychain dangling from his belt loop."
     "He sets a book down on the table that reads \"Feminist Literature by Cyx Sehvyn\" and hangs his tote bag on his chair."
 
     $ performative = "Kyren"
 
-    p "I'm Kyren, what's your name?"
+    p neutral "I'm Kyren, what's your name?"
     mc neutral "[playername]."
-    p "It's nice to meet you."
-    p "I saw you deciding between matcha and a frappuccino when I was waiting in line earlier. I've been drinking matcha before it became popular."
+    p neutral "It's nice to meet you."
+    p neutral "I saw you deciding between matcha and a frappuccino when I was waiting in line earlier. I've been drinking matcha before it became popular."
     mc deadpan "...Thanks for sharing."
-    p "Please forgive me if this sounds weird, but are you a foreign exchange student?"
+    p neutral "Please forgive me if this sounds weird, but are you a foreign exchange student?"
     mc neutral "Yes, from China."
-    p "Oh, China! I've always wanted to visit. I'd say I'm pretty familiar with your culture."
+    p happy "Oh, China! I've always wanted to visit. I'd say I'm pretty familiar with your culture."
     mc happy "Really? I have always been proud of my culture and-"
-    p "I'm such a fan of \"The Drawing of War\" by Moon Tzu. It's such a beautiful and philosophical piece."
+    p neutral "I'm such a fan of \"The Drawing of War\" by Moon Tzu. It's such a beautiful and philosophical piece."
     mc deadpan "...What?"
-    p "And Chinese food is so delicious, I go to Tiandilao every week. But obviously authentic Chinese food is way better."
-    p "Chinese music is also incredible, I like pretty niche artists. You know... like Wackson Jang and Cay Jhou."
-    p "Oh, and I can't forget to mention that mahjong just happens to be one of my favorite games."
+    p neutral "And Chinese food is so delicious, I go to Tiandilao every week. But obviously authentic Chinese food is way better."
+    p neutral "Chinese music is also incredible, I like pretty niche artists. You know... like Wackson Jang and Cay Jhou."
+    p happy "Oh, and I can't forget to mention that mahjong just happens to be one of my favorite games."
     mc shocked "..."
     
     "You can't believe what you're hearing right now."
@@ -195,50 +200,50 @@ label episode_1:
     "You wonder if this guy even knows what he's talking about. Does he realize he just called THE Wackson Jang and Cay Jhou \"niche\"?"
 
     mc deadpan "What's your favorite Chinese song?"
-    p "...Huh?"
-    p "Haha, there's too many to choose from! I can't pick one when all of them are so good."
+    p shocked "...Huh?"
+    p neutral "Haha, there's too many to choose from! I can't pick one when all of them are so good."
     mc deadpan "(...This guy doesn't know what he's talking about.)"
-    p "Anyway, what do you like to do for fun?"
+    p happy "Anyway, what do you like to do for fun?"
     mc neutral "Um... I like to..."
 
     menu:
         "Listen to music":
-            p "I love music too! Like Keshy, Beebahdoobee, Klairo..." 
-            p "You can say I'm pretty niche."
+            p happy "I love music too! Like Keshy, Beebahdoobee, Klairo..." 
+            p neutral "You can say I'm pretty niche."
         "Draw and paint":
-            p "That's so fun! I love art too. It's a shame that AI art is getting so popular..."
-            p "It's really taking away from true talent in this age."
+            p happy "That's so fun! I love art too. It's a shame that AI art is getting so popular..."
+            p sad "It's really taking away from true talent in this age."
         "Play video games":
-            p "I love video games too! I like Balorant and Weague of Wegends."
-            p "Let's play sometime!"
+            p neutral "I love video games too! I like Balorant and Weague of Wegends."
+            p happy "Let's play sometime!"
         "Read books":
-            p "I love feminist literature. I read it all the time, as you can see."
-            p "Men these days have such fragile masculinity, good thing I'm not like them."
+            p happy "I love feminist literature. I read it all the time, as you can see."
+            p angry "Men these days have such fragile masculinity, good thing I'm not like them."
         "Collect blind boxes":
-            p "I really like collecting blind boxes too."
-            p "Especially Smyskeez and Wabubus."
+            p happy "I really like collecting blind boxes too."
+            p neutral "Especially Smyskeez and Wabubus."
 
-    p "Wow, we have so much in common!"
+    p happy "Wow, we have so much in common!"
     mc deadpan "...Sure."
-    p "Can I get your UsChat?"
+    p neutral "Can I get your UsChat?"
     mc neutral "Since when do Americans use UsChat?"
-    p "Heh, I'm pretty cultured and open-minded."
-    p "I've been like this because of all the feminist literature I've read since I was young."
+    p neutral "Heh, I'm pretty cultured and open-minded."
+    p happy "I've been like this because of all the feminist literature I've read since I was young."
 
     menu:
         "Give him your UsChat":
             mc neutral "...Alright, scan my QR code."
-            p "Thanks! Or, should I say, xiexie!"
+            p happy "Thanks! Or, should I say, xiexie!"
         "Don't give him your UsChat":
-            p "Huh? I'm not like other guys who ask for your socials, promise."
-            p "I just want to be friends with someone with common interests."
+            p shocked "Huh? I'm not like other guys who ask for your socials, promise."
+            p neutral "I just want to be friends with someone with common interests."
             mc deadpan "...Alright, scan my QR code."
 
     "You take out your phone and notice that it's 7:25. Your first class starts in only five minutes!"
     "Quickly opening UsChat, Kyren scans your QR code and sends you a friend request. You reluctantly accept the friend request before throwing your bag over your shoulders."
 
     mc neutral "...School is starting soon. See you."
-    p "Wait, do you also like to go thrifting-"
+    p shocked "Wait, do you also like to go thrifting-"
 
 
     jump episode_2
@@ -776,7 +781,7 @@ label episode_3_meeting:
 
 
 # choosing to ignore, seeing lucien running away
-label episode_3_meeting_2
+label episode_3_meeting_2:
 
     scene bg school_hallway_1 with fade
 

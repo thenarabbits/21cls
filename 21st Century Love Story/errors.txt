@@ -2,17 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 631: show statement expects a non-empty block.
-    show weeb_neutral with dissolve:
-                                    ^
-
-File "game/script.rpy", line 637: show statement expects a non-empty block.
-    show b1_neutral with dissolve:
-                                  ^
-
-File "game/script.rpy", line 642: show statement expects a non-empty block.
-    show b2_neutral with dissolve:
-                                  ^
+File "game/script.rpy", line 779: expected ':' not found.
+    label episode_3_meeting_2
+                             ^
 
 Ren'Py Version: Ren'Py 8.2.3.24061702
-Fri Nov 28 19:05:51 2025
+Sat Nov 29 23:40:45 2025
