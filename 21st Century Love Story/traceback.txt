@@ -1,24 +1,30 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 30, in script
-    image performative_shocked = ""
-Exception: An empty string cannot be used as a displayable.
+  File "game/script.rpy", line 144, in script
+    p happy "BRUH"
+Exception: Say has image attributes ('happy',), but there's no image tag associated with the speaking character.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 30, in script
-    image performative_shocked = ""
-  File "C:\Users\athen\Downloads\renpy-8.2.3-sdk\renpy\ast.py", line 926, in execute
-    renpy.exports.image(self.imgname, img)
-  File "C:\Users\athen\Downloads\renpy-8.2.3-sdk\renpy\exports.py", line 341, in image
-    d = renpy.easy.displayable(d)
-  File "C:\Users\athen\Downloads\renpy-8.2.3-sdk\renpy\easy.py", line 117, in displayable
-    raise Exception("An empty string cannot be used as a displayable.")
-Exception: An empty string cannot be used as a displayable.
+  File "game/script.rpy", line 144, in script
+    p happy "BRUH"
+  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\ast.py", line 2560, in execute
+    Say.execute(self)
+  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\ast.py", line 615, in execute
+    renpy.exports.say(who, what, *args, **kwargs)
+  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\exports.py", line 1494, in say
+    who(what, *args, **kwargs)
+  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\character.py", line 1332, in __call__
+    old_attr_state = self.handle_say_attributes(False, interact)
+  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\character.py", line 1151, in handle_say_attributes
+    if self.resolve_say_attributes(predicting, attrs):
+  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\character.py", line 1077, in resolve_say_attributes
+    raise Exception("Say has image attributes %r, but there's no image tag associated with the speaking character." % (attrs,))
+Exception: Say has image attributes ('happy',), but there's no image tag associated with the speaking character.
 
-Windows-10-10.0.26200 AMD64
+Windows-10-10.0.26100 AMD64
 Ren'Py 8.2.3.24061702
 21st Century Love Story 1.0
-Sat Nov 29 23:47:44 2025
+Sat Nov 29 22:04:04 2025

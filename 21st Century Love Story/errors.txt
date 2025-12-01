@@ -2,9 +2,11 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 779: expected ':' not found.
-    label episode_3_meeting_2
-                             ^
+The label testinglol is defined twice, at File "game/script.rpy", line 90:
+label testinglol:
+and File "game/script.rpy", line 150:
+label testinglol:
+
 
 Ren'Py Version: Ren'Py 8.2.3.24061702
-Sat Nov 29 23:40:45 2025
+Sat Nov 29 21:50:40 2025
