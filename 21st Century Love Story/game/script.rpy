@@ -49,6 +49,7 @@ image bg school_track = "school_track.webp"
 image bg football_field = "football_field_day.webp"
 image bg school_hallway_1 = "school_corridor_background.webp"
 image bg school_hallway_2 = "uncle mugen school corridor morning.webp"
+image bg school_nurse = "hospital.webp"
 
 # The game starts here.
 
@@ -569,12 +570,46 @@ label episode_2_join:
     b1 "Oh my gosh." # :P
     b1 "Olivia's gonna tweak if she hears about this."
     
-
-    "You've reached the end :p" # mark so i can still go back while testing the game
-    
-    jump episode_3
+    jump episode_2_nurse
     return
 
+label episode_2_nurse:
+    
+    scene bg school_nurse with fade
+
+    "20 minutes later..."
+
+    show narcissist_neutral
+    n "Ugh, my head..."
+    # "Wincing, Ronan tossed and turned until, finally, he could think more clearly. To some extent."
+    "Slowly coming to, Ronan sat himself up."
+    "He winced and rubbed his right cheek, which was oddly numb. And cold."
+    n "Am...I dead?"
+    #shaking head gif maybe?
+    n "*shakes head* No, no! I can't die now. I still need to join Dad in the shareholders' meeting after school!"
+    # "Ronan smirks and does his Cool Hair Flip."
+    
+    mc happy "What a miracle. You're totally fine."
+
+    "Ronan glances around and is vaguely able to identify you, who has just returned a warmed-down ice pack to the school nurse. A wave of relief washes over him."
+    $ playername_length = len(playername)
+
+    if playername_length >= 4:
+        $ playername_twisted = playername[0:3]
+        n "Who are you again? [playername_twisted]—no, my SAVIOR!"
+    else:
+        n "Insolent brat? No, I mean, my savior!"
+        mc deadpan "(Dude, make up your mind.)"
+    n "Hmph. I give credit where it is due, and I commend your dedication to safeguard the life of the Sinclair X.Y. Industries heir."
+    n "That is me, Ronan X.Y. Sinclair! *Cool Hair Flip*"
+
+
+
+    # n "Listen, I don't do this often, but "
+    # does narcissist give mc a reward? that's what i was thinking, but i wanna make the story more interesting
+
+    jump episode_3
+    return
 
 # ep3 AFTER mc's interactions w/ ronan
 label episode_3:
