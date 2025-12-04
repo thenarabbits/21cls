@@ -79,6 +79,8 @@ label start:
 
     cashier "Welcome, what can I get for you today?"
 
+    jump episode_3
+
     menu:
         "Can I get a matcha latte?":
             $ choice = "matchalatte"
@@ -716,6 +718,138 @@ label episode_3_meeting:
     
     b2 "Why do you look so..."
 
+    jump episode_3_savior
+    return
+
+# choosing to ignore, seeing lucien running away
+label episode_3_meeting_2:
+
+    scene bg school_hallway_2 with fade
+
+    mc neutral "(Now... where is the restroom...)"
+
+    "As you walk through the halls trying to find where the restroom is, a series of quick footsteps gets closer."
+    "...And as you turn the corner, you accidentally bump into someone, sending the both of you falling to the ground."
+
+    mc shocked "Ow!"
+
+    show weeb_neutral with dissolve
+
+    w "A-ah!"
+
+    "Looking up from the ground, you see a boy with extremely disheveled hair, wearing clothes that... probably haven't been washed in a while."
+    "The lenses of his glasses are foggy, preventing you from seeing his eyes."
+    
+    mc deadpan "(...Does this guy not look where he's going?)"
+    
+    "Brushing off your clothes, you stand up and extend a hand out to the boy."
+
+    mc neutral "Are you alright?"
+    w "..."
+    mc deadpan "...Hello?"
+
+    "Without responding to you, the boy takes off his glasses with shaky hands and wipes the lenses with the bottom of his shirt before finally making eye contact with you."
+    # cutscene start
+    "And before you could repeat yourself, you can't help but notice the guy is..."
+    "...oddly good looking for someone so disheveled?"
+    # cutscene end
+
+    mc deadpan "Um, I said, are you alright?"
+    w "..."
+    mc angry "Can't you hear me? I asked if-"
+    w "Suzuki Haruka?!"
+    mc deadpan "...What?"
+    w "Y-y-y-you... y-y-y-you're a carbon copy!! She's... she's real!!! I knew it!!"
+    mc angry "What are you talking about? Are you alright or not?"
+    w "Oh my god, oh my god, oh my god..."
+
+    hide weeb_neutral
+
+    "Before you could question what on earth this guy was talking about, a rowdy yell interrupts:"
+    "\"Ugh, where did that kid go?!\""
+
+    mc neutral "(Huh? That voice sounds a bit familiar.)"
+
+    show b1_neutral with dissolve:
+        zoom 0.25
+        xalign 0.5
+        yalign 0.0
+
+    b1 "Hey punk! Where are you running off to?!"
+    b1 "Huh?"
+    b1 "Nepo baby! Why are you here?"
+
+    hide b1_neutral
+    show weeb_neutral with dissolve
+
+    w "G-G-GAH!!!"
+
+    "In the blink of an eye, the disheveled guy gets up from the floor and runs to hide behind you."
+
+    w "P-p-p-please save meeeeeeeeeeeeee!!!!!!"
+    mc deadpan "...What's going on?"
+    
+    hide weeb_neutral
+    show b2_neutral with dissolve:
+        zoom 0.3
+        xalign 0.5
+        yalign 1.0
+    
+    b2 "Hey, you run way too fast-"
+    b2 "...Huh?"
+    b2 "Why are you here?"
+
+    hide b2_neutral
+    show b1_neutral with dissolve:
+        zoom 0.25
+        xalign 0.5
+        yalign 0.0
+
+    b1 "That's what I'm saying!"
+    b1 "Ahem, we, uh, weren't doing anything."
+    b1 "We were just hanging out with our little friend over here."
+    b1 "Right?"
+
+    hide b1_neutral
+    show weeb_neutral
+
+    w "...*Hic*"
+
+    hide weeb_neutral
+    show b1_neutral with dissolve:
+        zoom 0.25
+        xalign 0.5
+        yalign 0.0
+    
+    b1 "I said, RIGHT?"
+    mc deadpan "Then could you explain why he's so scared right now?"
+    b1 "...Tch."
+
+    hide b1_neutral
+    show b2_neutral with dissolve:
+        zoom 0.3
+        xalign 0.5
+        yalign 1.0
+    
+    b2 "We weren't getting into trouble or anything. We just wanted to ask him about a misunderstanding."
+
+    hide b2_neutral
+    show b1_neutral with dissolve:
+        zoom 0.25
+        xalign 0.5
+        yalign 0.0
+
+    b1 "It was NOT a misunderstanding, bruh."
+    b1 "This kid was clearly trying to hit on my girl!"
+    
+    jump episode_3_savior
+    return
+
+label episode_3_savior:
+
+    scene bg school_hallway_2
+
+    hide b1_neutral
     hide b2_neutral
     show weeb_neutral with dissolve
 
@@ -725,7 +859,6 @@ label episode_3_meeting:
     w "N-n-n-n-n-n-n-no matter what you do, you cannot tear this love apart!"
     w "This love, so fresh and whole, is bound to last forever!!!"
     w "I will not allow you to take my waifu away from me!!"
-
     mc shocked "..."
 
     hide weeb_neutral
@@ -842,81 +975,63 @@ label episode_3_meeting:
 
     b1 "I'm sick of this kid! And you smell horrible! Trying to act crazy as an excuse or what?!"
     
-    "YOu stare in confusion as the rowdy bully suddenly lifts a leg, about to kick the poor kid."
+    "You stare in confusion as the rowdy bully suddenly lifts a leg, about to kick the poor kid."
 
     mc deadpan "(Maybe I should intervene...)"
 
     menu:
         "Try to resolve the conflict with words":
             mc neutral "Shouldn't you two be in class still?"
+            b1 "...Tch, you think you're a goody two shoes?"
+            b1 "Stay out of this! Go complain to your dad if you want! I don't care!"
+            mc deadpan "(...Words aren't going to get through this guy.)"
         "Run away with the disheveled guy":
-            mc deadpan "..."
+            mc deadpan "(...Words aren't going to get through this guy.)"
 
-
-    return
-
-
-# choosing to ignore, seeing lucien running away
-label episode_3_meeting_2:
-
-    scene bg school_hallway_1 with fade
-
-    mc neutral "(Now... where is the restroom...)"
-
-    "As you walk through the halls trying to find where the restroom is, a series of quick footsteps gets closer."
-    "...And as you turn the corner, you accidentally bump into someone, sending the both of you falling to the ground."
-
-    mc shocked "Ow!"
-
-    show weeb_neutral with dissolve
-
-    w "A-ah!"
-
-    "Looking up from the ground, you see a boy with extremely disheveled hair, wearing clothes that... probably haven't been washed in a while."
-    "The lenses of his glasses are foggy, preventing you from seeing his eyes."
-    
-    mc deadpan "(...Does this guy not look where he's going?)"
-    
-    "Brushing off your clothes, you stand up and extend a hand out to the boy."
-
-    mc neutral "Are you alright?"
-    w "..."
-    mc deadpan "...Hello?"
-
-    "Without responding to you, the boy takes off his glasses with shaky hands and wipes the lenses with the bottom of his shirt before finally making eye contact with you."
-    "And before you could repeat yourself, you can't help but notice the guy is..."
-    "...oddly good looking for someone so disheveled?"
-
-    mc deadpan "Um, I said, are you alright?"
-    w "..."
-    mc angry "Can't you hear me? I asked if-"
-    w "Suzuki Haruka?!"
-    mc deadpan "...What?"
-    w "Y-y-y-you... y-y-y-you're a carbon copy!! She's... she's real!!!"
-    mc angry "What are you talking about? Are you alright or not?"
-    w "Oh my god, oh my god, oh my god..."
-
-    hide weeb_neutral
-
-    "Before you could question what on earth this guy was talking about, a rowdy yell interrupts:"
-    "\"Ugh, where did that kid go?!\""
-
-    mc neutral "(Huh? That voice sounds a bit familiar.)"
-
-    show b1_neutral with dissolve
-
-    b1 "Hey punk! Where are you running off to?!"
-    b1 "Huh?"
-    b1 "Nepo baby! Why are you here?"
+    "In the blink of an eye, you reach over and grab the disheveled guy's hand and bolt down the hallway, dragging him with you."
+    b1 "Wha- Hey!"
 
     hide b1_neutral
     show weeb_neutral with dissolve
 
-    w "G-G-GAH!!!"
+    w "*Hic* S-S-S-Suzuki Harukaaaaaaaa!!!! M-m-m-my savior!!!!"
+    mc angry "If you call me that one more time, I'm going to beat you up myself."
+    w "B-b-b-b-but you really are her!!!"
 
-    "In the blink of an eye, the disheveled guy gets up from the floor and runs to hide behind you."
+    hide weeb_neutral
 
-    w "P-p-p-please save meeeeeeeeeeeeee!!!!!!"
+    "...Maybe you should've let this guy to get beat."
+    "After a few more minutes of running through the halls, you slow down to glance at a nearby clock."
+    "15 seconds until the bell rings."
+
+    mc happy "(Phew, that should make up for missing PE today.)"
+    mc neutral "Hey, are you good now-"
+    mc shocked "..."
+
+    show weeb_neutral with dissolve
+
+    w "*Huff* Y-you,"
+    w "Ugh... *gasp*"
+    w "Can't... run... anym... *wheeze*"
+
+    "You thought you were already on the lower end of athleticism..."
+    "...but this guy just created a new bar below you!"
+
+    w "S-S-Suzu.. ki... I can't... brea- *puff*"
+    mc deadpan "(...Are you serious?)"
+    mc neutral "What's your name?"
+    mc neutral "(So I can make sure to avoid you in the future.)"
+    w "Y-y-y-you... w-w-want to know MY name!?!?!?"
+    w "Suzuki Haruka... it's an honor!!!"
+    $ weeb = "Lucien"
+    w "I-I-I-I am Lucien Kim!!! At your service, always!!!!"
+    mc deadpan "...Okay."
+
+    "*RING!*"
+    "Fortunately, the bell saved you! As students fill the halls, you turn to go to your next class."
+
+    mc neutral "Well... bye."
+    w "W-w-w-wait!! Suzuki Harukaaaaaaa!!!!"
 
     return
 
