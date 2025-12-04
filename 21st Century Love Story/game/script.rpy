@@ -62,8 +62,17 @@ label start:
     $ narcissist = "Guy Sitting By Himself"
     $ weeb = "Guy With Disheveled Hair"
 
+    # black screen for this, it's just background information yk
+    "Monday, 7:00 AM."
+    "You were fortunate enough to be born into wealth, and you've always gotten everything you wanted."
+    "...Well, almost everything you've wanted."
+    "It's only been a few days since you have transferred here to Milkyway High School from a private academy in Beijing."
+    "Surprisingly, even though this is a huge school in New York City, you are the only exchange student."
+    "Hopefully, the year goes smoothly, and you can successfully focus on your academics to make your CEO father, lawyer mother, doctor brother, and engineer sister proud!"
+
+    # im gonna move scene bg school_street here when i add black screen in the beginning
     mc neutral "Finally arrived at school... I'm so thirsty..."
-    mc neutral "It's 7:15, I still have fifteen minutes until my first class."
+    mc neutral "It's 7:00, I still have an hour until my first class."
     mc neutral "I should try to find a drink somewhere."
     
     scene bg cafe_outside with fade
@@ -78,8 +87,6 @@ label start:
         yalign 1.0
 
     cashier "Welcome, what can I get for you today?"
-
-    jump episode_3
 
     menu:
         "Can I get a matcha latte?":
@@ -122,10 +129,6 @@ label intro2:
 
     hide cashier_neutral #with dissolve
     # current style is show w/ dissolve but no transition when hiding
-
-    "It hasn't been long since you have transferred here to Milkyway High School from a private school in Beijing."
-    "Surprisingly, even though this is a huge school in New York City, you are the only exchange student."
-    "Hopefully, the year goes smoothly, and you can successfully focus on your academics to make your CEO father, lawyer mother, doctor brother, and engineer sister proud!"
 
     show cashier_neutral with dissolve:
         zoom 1.5
@@ -206,24 +209,51 @@ label episode_1:
     p neutral "I'm Kyren, what's your name?"
     mc neutral "[playername]."
     p neutral "It's nice to meet you."
-    p neutral "I saw you deciding between matcha and a frappuccino when I was waiting in line earlier. I've been drinking matcha before it became popular."
-    mc deadpan "...Thanks for sharing."
-    p neutral "Please forgive me if this sounds weird, but are you a foreign exchange student?"
-    mc neutral "Yes, from China."
+    p neutral "I saw you deciding between matcha and a frappuccino when I was waiting in line earlier."
+    p happy "Which one do you like more? Personally, I'm team matcha."
+    p neutral "I've been drinking it for years, way before it became popular."
+    mc deadpan "(...Thanks for sharing?)"
+    mc neutral "They're both alright."
+    p neutral "What do you usually drink, then?"
+
+    menu:
+        "Pearl milk tea":
+            mc neutral "Where I'm from, most people prefer pearl milk tea."
+            p sad "Oh, boba?"
+            mc deadpan "...Yes?"
+            p happy "I love boba! We should go get some together sometime."
+            p neutral "I also read this one feminist literature book where the author had a famous boba recipe."
+        "Green tea":
+            mc neutral "I prefer green tea."
+            p neutral "I read in a feminist literature book that green tea helps a lot with being open-minded."
+            p happy "I made pretty good green tea as well, if you ever wanna come over to try some."
+        "Water":
+            mc neutral "Just water is fine."
+            p happy "I love water too!"
+            p neutral "It doesn't have any toxic chemicals like what people usually drink these days."
+            p neutral "I read about it once in a feminist literature book, by the way."
+
+
+    p neutral "Also, I haven't seen you around before. Are you a new student?"
+    mc deadpan "(Aren't there way too many students in this school to keep track of?)"
+    mc neutral "Yes, I'm in the foreign exchange program."
+    p shocked "?!"
+    mc deadpan "(What's with that face? Was I not supposed to say anything?)"
+    p neutral "You're [playername]?"
     p happy "Oh, China! I've always wanted to visit. I'd say I'm pretty familiar with your culture."
     mc happy "Really? I have always been proud of my culture and-"
     p neutral "I'm such a fan of \"The Drawing of War\" by Moon Tzu. It's such a beautiful and philosophical piece."
-    mc deadpan "...What?"
+    mc deadpan "...What?" 
     p neutral "And Chinese food is so delicious, I go to Tiandilao every week. But obviously authentic Chinese food is way better."
     p neutral "Chinese music is also incredible, I like pretty niche artists. You know... like Wackson Jang and Cay Jhou."
     p happy "Oh, and I can't forget to mention that mahjong just happens to be one of my favorite games."
-    mc shocked "..."
+    mc shocked "..." 
     
     "You can't believe what you're hearing right now."
     "This guy just doesn't stop talking!"
     "You wonder if this guy even knows what he's talking about. Does he realize he just called THE Wackson Jang and Cay Jhou \"niche\"?"
 
-    mc deadpan "What's your favorite Chinese song?"
+    mc deadpan "What's your favorite Chinese song?" 
     p shocked "...Huh?"
     p neutral "Haha, there's too many to choose from! I can't pick one when all of them are so good."
     mc deadpan "(...This guy doesn't know what he's talking about.)"
