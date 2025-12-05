@@ -62,22 +62,29 @@ label start:
     $ narcissist = "Guy Sitting By Himself"
     $ weeb = "Guy With Disheveled Hair"
 
-    # black screen for this, it's just background information yk
-    "Monday, 7:00 AM."
-    "You were fortunate enough to be born into wealth, and you've always gotten everything you wanted."
+    # black screen
+    # if time, cutscene of alice during her rich childhood
+    "Growing up, you had a childhood that most people could only dream of."
+    "You were fortunate enough to be born into a massive conglomerate, Fuyu Group, and you've always gotten everything you wanted."
     "...Well, almost everything you've wanted."
-    "It's only been a few days since you have transferred here to Milkyway High School from a private academy in Beijing."
-    "Surprisingly, even though this is a huge school in New York City, you are the only exchange student."
-    "Hopefully, the year goes smoothly, and you can successfully focus on your academics to make your CEO father, lawyer mother, doctor brother, and engineer sister proud!"
+    "Previously, you attended a private academy in Beijing your entire life. However, your family's company wanted to expand its international influence..."
+    "...And you were forced to transfer to a high school in the west."
+    # if time, cutscene of alice in front of school
+    "Milkyway High School, a large public high school in New York City known for its rigorous learning environment focused on math, science, and technology."
+    "Surprisingly, even though this school holds a large and diverse student population, you are the only new exchange student this year."
+    "It's only been a few days as a student here. Hopefully, the year goes smoothly, and you can successfully focus on your academics to make your CEO father, lawyer mother, scientist brother, and doctor sister proud!"
 
     # im gonna move scene bg school_street here when i add black screen in the beginning
-    mc neutral "Finally arrived at school... I'm so thirsty..."
-    mc neutral "It's 7:00, I still have an hour until my first class."
-    mc neutral "I should try to find a drink somewhere."
+    "Monday, 7:00 AM."
+    mc neutral "(Finally arrived at school... I'm so thirsty...)"
+    mc neutral "(It's 7:00, I still have an hour until my first class.)"
+    mc neutral "(I should try to find a drink somewhere.)"
     
     scene bg cafe_outside with fade
 
-    mc happy "Oh look, a cafe! So coincidental, I think I want a cup of coffee."
+    "After walking around for a bit, you find yourself in front of a cafe directly next to the school."
+    mc happy "(I never realized the school had a cafe next to it. That works out really well.)"
+    mc neutral "(I'll go check it out. Hopefully they have something good.)"
 
     scene bg cafe with fade
 
@@ -86,7 +93,7 @@ label start:
         xcenter 0.5
         yalign 1.0
 
-    cashier "Welcome, what can I get for you today?"
+    cashier "Welcome! What can I get for you today?"
 
     menu:
         "Can I get a matcha latte?":
@@ -161,7 +168,6 @@ label intro2:
 #     "END"
 #     return
 
-
 label episode_1:
 
     scene bg cafe_2 with fade 
@@ -198,7 +204,7 @@ label episode_1:
     mc neutral "Oh, thank you."
     hide per_neutral
     p happy "Of course. Mind if I take a seat?"
-    mc deadpan "...Go ahead."
+    mc neutral "...Go ahead."
     p neutral "Thank you."
 
     "The strange boy takes a seat directly across from you, but not before you notice a strange keychain dangling from his belt loop."
@@ -206,14 +212,24 @@ label episode_1:
 
     $ performative = "Kyren"
 
-    p neutral "I'm Kyren, what's your name?"
-    mc neutral "[playername]."
-    p neutral "It's nice to meet you."
+    p neutral "You're [playername], right?"
+    p neutral "I'm Kyren, it's nice to meet you."
+    p neutral "I've heard great things about you and Fuyu Group! How have you been adjusting to Milkyway High School?"
+    mc neutral "Well..."
+
+    menu:
+        "It's been well":
+            mc neutral "I've been adjusting well."
+        "It's been okay":
+            mc neutral "It's been alright."
+        "It's been bad":
+            me neutral "I haven't been adjusting very well."
+
     p neutral "I saw you deciding between matcha and a frappuccino when I was waiting in line earlier."
     p happy "Which one do you like more? Personally, I'm team matcha."
     p neutral "I've been drinking it for years, way before it became popular."
     mc deadpan "(...Thanks for sharing?)"
-    mc neutral "They're both alright."
+    mc neutral "They're both fine."
     p neutral "What do you usually drink, then?"
 
     menu:
@@ -234,7 +250,7 @@ label episode_1:
             p neutral "I read about it once in a feminist literature book, by the way."
 
 
-    p neutral "Also, I haven't seen you around before. Are you a new student?"
+    p neutral "You're [playername], right?"
     mc deadpan "(Aren't there way too many students in this school to keep track of?)"
     mc neutral "Yes, I'm in the foreign exchange program."
     p shocked "?!"
