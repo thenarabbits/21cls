@@ -357,7 +357,7 @@ label episode_2_football:
     mc neutral "Oh?"
     "While your classmates are having fun tackling each other in the heat, someone sits by themself on a bench."
     menu:
-        "Approach them.":
+        "(Approach them.)":
             mc neutral "I'm not doing anything right now, anyways."
             $ choice = "care"
             jump episode_2_meeting
@@ -512,9 +512,9 @@ label episode_2_join:
     
     if met_narcissist == False:
         mc neutral "(So his name is Ronan...)"
-        mc "(But is this a normal occurrence?)"
+        mc deadpan "(But is this a normal occurrence?)"
     else:
-        mc neutral "(Is this a normal occurrence?)"
+        mc deadpan "(Is this a normal occurrence?)"
 
     show b1_neutral with dissolve:
         zoom 0.25
@@ -522,18 +522,28 @@ label episode_2_join:
         yalign 0.0
     b1 "Hey, watch out-"
     hide b1_neutral
-    "The peasant tries to warn the other of the incoming tackle, but their efforts are futile."
-    "A peasant is struck down before the two leave just as quickly as how you met them."
+    "You watch in awe as one of the peasants is struck down by an incoming tackle."
+    # maybe replace with cutscene?
+
+    show b2_neutral with dissolve:
+        zoom 0.3
+        xalign 0.5
+        yalign 1.0
+    b2 "Oof!"
+    hide b2_neutral
+    "Right, you all are still playing football."
+    "Excusing themselves, the two peasants leave just as quickly as how you met them."
 
     show narcissist_neutral with dissolve
     n "Hmph! That's more like it."
     
     "Then, Ronan and you make eye contact."
+    n "I bet you were wondering if this happens often. And yes, it does. It's natural that people are always stunned by presence!"
 
     # 2do: update character n so we can use the emotion shorthand thingies
     show narcissist_neutral with dissolve
     if met_narcissist:
-        n "Oh, it's that insolent brat."
+        n "Oh. It's that insolent brat."
         menu:
             "Excuse me?":
                 n "You're excused!"
@@ -639,6 +649,12 @@ label episode_2_nurse:
     
     mc happy "What a miracle. You're totally fine."
 
+    # menu:
+    #     "What are miracle. You're totally fine."
+    #         mc happy "What a miracle. You're totally fine."
+    #     "Just go back to sleep."
+    #         mc deadpan "Just go back to sleep."
+
     "Ronan glances around and is vaguely able to identify you, who has just returned a warmed-down ice pack to the school nurse. A wave of relief washes over him."
     $ playername_length = len(playername)
 
@@ -650,6 +666,44 @@ label episode_2_nurse:
         mc deadpan "(Dude, make up your mind.)"
     n "Hmph. I give credit where it is due, and I commend your dedication to safeguard the life of the Sinclair X.Y. Industries heir."
     n "That is me, Ronan X.Y. Sinclair! *Cool Hair Flip*"
+
+    menu:
+        "(Leave.)":
+            mc deadpan "It's great to see you're already feeling back to normal again."
+            mc neutral "I'm leaving now."
+            n "H-huh? You're leaving already? So soon?"
+            "Ronan suddenly dropping his posh tone catches you off guard. But, anyways, you've got places to be."
+            mc neutral "Yep. Need to go. Bye."
+            jump episode_3
+        "Don't worry about it.":
+            #LOWKEYYYYYYYYYYYYYYYYYY i feel like this scene is not in character?! might remove/move to later episode
+            mc happy "Don't worry about it."
+            n "Hm...Hmph. You're quite down to earth."
+            mc happy "Thank you."
+            n "..."
+            "Ronan goes quiet for a moment, pondering intently while staring at the floor."
+            n "I just don't get why you're being so nice to me."
+            n "...Whatever. Could you stay here with me until your next class starts?"
+            menu:
+                "You're just like an elementary school student.":
+                    mc neutral "You're just like an elementary school student."
+                    n "Excuse me? How dare you! If I'm an elementary school student, then you're an old hag!"
+                    "*slink* Ronan pulls out the curtains, obscuring you from view. He just leaves a tiny enough opening to stick out his hand and motion you to scram."
+                    mc happy "LOL."
+                    "*silence*"
+                    mc happy "Okay, okay. I'm going now."
+                    jump episode_3
+                "(Apologize and leave.)":
+                    #ik i could use another jump but i'm lazyyy
+                    n "H-huh? You're leaving already? So soon?"
+                    "Ronan suddenly dropping his posh tone catches you off guard. But, anyways, you've got places to be."
+                    mc neutral "Yep. Need to go. Bye."
+                    jump episode_3
+            
+        # "Do I get a reward?":
+        #     n "Of course! Just name anything, and I'll give it to you. *COOL HAIR FLIP*"
+            
+        #     jump episode_3
 
 
 

@@ -2,11 +2,9 @@
 errors listed below, and try again.
 
 
-The label testinglol is defined twice, at File "game/script.rpy", line 90:
-label testinglol:
-and File "game/script.rpy", line 150:
-label testinglol:
-
+File "game/script.rpy", line 697: expected statement.
+    jump_episode_3
+                  ^
 
 Ren'Py Version: Ren'Py 8.2.3.24061702
-Sat Nov 29 21:50:40 2025
+Fri Dec  5 15:00:02 2025
