@@ -45,6 +45,7 @@ image b1_neutral = "bully1 neutral.png"
 image b2_neutral = "bully2 neutral.png"
 
 # define backgrounds
+image bg black_background = "black-background.png"
 image bg school_street = "this_better_be_good_because_the_render_time_for_this_bg_is_horrendous_despite_having_a_render_farm.webp"
 image bg cafe_outside = "cafe_memoria_outside_04_afternoon.webp"
 image bg cafe = "cafe_memoria_inside_03_afternoon.webp"
@@ -61,7 +62,7 @@ image bg quad_outside_arts_building = "monele_arts_building.webp"
 
 label start:
 
-    scene bg school_street with fade
+    scene bg black_background
 
     $ playername = "You"
     $ performative = "???"
@@ -69,20 +70,66 @@ label start:
     $ weeb = "Guy With Disheveled Hair"
     $ gymbro = "Tough Looking Guy"
 
-    # black screen
+    # i think it'll be cute if we add a "prologue" scene b4 everything of alice getting ready
+    "Monday, 5:00 AM."
+    "Enveloped by the fluffy warmth of a blanket, you shuffle in your bed as the sun's soft rays caress your face through the window."
+    "Softly breathing, you pull the blanket closer and allow slumber to consume you further."
+    "What were you dreaming about just now?"
+
+    menu:
+        "Eating fancy desserts on a cloud":
+            "Ah, yes. You imagine yourself on soft, feathery shades of white as you take a bite of fluffy ice cream."
+            "The cold sensation fills your mouth and spreads throughout your body as you swallow."
+        "Rolling around in a flower field at sunset":
+            "You can faintly hear birds chirping in the distance as you lay on a soft field."
+            "The golden rays of the sun linger on you, providing a gentle warmth to your skin."
+        "Swimming in a lake as clear as glass":
+            "Refreshing, serene, free."
+            "That is how you feel about the glassy water rippling around you, letting you forget about all your worries."
+
+    "It's so peaceful..."
+    "You could stay like this forever-"
+    # insert alarm clock sound
+    "*RING!*"
+    "...Or maybe not."
+    mc deadpan "Ugh..."
+    mc deadpan "It's too early... I'm still recovering from jet lag..."
+    mc neutral "Whatever. I need to get ready for school now."
     # if time, cutscene of alice during her rich childhood
     "Growing up, you had a childhood that most people could only dream of."
-    "You were fortunate enough to be born into a massive conglomerate, Fuyu Group, and you've always gotten everything you wanted."
+    "You were fortunate enough to be born into a conglomerate family in China, Fuyu Group, and you've always gotten everything you wanted."
     "...Well, almost everything you've wanted."
     "Previously, you attended a private academy in Beijing your entire life. However, your family's company wanted to expand its international influence..."
     "...And you were forced to transfer to a high school in the west."
     # if time, cutscene of alice in front of school
     "Milkyway High School, a large public high school in New York City known for its rigorous learning environment focused on math, science, and technology."
     "Surprisingly, even though this school holds a large and diverse student population, you are the only new exchange student this year."
-    "It's only been a few days as a student here. Hopefully, the year goes smoothly, and you can successfully focus on your academics to make your CEO father, lawyer mother, scientist brother, and doctor sister proud!"
+    "And unlike typical exchange students who live with a host family, your family rented out a penthouse for you."
+    "Pretty cool, right?"
+    "Your one goal is to successfully focus on your academics to properly represent your family in the United States."
+    "Surely, nothing will go wrong."
+    "Right?"
+    "..."
+    "...Right?"
 
-    # im gonna move scene bg school_street here when i add black screen in the beginning
+    mc deadpan "It's only nine months until I can go back home. What could happen in such little time?"
+
+    "That's right."
+    "Besides, even if you did run into trouble..."
+    "...what problem can't be solved with money in this day and age?"
+    "It's time to get ready for the day."
+    "This will be your first official day at school. Hopefully, it'll will go well, and the next nine months starting today will go smoothly."
+
+    jump intro
+    return
+
+label intro:
+
+    scene bg school_street with fade
+
     "Monday, 7:00 AM."
+    "After getting ready and eating a light breakfast, your chauffeur picked you up from your penthouse and brought you to school."
+
     mc neutral "(Finally arrived at school... I'm so thirsty...)"
     mc neutral "(It's 7:00, I still have an hour until my first class.)"
     mc neutral "(I should try to find a drink somewhere.)"
@@ -90,6 +137,7 @@ label start:
     scene bg cafe_outside with fade
 
     "After walking around for a bit, you find yourself in front of a cafe directly next to the school."
+
     mc happy "(I never realized the school had a cafe next to it. That works out really well.)"
     mc neutral "(I'll go check it out. Hopefully they have something good.)"
 
@@ -105,31 +153,20 @@ label start:
     menu:
         "Can I get a matcha latte?":
             $ choice = "matchalatte"
-            jump intro
         "Can I get a frappuccino?":
             $ choice = "frappuccino"
-            jump intro
-
-    return
-
-label intro:
 
     if choice == "matchalatte":
         cashier "Good choice!"
         cashier "Our matcha is the best of the best!"
-        jump intro2
     elif choice == "frappuccino":
         cashier "Are you sure? I think I'll give you a matcha latte instead."
         mc deadpan "Um..."
         menu:
             "That's fine.":
-                jump intro2
+                mc deadpan "Um... okay."
             "No, I said what I said.":
-                jump intro2
-
-    return
-
-label intro2:
+                mc deadpan "...No, I said I wanted a frappuccino."
 
     $ playername = renpy.input("Alright then, can I get a name for your order?", length=32) # length=32 is optional
     $ playername = playername.strip() # remove leading/trailing whitespace
@@ -200,21 +237,33 @@ label episode_1:
 
     "The strange boy takes a seat directly across from you, but not before you notice a strange keychain dangling from his belt loop."
     "He sets a book down on the table that reads \"Feminist Literature by Cyx Sehvyn\" and hangs his tote bag on his chair."
+    "But it seems that you've drawn the attention of other students in the cafe."
+    "Muttered voices suddenly flood the room as the boy wearing a quarter zip-up smiles at you."
+    "\"Do you see that? He's going after another girl?!\""
+    "\"Wait... Isn't that [playername]? The nepo baby exchange student?\""
+    "\"Is Kyren serious? He's really going to try this on HER of all people?!\""
+    "\"Does he realize his life is over if he offends her or something?\""
+
+    mc deadpan "(Do all people here talk so loud?)"
+
+    p neutral "You're [playername], right?"
 
     $ performative = "Kyren"
 
-    p neutral "You're [playername], right?"
     p neutral "I'm Kyren, it's nice to meet you."
-    p neutral "I've heard great things about you and Fuyu Group! How have you been adjusting to Milkyway High School?"
+    p neutral "I've heard great things about you and Fuyu Group! How have you been adjusting so far?"
     mc neutral "Well..."
 
     menu:
         "It's been well":
             mc neutral "I've been adjusting well."
+            p happy "That's great to hear!"
         "It's been okay":
             mc neutral "It's been alright."
+            p neutral "That's good!"
         "It's been bad":
             me neutral "I haven't been adjusting very well."
+            p sad "Sorry to hear that, hopefully it gets better."
 
     p neutral "I saw you deciding between matcha and a frappuccino when I was waiting in line earlier."
     p happy "Which one do you like more? Personally, I'm team matcha."
@@ -240,25 +289,38 @@ label episode_1:
             p neutral "It doesn't have any toxic chemicals like what people usually drink these days."
             p neutral "I read about it once in a feminist literature book, by the way."
 
+    mc neutral "...Feminist literature?"
+    p neutral "Yes, I'd say I'm a pretty avid reader."
+    p neutral "I just love women, you know? They've worked so hard and are so underappreciated."
+    p neutral "And the way they have to suffer every month with period cramps..."
+    p neutral "If I could choose a superpower, I would choose the ability to get rid of period cramps forever!"
+    mc deadpan "..."
+    mc deadpan "(What is this guy talking about?)"
 
-    p neutral "You're [playername], right?"
-    mc deadpan "(Aren't there way too many students in this school to keep track of?)"
-    mc neutral "Yes, I'm in the foreign exchange program."
-    p shocked "?!"
-    mc deadpan "(What's with that face? Was I not supposed to say anything?)"
-    p neutral "You're [playername]?"
-    p happy "Oh, China! I've always wanted to visit. I'd say I'm pretty familiar with your culture."
+    "This guy is..."
+    "Interesting, to say the least."
+
+    mc neutral "What's your favorite piece of feminist literature?"
+    p shocked "..."
+    p shocked "Oh, uh..."
+    p neutral "They're all so good, I can't choose."
+
+    "...I don't think that counts as an answer."
+
+    p happy "Anyways! You're from China, right? I've always wanted to visit. I'd say I'm pretty familiar with your culture."
     mc happy "Really? I have always been proud of my culture and-"
     p neutral "I'm such a fan of \"The Drawing of War\" by Moon Tzu. It's such a beautiful and philosophical piece."
     mc deadpan "...What?" 
     p neutral "And Chinese food is so delicious, I go to Tiandilao every week. But obviously authentic Chinese food is way better."
-    p neutral "Chinese music is also incredible, I like pretty niche artists. You know... like Wackson Jang and Cay Jhou."
+    p neutral "Chinese music is also incredible, I like pretty niche artists. You know... like Wackson Jang."
+    p neutral "I can put you on, if you want."
+
     p happy "Oh, and I can't forget to mention that mahjong just happens to be one of my favorite games."
     mc shocked "..." 
     
     "You can't believe what you're hearing right now."
     "This guy just doesn't stop talking!"
-    "You wonder if this guy even knows what he's talking about. Does he realize he just called THE Wackson Jang and Cay Jhou \"niche\"?"
+    "You wonder if this guy even knows what he's talking about. Does he realize he just called the Wackson Jang \"niche\"?"
 
     mc deadpan "What's your favorite Chinese song?" 
     p shocked "...Huh?"
@@ -286,10 +348,12 @@ label episode_1:
 
     p happy "Wow, we have so much in common!"
     mc deadpan "...Sure."
-    p neutral "Can I get your UsChat?"
-    mc neutral "Since when do Americans use UsChat?"
+    p neutral "Can I get your WheeChat?"
+    mc neutral "Since when do Americans use WheeChat?"
     p neutral "Heh, I'm pretty cultured and open-minded."
     p happy "I've been like this because of all the feminist literature I've read since I was young."
+
+    # im gonna make this part longer
 
     menu:
         "Give him your UsChat":
@@ -305,7 +369,6 @@ label episode_1:
 
     mc neutral "...School is starting soon. See you."
     p shocked "Wait, do you also like to go thrifting-"
-
 
     jump episode_2
     return
@@ -379,19 +442,28 @@ label episode_2_meeting:
                 n "Are you talking to me, peasant?"
         
         $ narcissist = "Snobby Guy"
-        n "THE DISRESPECT! Just wait until I tell my father, who is a CEO, by the way, about this insolence!"
-        mc deadpan "(...Did I ever ask?)"
+        n "THE DISRESPECT! Just wait until I tell my father about this insolence!"
+        mc deadpan "(...Is everyone at this school this weird?)"
         n "And since you're uneducated, I'll show some mercy and inform you about WHO I am exactly."
         $ narcissist = "Ronan"
         n "I am Ronan, Ronan X.Y. Sinclair! The first in line to inherit the reputable Sinclair X.Y. Industries!"
         mc neutral "(Sinclair X.Y. Industries... kind of rings a bell. I think they source parts from dad's company?)"
-        mc deadpan "And? Don't get on a high horse. My father is a CEO too."
-        
-        n "Ha! Tell me, then, what famous company is your father the CEO of?"
+        n "So, you-"
+        n "..."
+        n "Why do you look familiar?"
+        n "Have you ever worked for my family, peasant?"
+        mc deadpan "...You've probably seen me on the news before."
+        n "..."
+        n "Hahahahahahhahahahahahahahaha!!"
+        n "What, are you a little social media influencer? Do you really think you have any power compared to ME?"
         mc deadpan "Fuyu Group."
         n "..."
-        n "...Huh?"
+        n "...What?"
+        mc neutral "My father is the CEO of Fuyu Group."
+        n "..."
         mc happy "(Exactly.)"
+        n "*muttering* Father told me someone from a conglomerate was transferring here or something... I wasn't listening to him..."
+        n "*muttering* ...So it was this girl."
 
         "You notice the snobby guy's left eye twitch, but then he composes himself in a split second."
 
@@ -464,23 +536,39 @@ label episode_2_join:
         zoom 0.25
         xalign 0.5
         yalign 0.0
-    b1 "That's the new student! The one from Beijing!"
+
+    b1 "That's the new student! [playername] from Fuyu Group!"
+
     hide b1_neutral
+
     mc deadpan "(Am I some kind of zoo animal? (-_-;))"
+
     show b2_neutral with dissolve:
         zoom 0.3
         xalign 0.5
         yalign 1.0
-    b2 "For real? I thought she would look, y'know, more classy. Isn't her dad a CEO or something?"
+
+    b2 "For real? I thought she would look, y'know, more classy. Isn't her family full of CEOs or whatever?"
+
     # still debating whether to put this before or after the ball hit/nurse's office thing
     hide b2_neutral
     show b1_neutral with dissolve:
         zoom 0.25
         xalign 0.5
         yalign 0.0
+        
     b1 "Oh, really? Why would she would move here? Away from her luxurious mansion?"
 
     hide b1_neutral
+    show b2_neutral with dissolve:
+        zoom 0.3
+        xalign 0.5
+        yalign 1.0
+
+    b2 "Her family is trying to sell in America, I think. I heard she rented a penthouse here and has a chauffeur."
+
+    hide b2_neutral
+
     "Before any words leave your mouth, a voice from behind speaks up."
 
     if met_narcissist == False:
@@ -547,21 +635,30 @@ label episode_2_join:
         n "After all, I'm young, rich, tall, handsome, AND nice."
         n "I recognize my kind when I see one."
         "He sent you a wink~☆ but unfortunately, you blinked right then, so you didn't notice."
-        mc deadpan "What? (-_-;;)"
+        mc deadpan "..."
         n "Dear me. You're quite slow. Be grateful for this opportunity to network with me, that is, RONAN X.Y. SINCLAIR!"
     else:
-        mc neutral "Uh, I'm [playername]. And I don't believe we've met before."
+        mc neutral "...I don't believe we've met before."
         n "What, have you been living under a rock all your life? Or do you really not know who I am?"
         $ narcissist = "Ronan"
         n "I am Ronan, Ronan X.Y. Sinclair! The first in line to inherit the reputable Sinclair X.Y. Industries!"
         mc neutral "(Sinclair X.Y. Industries... kind of rings a bell. I think they source parts from dad's company?)"
-        mc deadpan "And? Don't get on a high horse. My father is a CEO too."
-        
-        n "Ha! Tell me, then, what famous company is your father the CEO of?"
+        n "So, you-"
+        n "..."
+        n "Why do you look familiar?"
+        n "Have you ever worked for my family, peasant?"
+        mc deadpan "...You've probably seen me on the news before."
+        n "..."
+        n "Hahahahahahhahahahahahahahaha!!"
+        n "What, are you a little social media influencer? Do you really think you have any power compared to ME?"
         mc deadpan "Fuyu Group."
         n "..."
-        n "...Huh?"
+        n "...What?"
+        mc neutral "My father is the CEO of Fuyu Group."
+        n "..."
         mc happy "(Exactly.)"
+        n "*muttering* Father told me someone from a conglomerate was transferring here or something... I wasn't listening to him..."
+        n "*muttering* ...So it was this girl."
 
         "You notice the snobby guy's left eye twitch, but then he composes himself in a split second."
 
@@ -608,7 +705,7 @@ label episode_2_join:
         zoom 0.3
         xalign 0.5 
         yalign 1.0
-    b2 "Hey, look."
+    b2 "Hey, look!"
 
     hide b2_neutral
 
@@ -638,7 +735,7 @@ label episode_2_nurse:
     n "*shakes head* No, no! I can't die now. I still need to join Dad in the shareholders' meeting after school!"
     # "Ronan smirks and does his Cool Hair Flip."
     
-    mc happy "What a miracle. You're totally fine."
+    mc neutral "You're fine."
 
     # menu:
     #     "What are miracle. You're totally fine."
@@ -759,7 +856,7 @@ label episode_3_meeting:
         xalign 0.5 
         yalign 1.0
 
-    b2 "Our turf."
+    b2 "Our turf-"
 
     hide b2_neutral
     show b1_neutral with dissolve:
@@ -888,7 +985,7 @@ label episode_3_meeting_2:
     
     b2 "Hey, you run way too fast-"
     b2 "...Huh?"
-    b2 "Why are you here?"
+    b2 "Why the heck are you here?"
 
     hide b2_neutral
     show b1_neutral with dissolve:
@@ -922,7 +1019,7 @@ label episode_3_meeting_2:
         xalign 0.5
         yalign 1.0
     
-    b2 "We weren't getting into trouble or anything. We just wanted to ask him about a misunderstanding."
+    b2 "We weren't getting into trouble or anything! We just wanted to ask him about a misunderstanding."
 
     hide b2_neutral
     show b1_neutral with dissolve:
@@ -993,7 +1090,7 @@ label episode_3_savior:
         xalign 0.5 
         yalign 1.0
 
-    b2 "What in the world are you talking about?"
+    b2 "What is this kid talking about?"
 
     hide b2_neutral
     show b1_neutral with dissolve:
@@ -1050,7 +1147,7 @@ label episode_3_savior:
         xalign 0.5
         yalign 1.0
 
-    b2 "Then why were you looking so intensely?"
+    b2 "Then why were you looking so intensely?!"
 
     hide b2_neutral
     show weeb_neutral with dissolve
