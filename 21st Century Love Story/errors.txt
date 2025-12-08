@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 166: Menu does not contain any choices.
-    menu:
-         ^
+File "game/script.rpy", line 428: expected ':' not found.
+    label episode_1_tour
+                        ^
 
 Ren'Py Version: Ren'Py 8.2.3.24061702
-Sun Dec  7 16:41:37 2025
+Mon Dec  8 16:02:37 2025
