@@ -55,7 +55,8 @@ image bg football_field = "football_field_day.webp"
 image bg school_hallway_1 = "school_corridor_background.webp"
 image bg school_hallway_2 = "uncle mugen school corridor morning.webp"
 image bg school_nurse = "hospital.webp"
-image bg classroom_morning = "classroom_morning.webp"
+image bg classroom_04 = "Classroom_04_day.webp"
+# image bg classroom_morning = "classroom_morning.webp" it dont work its too small
 image bg quad_outside_arts_building = "monele_arts_building.webp"
 
 # The game starts here.
@@ -356,16 +357,16 @@ label episode_1:
     # im gonna make this part longer
 
     menu:
-        "Give him your UsChat":
+        "Give him your WheeChat":
             mc neutral "...Alright, scan my QR code."
             p happy "Thanks! Or, should I say, xiexie!"
-        "Don't give him your UsChat":
+        "Don't give him your WheeChat":
             p shocked "Huh? I'm not like other guys who ask for your socials, promise."
             p neutral "I just want to be friends with someone with common interests."
             mc deadpan "...Alright, scan my QR code."
 
     "You take out your phone and notice that it's 7:25. Your first class starts in only five minutes!"
-    "Quickly opening UsChat, Kyren scans your QR code and sends you a friend request. You reluctantly accept the friend request before throwing your bag over your shoulders."
+    "Quickly opening WheeChat, Kyren scans your QR code and sends you a friend request. You reluctantly accept the friend request before throwing your bag over your shoulders."
 
     mc neutral "...School is starting soon. See you."
     p shocked "Wait, do you also like to go thrifting-"
@@ -1221,15 +1222,17 @@ label episode_3_savior:
     mc neutral "Well... bye."
     w "W-w-w-wait!! Suzuki Harukaaaaaaa!!!!"
 
+    jump episode_4
+
     return
 
 # lunch + meet gymbro
 label episode_4:
-    scene bg classroom_morning with fade
+    scene bg classroom_04 with fade
     "One long lecture later..."
     "*RING!*"
     mc happy "(It's finally time for lunch! What a day it's been...)"
-    mc neutral "(Milkyway High School really is full of interesting characters.)"
+    # mc neutral "(Milkyway High School really is full of interesting characters.)"
     "Some students stay behind in the classroom, some students rush to leave, and some students come to eat with their friends."
     "Hopefully, you can get along with everyone, too. But first, where do you want to eat?"
     menu:
@@ -1249,15 +1252,69 @@ label episode_4:
 label episode_4_outside:
 
     scene bg quad_outside_arts_building with fade
+
+    # "When you exit the classroom, you're greeted by the smell of coffee."
+    # "Exiting the classroom, you smell the scent of coffee, carried by a soft breeze."
+
+    "As you leave the classroom, you get a strong whiff of coffee and cologne, but the cologne is so strong that it almost overpowers the coffee scent."
+    mc neutral "*lowkey choking*"
     
     show king neutral with dissolve:
         zoom 0.25
         xcenter 0.5
         yalign 1.0
+    
+    g disgusted "Females...*sigh*"
+    
+    "That smell of coffee is probably coming from this tough-looking guy, who's leaving the classroom at the same time you are."
 
-    g neutral "Females...*sigh*"
+    menu:
+        "(Say hi.)":
+            
+            $ playername_length = len(playername)
 
-    "When you exit the classroom, you're greeted by the smell of coffee, which is probably coming from this tough looking guy."
+            if playername_length >= 4:
+                $ playername_twisted = playername[0:3]
+                mc happy "Hello! My name is [playername_twisted]-"
+            else:
+                mc happy "Hello-"
+            hide king disgusted
+            "The tough-looking guy turns around and goes back into the classroom."
+
+            mc neutral "..."
+            mc deadpan "(What the?)"
+            mc deadpan "(So rude.)"
+
+        "(Walk past him.)":
+            "You stare straight ahead and walk just a little faster than usual, because you've got places to be and lunch to eat."
+            g neutral "..."
+            hide king disgusted
+
+            # maybe cutscene of the bento
+            "Finding an empty bench, you place down your bag and take out your bento."
+            mc happy "Home-cooked food is always the best! *om nom nom nom nom*"
+            
+            "As you eat by yourself, you're left with your own thoughts. You think about all the new people you've met today."
+            mc neutral "(Kyren, Mr. Teacher, Ronan and the two peasants...Lucien...)"
+            # mc neutral "(I wonder what they're all doing during lunch.)"
+            "And that tough-looking guy just now..."
+            mc neutral "*shudder*"
+            mc shocked "Ack! One of my chopsticks fell..."
+
+            "You reach down to grab your chopstick, which has left a sticky residue on the ground."
+            mc neutral "(Good thing I'm always prepared with napkins and spare utensils.)"
+
+            menu:
+                "(Use napkins to clean up after yourself.)":
+                    mc happy "All clean. Time to throw this napkin in the trash can."
+                    "You throw away your trash, and once again smell the pungent cologne and coffee combo from before."
+                    show king neutral with dissolve
+
+
+
+            
+            
+
 
     return
 
