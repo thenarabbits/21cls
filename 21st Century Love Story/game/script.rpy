@@ -1278,7 +1278,15 @@ label episode_4_outside:
                 mc happy "Hello! My name is [playername_twisted]-"
             else:
                 mc happy "Hello-"
-            hide king disgusted
+            
+            
+            $ fade_out = Fade(0.5)
+            $ move_left = MoveOutLeft(0.5)
+
+            # define moveoutleft_and_fade = ComposeTransition(fade_out, move_left, 1.0)
+            # hide king disgusted with moveoutleft_and_fade
+            hide king disgusted with moveoutleft
+            
             "The tough-looking guy turns around and goes back into the classroom."
 
             mc neutral "..."
@@ -1298,6 +1306,7 @@ label episode_4_outside:
             mc neutral "(Kyren, Mr. Teacher, Ronan and the two peasants...Lucien...)"
             # mc neutral "(I wonder what they're all doing during lunch.)"
             "And that tough-looking guy just now..."
+            with hpunch
             mc neutral "*shudder*"
             mc shocked "Ack! One of my chopsticks fell..."
 
@@ -1307,16 +1316,44 @@ label episode_4_outside:
             menu:
                 "(Use napkins to clean up after yourself.)":
                     mc happy "All clean. Time to throw this napkin in the trash can."
-                    "You throw away your trash, and once again smell the pungent cologne and coffee combo from before."
-                    show king neutral with dissolve
+                    "You throw away your trash, and once again smell the pungent cologne and coffee combination from before."
+                    show king neutral with dissolve:
+                        zoom 0.25
+                        xcenter 0.5
+                        yalign 1.0
+                    g "Wow, you would be a great housewife."
+                    mc deadpan "(What's his deal?)"
 
+                    # bookmark
+                    "Go back?"
 
-
-            
-            
+                    # menu:
+                    #     "Throwing away trash is the bare minimum.":
+                    #         # idk yet
+                    #     "Not cool bro."
+                    #         mc neutral "Not cool bro. You shouldn't say things like that."
+                    #     "(Walk away.)":
+                    #         # idk yet
 
 
     return
 
 label episode_4_cafe:
+    scene bg quad_outside_arts_building with fade
+    mc neutral "(Hmm...I think the cafe should be this way.)"
+
+    show kyren neutral with dissolve
+    p happy "[playername]? What a coincidence! You're going to the cafe too?"
+    p neutral "Wanna go together?"
+
+    # menu:
+    #     "Yes":
+    #         mc neutral "Sure, why not."
+    #         jump episode_4_in_cafe
+    #     "No":
+    #         mc neutral "No, thank you.":
+    #         #idk
+
+    scene bg cafe_memoria_outside_04_afternoon with dissolve
+
     return
