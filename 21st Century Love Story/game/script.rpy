@@ -19,6 +19,9 @@ define teacher = Character("Mr. Teacher")
 define classmate = Character("classmate")
 define b1 = Character("Bully 1", image="bully1")
 define b2 = Character("Bully 2", image="bully2")
+# mean gurlz
+define s = Character("[meangirl]")
+# i'm thinking about combining Sophia and Olivia to be the same person? :p will bring it up next call
 
 # character sprites
 image player neutral = "side player neutral.png"
@@ -70,6 +73,7 @@ label start:
     $ narcissist = "Guy Sitting By Himself"
     $ weeb = "Guy With Disheveled Hair"
     $ gymbro = "Tough Looking Guy"
+    $ meangirl = "???"
 
     # i think it'll be cute if we add a "prologue" scene b4 everything of alice getting ready
     "Monday, 5:00 AM."
@@ -1226,7 +1230,7 @@ label episode_3_savior:
 
     return
 
-# lunch + meet gymbro
+# lunch + meet gymbro (CURRENTLY UNFINISHED)
 label episode_4:
     scene bg classroom_04 with fade
     "One long lecture later..."
@@ -1249,6 +1253,7 @@ label episode_4:
     
     return
 
+# CURRENTLY UNFINISHED: sayhi, walkpast
 label episode_4_outside:
 
     scene bg quad_outside_arts_building with fade
@@ -1278,12 +1283,41 @@ label episode_4_outside:
                 mc happy "Hello! My name is [playername_twisted]-"
             else:
                 mc happy "Hello-"
-            hide king disgusted
+            
+            # OKAY PURRRR so if u wanna have 2 transitions instead of 3, set the after transition to None
+            define moveoutleft_plus_fade = ComposeTransition(dissolve, before=moveoutleft, after=None)
+
+            hide king disgusted with moveoutleft_plus_fade
             "The tough-looking guy turns around and goes back into the classroom."
+
+            #minus 500 aura
 
             mc neutral "..."
             mc deadpan "(What the?)"
             mc deadpan "(So rude.)"
+            mc neutral "(Whatever.)"
+            mc happy "(All that matters is that I get to eat lunch now!)"
+
+            "Finding an empty bench, you place down your bag and take out your bento."
+            mc happy "Home-cooked food is always the best! *om nom nom nom nom*"
+
+            s "Soooo...YOU'RE [playername]?"
+            "Mid=chew, you look up and see..."
+            # show s neutral
+            "...an unfamiliar face."
+
+            # also results in encounter with mean girl?
+            #  _______________
+            # |COME BACK!!!!!|
+            # ---------------
+            #   __  __
+            #  | |_| |
+            # |   _ _|
+            # (    ^ )
+            # different route...
+            
+
+            "This is a bookmark for testing purposes."
 
         "(Walk past him.)":
             "You stare straight ahead and walk just a little faster than usual, because you've got places to be and lunch to eat."
@@ -1298,6 +1332,7 @@ label episode_4_outside:
             mc neutral "(Kyren, Mr. Teacher, Ronan and the two peasants...Lucien...)"
             # mc neutral "(I wonder what they're all doing during lunch.)"
             "And that tough-looking guy just now..."
+            with hpunch
             mc neutral "*shudder*"
             mc shocked "Ack! One of my chopsticks fell..."
 
@@ -1307,16 +1342,44 @@ label episode_4_outside:
             menu:
                 "(Use napkins to clean up after yourself.)":
                     mc happy "All clean. Time to throw this napkin in the trash can."
-                    "You throw away your trash, and once again smell the pungent cologne and coffee combo from before."
-                    show king neutral with dissolve
+                    "You throw away your trash, and once again smell the pungent cologne and coffee combination from before."
+                    show king neutral with dissolve:
+                        zoom 0.25
+                        xcenter 0.5
+                        yalign 1.0
+                    g "Wow, you would be a great housewife."
+                    mc deadpan "(What's his deal?)"
 
+                    # bookmark
+                    "Go back?"
 
-
-            
-            
+                    # menu:
+                    #     "Throwing away trash is the bare minimum.":
+                    #         # idk yet
+                    #     "Not cool bro."
+                    #         mc neutral "Not cool bro. You shouldn't say things like that."
+                    #     "(Walk away.)":
+                    #         # idk yet
 
 
     return
 
 label episode_4_cafe:
+    scene bg quad_outside_arts_building with fade
+    mc neutral "(Hmm...I think the cafe should be this way.)"
+
+    show kyren neutral with dissolve
+    p happy "[playername]? What a coincidence! You're going to the cafe too?"
+    p neutral "Wanna go together?"
+
+    # menu:
+    #     "Yes":
+    #         mc neutral "Sure, why not."
+    #         jump episode_4_in_cafe
+    #     "No":
+    #         mc neutral "No, thank you.":
+    #         #idk
+
+    scene bg cafe_memoria_outside_04_afternoon with dissolve
+
     return

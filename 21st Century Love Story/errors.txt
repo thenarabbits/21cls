@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 428: expected ':' not found.
-    label episode_1_tour
-                        ^
+File "game/script.rpy", line 1287: expected 'simple_expression' not found.
+    hide king disgusted with
+                            ^
 
 Ren'Py Version: Ren'Py 8.2.3.24061702
-Mon Dec  8 16:02:37 2025
+Tue Dec  9 14:20:53 2025
