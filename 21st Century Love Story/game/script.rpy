@@ -63,6 +63,7 @@ image bg school_nurse = "hospital.webp"
 image bg classroom_04 = "Classroom_04_day.webp"
 # image bg classroom_morning = "classroom_morning.webp" it dont work its too small
 image bg quad_outside_arts_building = "monele_arts_building.webp"
+image bg rooftop_afternoon = "rooftop.png"
     # house backgrounds
 image bg bedroom_afternoon = "room_afternoon_light_loff.jpg"
 image bg bedroom_dusk = "room_dusk_light_on.jpg"
@@ -136,7 +137,7 @@ label start:
     "...what problem can't be solved with money in this day and age?"
     "It's time to get ready for the day."
     "This will be your first official day at school. Hopefully, it'll will go well, and the next nine months starting today will go smoothly."
-
+    
     jump intro
     return
 
@@ -1477,28 +1478,169 @@ label episode_5:
 
     "Taking out your phone, you quickly glance at the top of the screen where it shows the date."
 
-    mc deadpan "It's the 13th...?"
+    mc neutral "It's the 13th...?"
     cashier "Exactly! Friday the 13th! The unluckiest day of the year!"
     cashier "Young lady, with such a beautiful face and a heart of gold like yours, you can't take any risks on such an unlucky day!"
     mc neutral "(Isn't this just a superstition? What could possibly happen today out of all days?)"
     mc neutral "(Whatever. Twenty dollars is just twenty dollars.)"
     mc neutral "Here you go."
     cashier "Hehehe... Thank you for your purchase!! A lucky charm for a lucky girl! Have a good day!"
-    mc deadpan "(...Yeah, this is just a placebo effect.)"
+    
+    "Isn't this just a placebo effect?"
+    "Still, why not?"
+    
     mc neutral "Thank you, you as well."
     
     hide cashier_neutral with dissolve
 
     "After making the purchase, you head over to the school entrance with the charm in your hand."
 
-    mc neutral "(Ah, I have to remember to talk to my counselors about applying to American universities as an internation stude-)"
+    mc neutral "(Ah, I have to remember to talk to my counselors about applying to American universities as an international stude-)"
 
     "*CRACK!*"
     mc shocked "...?!"
 
     "...Not even ten minutes after buying it, the wooden charm in your hand snapped in half!"
 
-    mc deadpan "That... probably isn't a good sign if I follow the superstition."
+    mc deadpan "That... probably isn't a good sign."
+
+    "If the mirror shattering wasn't already a signal that something won't go well today, this just confirmed it!"
+    "But superstitions are just superstitions, right?"
+    "..."
+    "...Right?"
+
+    # mmight do some interactive stuff with the morning classes, like how going to class in persona5 works
+    scene bg cafe_outside with fade 
+
+    "Friday, 12:00 PM."
+    "Thankfully, your morning classes went smoothly, and nothing was out of the ordinary. After all, superstitions are just superstitions."
+    "More importantly, it's time for lunch!"
+    "You head over to the same cafe from the day before to get something to eat."
+
+    mc happy "(I'm starving...)"
+    mc neutral "(I didn't look too closely at the menu yesterday, hopefuly they have something filling.)"
+
+    scene bg cafe with fade
+
+    "Entering the cafe, you immediately notice that the place is packed with students."
+    "Laughter and chit-chat flood every corner, and you can feel the vibrations of footsteps ripple across the floorboards."
+
+    mc neutral "(The line's not too long, thankfully.)"
+    mc happy "(It'd be unfortunate if I had to wait a long time just to order.)"
+
+    scene bg cafe with fade
+
+    show cashier_neutral with dissolve:
+        zoom 1.5
+        xcenter 0.5
+        yalign 1.0
+
+    cashier "Welcome! What can I get for you?"
+    mc neutral "Can I get a..."
+    
+    menu:
+        "Egg and ham sandwich":
+            mc neutral "Egg and ham sandwich, please?"
+        "Caesar salad":
+            mc neutral "Caesar salad, please?"
+        "Vegetable wrap":
+            mc neutral "Vegetable wrap, please?"
+    
+    cashier "Yep, anything else?"
+    mc neutral "(I should probably get a drink too.)"
+    mc neutral "Can I also have a..."
+
+    menu: 
+        "Milk tea":
+            mc neutral "Milk tea, please?"
+            cashier "Of course!"
+        "Water":
+            mc neutral "Water, please?"
+            cashier "Of course!"
+        "Energy drink":
+            mc neutral "Energy drink, please?"
+            cashier "Of course!"
+    
+    cashier "Can I get a name for the order?"
+    mc neutral "[playername]."
+    cashier "That'll be $15.25."
+
+    hide cashier_neutral with dissolve
+
+    "After swiping your card, you find an empty seat to wait under your order is ready."
+
+    show cashier_neutral with dissolve:
+        zoom 1.5
+        xcenter 0.5
+        yalign 1.0
+
+    cashier "Order for [playername]!"
+    mc neutral "Thank you."
+    cashier "Have a good day!"
+    
+    hide cashier_neutral with dissolve
+
+    "After getting your order, you leave the cafe to find a quieter place to eat."
+
+    mc neutral "(I heard they open the door to the rooftop during lunch hours.)"
+    mc neutral "(I'll go check it out.)"
+
+    scene bg rooftop_afternoon with fade
+
+    "Heading over to the rooftop, you realize that nobody's there besides you."
+
+    mc neutral "Huh... Maybe people just prefer to be near air conditioning."
+    mc happy "Oh well. More room for me."
+
+    "Settling down on a bench, you peacefully eat your meal while watching videos on your phone, until you hear a series of footsteps making their way towards you."
+
+    mc neutral "(Did someone come up here?)"
+    mc neutral "(Who is it-)"
+    mc deadpan "(...Oh. It's this guy.)"
+
+    "Lo and behold, the figure that appeared in front of you turned out to be..."
+
+    show kyren neutral with dissolve:
+        zoom 0.25
+        xcenter 0.5
+        yalign 1.0
+    
+    "Kyren Miller, the guy you met yesterday morning."
+
+    p neutral "Hey, [playername], what a coincidence!"
+    p happy "I didn't think you would be up here as well."
+    p neutral "How has your day been?"
+    mc neutral "It's been..."
+
+    menu:
+        "Good":
+            mc neutral "It's been good."
+            p happy "I'm happy to hear that!"
+            p neutral "Hopefully I can continue that with what I want to say."
+        "Alright":
+            mc neutral "It's been alright."
+            p neutral "That's good."
+            p neutral "Hopefully I can make your day better with what I want to say."
+        "Bad":
+            mc neutral "It's hasn't been great."
+            p sad "Aw, I'm sorry to hear that."
+            p neutral "Hopefully I can make your day better with what I want to say."
+
+    mc deadpan "(Why do I have a bad feeling about this...)"
+    p neutral "The truth is..."
+    p neutral "I like you, [playername]."
+    mc shocked "...?!"
+
+    "Wow."
+    "Not to brag, but you were already used to abrupt love confessions from people you barely knew, but this guy just set a new record!"
+
+    mc deadpan "I've known you for a day."
+    p sad "Yes, but for me, it was love at first sight!"
+    p neutral "You remember, right? We have so much in common!"
+    p sad "I'm only into niche things, so it was so surprising that someone else had similar interests!"
+    p neutral "It's okay, you don't have to say anything, I know."
+    mc neutral "(You know that you sound crazy right now? That's great to hear.)"
+    p neutral "I know that someone like you growing up."
 
     jump episode_6
     return
