@@ -113,7 +113,7 @@ label start:
     mc deadpan "Ugh..."
     mc deadpan "It's too early... I'm still recovering from jet lag..."
     mc neutral "Whatever. I need to get ready for school now."
-    # if time, cutscene of alice during her rich childhood
+    # if time, cutscene of alice's family surrounded by wealth
     "Growing up, you had a childhood that most people could only dream of."
     "You were fortunate enough to be born into a conglomerate family in China, Fuyu Group, and you've always gotten everything you wanted."
     "...Well, almost everything you've wanted."
@@ -122,8 +122,10 @@ label start:
     # if time, cutscene of alice in front of school
     "Milkyway Academy, a large private high school in New York City known for its rigorous learning environment focused on math, science, and technology."
     "Surprisingly, even though this school holds a large and diverse student population, you are the only new exchange student this year."
+    # cs of alice penthouse
     "And unlike typical exchange students who live with a host family, your family rented out a penthouse for you."
     "Pretty cool, right?"
+    # black screen again
     "Your one goal is to successfully focus on your academics to properly represent your family in the United States."
     "Surely, nothing will go wrong."
     "Right?"
@@ -156,35 +158,54 @@ label intro:
 
     "After walking around for a bit, you find yourself in front of a cafe directly next to the school."
 
-    mc happy "(I never realized the school had a cafe next to it. That works out really well.)"
+    mc happy "(I never realized the school had a cafe next to it. That's really convenient.)"
     mc neutral "(I'll go check it out. Hopefully they have something good.)"
 
     scene bg cafe with fade
 
+    "The inside of the cafe feels minimalist, carrying a strong smell of roasted coffee beans and baked goods."
+    "Surveying the interior, you squint your eyes as the fluorescent light above shines into your retinas."
+    "The sound of quiet music and hushed conversations echo across the wooden floorboards as you make your way towards the front counter."
+    "However, you notice increasing voices as you continue walking."
+    "\"Hold on, look! Is that...\""
+    "\"That's her! The Fuyu Group kid!\""
+    "\"Why is she here and not at some luxury coffee shop instead?\""
+
+    mc deadpan "(None of you are good at whispering.)"
+
+    "Ignoring the murmuring voices and glaring eyes, you stop in front of the cashier and examine the menu on the wall."
+
+    mc neutral "(Americans really do like coffee...)"
+    mc deadpan "(Is there really no hot tea here? Only iced?)"
+    
     show cashier_neutral with dissolve:
         zoom 1.5
         xcenter 0.5
         yalign 1.0
 
     cashier "Welcome! What can I get for you today?"
+    mc neutral "(I should get a...)"
 
     menu:
-        "Can I get a matcha latte?":
+        "Matcha latte":
             $ choice = "matchalatte"
-        "Can I get a frappuccino?":
+        "Frappuccino":
             $ choice = "frappuccino"
 
     if choice == "matchalatte":
+        mc neutral "Could I get a matcha latte?"
         cashier "Good choice!"
-        cashier "Our matcha is the best of the best!"
+        cashier "Our matcha is the drink of the day for only $5.25!"
     elif choice == "frappuccino":
-        cashier "Are you sure? I think I'll give you a matcha latte instead."
+        mc neutral "Could I get a frappuccino?"
+        cashier "Are you sure? Our mathc alattes are the drink of the day for only $5.25!"
         mc deadpan "Um..."
         menu:
-            "That's fine.":
-                mc deadpan "Um... okay."
-            "No, I said what I said.":
-                mc deadpan "...No, I said I wanted a frappuccino."
+            "Order the matcha latte":
+                mc deadpan "Um... sure."
+                mc neutral "(Doesn't hurt to give it a try...)"
+            "Order the frappuccino":
+                mc deadpan "...No, I'll take the frappuccino'."
 
     $ playername = renpy.input("Alright then, can I get a name for your order?", length=32) # length=32 is optional
     $ playername = playername.strip() # remove leading/trailing whitespace
@@ -193,7 +214,7 @@ label intro:
         $ playername = "You"
 
     # use character to say their name
-    mc neutral "It's [playername]."
+    mc neutral "[playername]."
     cashier "Okay, I'll have it ready soon."
 
     hide cashier_neutral #with dissolve
@@ -222,13 +243,13 @@ label episode_1:
     "As the drink makes contact with your tongue, the taste of artificial sweetness floods your mouth."
 
     mc neutral "(This tastes pretty cheap compared to what I usually get back home... How many strange chemicals are in this thing?)"
-    mc happy "(It's fine. I shouldn't be too picky with American products...)"
+    mc happy "(It's fine. It's not that bad.)"
 
     "You sit down at an empty table and begin to take your laptop out of your backpack when your elbow accidentally tips over your drink."
     "Thankfully, you have fast reflexes, and you were able to catch the drink before it completely fell."
     "...However, a splash still managed to escape from the cup and onto the table."
 
-    mc angry "...Are you kidding me?"
+    mc angry "(...Are you kidding me?)"
     mc neutral "Ugh, I need a napkin..."
 
     "Looking around the cafe, you try to locate where the napkins were stored, but you hear a series of footsteps approaching."
@@ -257,10 +278,11 @@ label episode_1:
     "He sets a book down on the table that reads \"Feminist Literature by Cyx Sehvyn\" and hangs his tote bag on his chair."
     "But it seems that you've drawn the attention of other students in the cafe."
     "Muttered voices suddenly flood the room as the boy wearing a quarter zip-up smiles at you."
-    "\"Do you see that? He's going after another girl?!\""
-    "\"Wait... Isn't that [playername]? The nepo baby exchange student?\""
-    "\"Is Kyren serious? He's really going to try this on HER of all people?!\""
-    "\"Does he realize his life is over if he offends her or something?\""
+    "\"Do you see Kyren Miller over there? He's going after another girl?!\""
+    "\"Wait... he's tryna go for [playername]? The nepo baby exchange student?\""
+    "\"Is Kyren for real? He's really going to try this on HER of all people?!\""
+    "\"Does he realize he's cooked if he offends her or something?\""
+    "\"Oh nah... What if she gets his parents fired from their job?\""
 
     mc deadpan "(Do all people here talk so loud?)"
 
@@ -268,8 +290,9 @@ label episode_1:
 
     $ performative = "Kyren"
 
-    p neutral "I'm Kyren, it's nice to meet you."
-    p neutral "I've heard great things about you and Fuyu Group! How have you been adjusting so far?"
+    p neutral "I'm Kyren, nice to meet you."
+    p neutral "I've heard great things about you and Fuyu Group!"
+    p neutral "Today's your first day, right? How have you been adjusting so far?"
     mc neutral "Well..."
 
     menu:
@@ -284,8 +307,8 @@ label episode_1:
             p sad "Sorry to hear that, hopefully it gets better."
 
     p neutral "I saw you deciding between matcha and a frappuccino when I was waiting in line earlier."
-    p happy "Which one do you like more? Personally, I'm team matcha."
-    p neutral "I've been drinking it for years, way before it became popular."
+    p happy "Which one do you like more? Personally, I like matcha."
+    p neutral "I've been drinking it for years, way before it became mainstream."
     mc deadpan "(...Thanks for sharing?)"
     mc neutral "They're both fine."
     p neutral "What do you usually drink, then?"
@@ -382,11 +405,97 @@ label episode_1:
             p neutral "I just want to be friends with someone with common interests."
             mc deadpan "...Alright, scan my QR code."
 
-    "You take out your phone and notice that it's 7:25. Your first class starts in only five minutes!"
     "Quickly opening WheeChat, Kyren scans your QR code and sends you a friend request. You reluctantly accept the friend request before throwing your bag over your shoulders."
 
-    mc neutral "...School is starting soon. See you."
-    p shocked "Wait, do you also like to go thrifting-"
+    mc neutral "...I'll get going then."
+    p shocked "Wait!"
+    mc deadpan "...?"
+    p neutral "What class do you have first?"
+
+    "You dig into your skirt pocket to take out a small slip of paper with your class schedule attached."
+    
+    mc deadpan "...PE."
+    p sad "Aw, that's rough."
+    p neutral "You want me to show you how to get there?"
+    p sad "The school's huge. I'm worried you'll get lost."
+    mc deadpan "(The school is half the size of my house...)"
+    
+    menu:
+        "Let Kyren take you to class":
+            mc neutral "(I was already given a tour of the school over the weekend...)"
+            mc neutral "(Whatever, I don't have anything to do until class actually starts anyways.)"
+            mc neutral "Okay."
+            p happy "Great! Follow me."
+            jump episode_1_tour
+        "Don't let Kyren take you to class":
+            mc neutral "That won't be necessary. I was given a tour of the school over the weekend."
+            p sad "...You sure?"
+            p neutral "It's way easier to get lost on an actual school day."
+            p neutral "People don't know how to walk, and they're always crowding the hallways."
+            p happy "Let me take you there, I insist."
+            menu:
+                "Let Kyren take you to class":
+                    mc neutral "(I was already given a tour of the school over the weekend...)"
+                    mc neutral "(Whatever, I don't have anything to do until class actually starts anyways.)"
+                    mc neutral "Okay."
+                    p happy "Great! Follow me."
+                    jump episode_1_tour
+
+    return
+
+label episode_1_tour:
+
+    scene bg school_hallway_1 with fade
+
+    show kyren neutral with dissolve:
+        zoom 0.25
+        xcenter 0.5
+        yalign 1.0
+
+    "You follow Kyren out of the cafe and into the school."
+    "Students already crowd the halls, loudly chatting with their friends."
+    "And of course, the second you enter the building, you feel a change in atmosphere among the other students."
+    "\"Oh oh oh! Look!! There she is!\""
+    "\"Is that actually [playername]? She looks rich, but not like, billionaire rich, y'know?\""
+    "\"To think her family has control over a quarter of the world... I'm kind of scared. Why would she come here?\""
+    "\"She seems so normal. I really thought she would show up wearing all luxury brand clothes.\""
+    "\"Wait... Is she walking with... Kyren Miller?!\""
+
+    p neutral "Seems you're pretty popular already."
+    mc deadpan "...Didn't notice."
+    p happy "Hahahaha!"
+    p neutral "What other classes do you have today?"
+
+    "You reach into your pocket to take out the slip of paper again."
+
+    mc neutral "Linear Algebra, English, Quantum Physics, and Discrete Math."
+    p neutral "Wow, two math classes and Quantum Physics?"
+    p neutral "You're so smart. I could never do something like that..."
+    p neutral "I'm just soooo average..."
+    p happy "Could you tutor me sometime?"
+    mc deadpan "(...I just met you.)"
+    mc neutral "The school offers tutoring services."
+    p neutral "Yeah but most of them are guys..."
+    p neutral "And women are just way smarter than guys."
+    mc deadpan "...This is the way to PE?"
+    p shocked "Huh?"
+    p neutral "Oh, haha! Yeah, but this is just a longer way with less people."
+    p neutral "The flight here must've been so difficult. I'm just looking out for you, y'know?"
+    mc deadpan "..."
+    p neutral "Anyways, I noticed that you're a bit reserved."
+    p sad "Are you alright? Did you have to go through anything when you were a kid?"
+    p sad "Being closed off is a sign of vulnerability. You can tell me."
+    mc deadpan "(We JUST met, and you want me to tell you about my trauma?)"
+    mc neutral "What are you talking about?"
+    p neutral "It's alright, I understand it can be difficult to open up to people."
+    p neutral "I'm an empath."
+    mc deadpan "...What?"
+    
+    "Thankfully, you notice the gym doors down the hallway before Kyren can continue spouting nonsense."
+    "You've been saved!"
+
+    mc neutral "...The gym is right there. Bye."
+    p shocked "Huh? W-wait! Do you wanna get boba together for lunch?!"
 
     jump episode_2
     return
@@ -399,10 +508,10 @@ label episode_2:
 
     scene bg school_track with fade
 
-    "After exiting the nurse's office, you think about your interaction with Kyren."
+    "You follow a few students out the gym and onto the field while thinking about your interactions with Kyren."
 
     mc deadpan "(That guy was odd... Whatever)"
-    mc neutral "(Okay... now it's time for first period. My first class is PE.)"
+    mc neutral "(Okay... now it's time for first period. That man over there should be the teacher.)"
 
     # REPLACE WITH GYM COACH LATER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     show cashier_neutral with dissolve:
