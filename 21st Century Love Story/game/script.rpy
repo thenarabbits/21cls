@@ -120,7 +120,7 @@ label start:
     "Previously, you attended a private academy in Beijing your entire life. However, your family's company wanted to expand its international influence..."
     "...And you were forced to transfer to a high school in the west."
     # if time, cutscene of alice in front of school
-    "Milkyway High School, a large public high school in New York City known for its rigorous learning environment focused on math, science, and technology."
+    "Milkyway Academy, a large private high school in New York City known for its rigorous learning environment focused on math, science, and technology."
     "Surprisingly, even though this school holds a large and diverse student population, you are the only new exchange student this year."
     "And unlike typical exchange students who live with a host family, your family rented out a penthouse for you."
     "Pretty cool, right?"
@@ -1282,7 +1282,7 @@ label episode_4_outside:
         xcenter 0.5
         yalign 1.0
     
-    g disgusted "Females...*sigh*"
+    g disgusted "Females... *sigh*"
     
     "That smell of coffee is probably coming from this tough-looking guy, who's leaving the classroom at the same time you are."
 
@@ -1319,6 +1319,13 @@ label episode_4_outside:
             # show s neutral
             "...an unfamiliar face."
 
+            # olivia (nepo baby) likes narcissist, confronts mc
+                # pretending to befriend her, "i have connections too, you're not special"
+            # gym bro comes back
+
+
+
+            # gym bro and twin secret twin brothers
             # also results in encounter with mean girl?
             #  _______________
             # |COME BACK!!!!!|
@@ -1354,13 +1361,15 @@ label episode_4_outside:
 
             menu:
                 "(Use napkins to clean up after yourself.)":
+                    # olivia: "wowww ur cleaning urself? ur not having ur little housemaids do it for u?" (pretentious, fake tone)
                     mc happy "All clean. Time to throw this napkin in the trash can."
                     "You throw away your trash, and once again smell the pungent cologne and coffee combination from before."
                     show king neutral with dissolve:
                         zoom 0.25
                         xcenter 0.5
                         yalign 1.0
-                    g "Wow, you would be a great housewife."
+                    g "In a world of 3s, you are a 10."
+                    # gym bro sees olivia, is like "you women are so emotional. at least this girl has potential"
                     mc deadpan "(What's his deal?)"
 
                     # bookmark
