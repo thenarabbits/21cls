@@ -1515,8 +1515,35 @@ label episode_4_cafe:
     jump episode_5
     return
 
-# conflict/climax, all characters confess
+# date w/ performative (athena)
 label episode_5:
+    scene bg black_background with fade
+    "After a busy day, "
+
+    jump episode_6
+    return
+
+# date w/ narcissist (kaylee)
+label episode_6:
+
+    jump episode_7
+    return
+
+# date w/ weeb (athena)
+label episode_7:
+    
+    jump episode_8
+    return
+
+# date w/ looksmaxxer (kaylee)
+label episode_8:
+
+    jump episode_9
+    return
+
+# confessions
+label episode_9:
+
     # if u see this, after u finish ep 4 im gonna tweak the beginning of this ep so it flows nicely
     scene bg black_background with fade
 
@@ -1746,7 +1773,7 @@ label episode_5:
 
     mc deadpan "(Why do I have a bad feeling about this...)"
     p neutral "The truth is..."
-    p neutral "I like you, [playername]."
+    p neutral "I'm in love with you', [playername]."
     mc shocked "...?!"
 
     "Wow."
@@ -1758,27 +1785,15 @@ label episode_5:
     p sad "I'm only into niche things, so it was so surprising that someone else had similar interests!"
     p neutral "It's okay, you don't have to say anything, I know."
     mc neutral "(You know that you sound crazy right now? That's great to hear.)"
-    p neutral "I know that someone like you growing up."
+    p neutral "I know that growing up, someone like you probably struggled to open up, so you can't help but act reserved."
+    p neutral "Oh, you're wondering how I know? I read about it in a feminist literature book."
+    mc deadpan "..."
 
-    jump episode_6
-    return
+    "Again, this guy just doesn't know when to stop talking nonsense."
+    "What will you do?"
 
-# date w/ performative (athena)
-label episode_6:
-
-    return
-
-# date w/ narcissist (kaylee)
-label episode_7:
-    
-    return
-
-# date w/ weeb (athena)
-label episode_8:
-
-    return
-
-# date w/ gym bro (kaylee)
-label episode_9:
+    menu:
+        "Run away"
+        ""
 
     return
