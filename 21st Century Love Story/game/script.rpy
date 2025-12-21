@@ -1612,24 +1612,179 @@ label episode_5_english:
     "Noticing that Kyren moved his hand away from the book you were both looking at, you wonder if you should take it first."
 
     menu:
+        # -1 point
         "Take it":
             "You quickly extend your hand to grab the book."
             mc neutral "...I'll take this."
             p neutral "Huh? Oh, feel free!"
+        # +1 point
         "Let Kyren take it":
             "Your eyes glance over to the book before making their way back to Kyren."
             mc neutral "You can have the book."
             p neutral "Huh? Oh, don't worry. You can have it."
 
     p neutral "It's only natural that I let women choose first."
+    p neutral "Are you going to make your presentation about this author?"
+    # x = placeholder, will think of name later
+    "Taking a closer look at the book in your hand, you open the front cover to read the short biography of the author, x"
+
+    mc neutral "(The presentation has to be 5-7 minutes. I should make sure the author went through a lot of events so I can extend the presentation.)"
+
+    "According to the biography, the author transferred schools frequently and used his constantly changing youth as inspiration for his work."
+
+    p neutral "This is a good author too."
+
+    "Kyren reached into his tote bag and took out a book, handing it to you with a gentle smile."
+    # y = also palceholder
+    "\"Awesome Book\" by y"
+    "The book seemed old; the pages were slightly ripped and clear tape held the spine together."
+
+    mc neutral "What's this?"
+    p neutral "Heh."
+    p neutral "Feminist literature."
+    mc deadpan "..."
+
+    "Which author will you choose?"
+
+    menu:
+        # -1 point
+        "Choose x":
+            mc neutral "I'll use this one."
+            p sad "Oh, alright then."
+            "You watch as Kyren returns the book to his bag, almost looking disappointed that you didn't choose it."
+        # +1 point
+        "Choose y":
+            mc neutral "I'll use that one."
+            p happy "Of course! You can keep it too."
+            p neutral "It's a signed copy, by the way."
     
+    p neutral "Are you going to work on your presentation here?"
+    p neutral "If so, do you mind if I accompany you?"
+
+    menu:
+        # +1 point
+        "Let Kyren accompany you":
+            mc neutral "That's fine."
+            p happy "Thanks!"
+            p neutral "I won't disturb you, I promise!"
+        # -1 point
+        "Don't let Kyren accompany you":
+            mc deadpan "No thank you."
+            p sad "...Oh, that's okay."
+            p neutral "I'll get going now then."
+            p neutral "See you at school, [playername]."
+            jump episode_6
+
+    "You lead Kyren to the table where you set your belongings at before turning on your laptop..."
+    "...but you soon realize that it's out of battery."
+
+    mc deadpan "(That's unfortunate.)"
+    mc neutral "(Good thing I brought my charger-)"
+    mc shocked "(...)"
+    p neutral "Hm? What's the matter?"
+    mc neutral "...My laptop died and I forgot my charger."
+    p neutral "Oh, you can use my charger if you want."
+    
+    menu:
+        # +1
+        "Accept Kyren's laptop charger":
+            mc neutral "Thank you."
+            p happy "Of course!"
+        # -1
+        "Reject Kyren's laptop charger":
+            mc neutral "I'll just work on it at home."
+            p sad "Huh? Oh, that's fine..."
+            p neutral "See you at school then, [playername]."
+            jump episode_6
+
+    scene bg black_background with fade
+
+    "You diligently work on your presentation as Kyren reads across from you."
+    "No words are said, but the silence isn't disturbing."
+    "Rather, it's peaceful."
+
+    scene bg library_1 with fade
+
+    "Friday, 7:00 PM."
+    "You were able to finish your entire presentation!"
+    "It's time to call your chauffer to bring you home now."
+    mc neutral "I'll get going now."
+    p shocked "Wait!"
+    p neutral "Are you going on the train? I'll bring you home."
+    
+    menu:
+        # +1
+        "Let Kyren take you home":
+            mc neutral "(I could just call my chauffeur...)"
+            mc deadpan "(Eh, whatever.)"
+            mc neutral "Sure."
+            p happy "Okay!"
+        "Don't let Kyren take you home":
+            mc neutral "No, I'll have someone drive me home."
+            p sad "Aw, okay."
+            p neutral "See you at school then, [playername]."
+            jump episode_6
+
+    scene bg black_background with fade
+
+    "Kyren led you into the correct train and sat next to you before digging into his pockets for his wired earbuds."
+    "Plugging the cord into his phone, he looks over at you and smiles before offering one end of the earbuds."
+    "Will you accept?"
+
+    menu:
+        # +1
+        "Accept":
+            "You reach out to accept the earbud and insert it in your ear."
+            "What plays in your ear is a popular RnB song you've heard being played in the school cafe several times."
+            "Glancing over to you again, Kyren softly whispers, only inches away from your face."
+            p neutral "Do you know this song?"
+            mc neutral "Yes, I've heard it before."
+        # -1
+        "Reject":
+            mc neutral "...No thank you."
+            "With an apologetic look, Kyren retracts his hand and inserts the earbud into his ear."
+            "However, you realize that the earbuds must be of low quality, as you can hear his music spilling out."
+            "It's not too noticeable, but you identify a popular RnB song you've heard being played in the school cafe several times."
+    
+    "Surprisingly, there's not too many people on the train."
+    "The soft rumble of the train tracks and the shuffling of feet numb your mind, and you feel your eyelids growing heavy."
+    "Thankfully, you reached your stop."
+
+    p neutral "Oh, we're here."
+    p sad "Will you be okay walking home from here?"
+    mc neutral "It's fine. The sun hasn't set yet."
+    p neutral "Alright then."
+    p happy "See you at school, [playername]."
+    mc neutral "(I think I got a little closer to Kyren today.)"
+
+    jump episode_6
     return
 
 # mc tutors performative guy
 label episode_5_math:
 
+    scene bg library_1 with fade
 
+    "You called your chauffeur to drive you to a nearby library so you could work on your presentation."
+    "Thankfully, the library wasn't too packed, and your presence was mostly unnoticed."
 
+    mc neutral "(I should find an empty table near a window for natural light.)"
+
+    "As you walk around and brush your fingers on the spines of displayed books, you catch a lingering scent in the air."
+    "The library smelled of dusty books and heavy coffee. You notice a faint, musky sweetness exuding from every corner."
+    "But you soon realize there's a new aroma slowly getting stronger, and you can't help but find this scent... familiar."
+    "It's fresh and grassy, yet sweet and creamy."
+    "Almost like..."
+
+    mc neutral "(...Matcha?)"
+
+    "Eh, whatever."
+    "You find an empty table to set your belongings down before taking out several worksheets."
+    "But before you could begin working, you hear a series of footsteps making their way towards you."
+    "You turn to look in the direction of the footsteps, and you find a familiar figure."
+
+    
+    jump episode_6
     return
 
 # date w/ narcissist (kaylee)
