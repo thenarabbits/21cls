@@ -5,7 +5,12 @@
 
 init:
     define config.layers = ['master', 'transient', 'screens', 'overlay', 'ontop']
-# tbh it's ok to remove lines 6-7 ^
+    $ playername = "You"
+    $ performative = "???"
+    $ narcissist = "Guy Sitting By Himself"
+    $ weeb = "Guy With Disheveled Hair"
+    $ gymbro = "Tough Looking Guy"
+    $ meangirl = "???"
 
 # character define
 define mc = Character("[playername]", image="player")
@@ -13,14 +18,14 @@ define cashier = Character("Cashier")
 define p = Character("[performative]", image="kyren")
 define n = Character("[narcissist]")
 define w = Character("[weeb]")
-define g = Character("[gymbro]", image="king")
 # pnw = pacific northwest!
+define g = Character("[gymbro]", image="king")
 define teacher = Character("Mr. Teacher")
 define classmate = Character("classmate")
 define b1 = Character("Bully 1", image="bully1")
 define b2 = Character("Bully 2", image="bully2")
 # mean gurlz
-define s = Character("[meangirl]")
+define o = Character("[meangirl]", image="olivia")
 # i'm thinking about combining Sophia and Olivia to be the same person? :p will bring it up next call
 
 # character sprites
@@ -73,18 +78,16 @@ image bg bedroom_night = "room_night_light_off.jpg"
 image bg dining_room = "condo_Day 03.jpg"
 image bg living_room = "condo_Day 05.jpg"
 
+screen new_episode_menu():
+    text "Episode Menu" align (0.5, 0.5)
+
 # The game starts here.
 
 label start:
 
-    scene bg black_background
+    call screen new_episode_menu
 
-    $ playername = "You"
-    $ performative = "???"
-    $ narcissist = "Guy Sitting By Himself"
-    $ weeb = "Guy With Disheveled Hair"
-    $ gymbro = "Tough Looking Guy"
-    $ meangirl = "???"
+    scene bg black_background
 
     # i think it'll be cute if we add a "prologue" scene b4 everything of alice getting ready
     "Thursday, 5:00 AM."
@@ -1423,10 +1426,50 @@ label episode_4_outside:
             "Finding an empty bench, you place down your bag and take out your bento."
             mc happy "Home-cooked food is always the best! *om nom nom nom nom*"
 
-            s "Soooo...YOU'RE [playername]?"
+            # plan: olivia comes by and IS the one who spills the food hohoho...
+
+            $ olivia_temperament_counter = 0
+
+            o "Soooo...YOU'RE [playername]?"
             "Mid=chew, you look up and see..."
-            # show s neutral
+            show o neutral
             "...an unfamiliar face."
+
+            menu:
+                "Yes, that's me.":
+                    o "*gasp* It's SO great to meet you, [playername]!"
+                "Who are you?":
+                    o "Oh GIRL, don't be so on edge!"
+                    $ olivia_temperament_counter += 1
+
+            $ meangirl = "Olivia"
+            o "My NAME is Olivia. And I'm a total girls' girl."
+            "Olivia reaches into her bag, and you hear the clink-clacking sounds of her rummaging through her items."
+            o "Um...HAHAHA...one moment please...where is it..."
+            mc neutral "No, please. Take your time."
+            "As if you gave a magician's command, Olivia instantly pulls a small card out of her bag with a slightly embarrassed smile."
+            o "You're SO sweet, [playername]. I was looking for this--thanks for being patient."
+            # inventory idea? collectible trophy/memento system? it can be the same menu as a cutscene gallery
+            # display business card cutscene here
+            menu:
+                "I didn't do anything.":
+                    o "Aw, you're SUCH a humble queen."
+                    mc deadpan "Uhh...thank you."
+                "No problem.":
+                    pass
+
+            # o "Oh my gosh, you don't know how EXCITED I've been to meet you!"
+            o "*giggle* When I heard the heiress to Fuyu Group was coming to OUR school..."
+            o "I didn't think you'd be so pretty AND kind!"
+            mc neutral "Thank you."
+            # "Olivia looks away into the distance as her voice trails off..."
+            "*RING RING RING*"
+            o "And would you look at the time! Sorry our meeting was so short. I have an IMPORTANT call to take right now."
+            o "Anyways, I just gave you my business card, with my WinkedIn on the back side. We're friends now, 'kay?"
+            mc neutral "Uh-"
+            o "[playername], don't hesitate to say hello when you see me in the halls. Bye now!"
+
+            # or should she deliberately knock over the bento? maybe add ANOTHER route for that? (if you tick her off)
 
             # olivia (nepo baby) likes narcissist, confronts mc
                 # pretending to befriend her, "i have connections too, you're not special"
