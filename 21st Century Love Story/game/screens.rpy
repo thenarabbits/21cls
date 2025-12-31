@@ -305,6 +305,22 @@ style quick_button_text:
 ## This screen is included in the main and game menus, and provides navigation
 ## to other menus, and to start the game.
 
+screen episode_selection():
+
+    tag menu
+
+    text "Episode Menu" align (0.5, 0.5)
+    
+    vbox:
+        xalign 0.5
+        yalign 0.5
+
+        textbutton "Episode 1" action Jump("episode_1")
+        textbutton "Episode 2" action Jump("episode_2")
+        textbutton "Episode 3" action Jump("episode_3")
+        textbutton "Episode 4" action Jump("episode_4")
+        textbutton "Episode 5" action Jump("episode_5")
+
 screen navigation():
 
     vbox:
@@ -327,6 +343,10 @@ screen navigation():
 
         textbutton _("Load") action ShowMenu("load")
 
+        if main_menu:
+
+            textbutton _("Episode Selection") action ShowMenu("episode_selection")
+
         textbutton _("Preferences") action ShowMenu("preferences")
 
         if _in_replay:
@@ -335,7 +355,7 @@ screen navigation():
 
         elif not main_menu:
 
-            textbutton _("Main Menu") action MainMenu()
+            textbutton _("Title Screen") action MainMenu()
 
         textbutton _("About") action ShowMenu("about")
 

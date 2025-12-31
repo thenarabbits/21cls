@@ -5,12 +5,13 @@
 
 init:
     define config.layers = ['master', 'transient', 'screens', 'overlay', 'ontop']
-    $ playername = "You"
-    $ performative = "???"
-    $ narcissist = "Guy Sitting By Himself"
-    $ weeb = "Guy With Disheveled Hair"
-    $ gymbro = "Tough Looking Guy"
-    $ meangirl = "???"
+
+default playername = "You"
+default performative = "Kyren"
+default narcissist = "Ronan"
+default weeb = "Lucien"
+default gymbro = "King"
+default meangirl = "Olivia"
 
 # character define
 define mc = Character("[playername]", image="player")
@@ -71,21 +72,43 @@ image bg library_1 = "library___1_by_houseofimagistudio_df8thpa-pre.jpg"
 image bg quad_outside_arts_building = "monele_arts_building.webp"
 image bg rooftop_afternoon = "rooftop.png"
     # house backgrounds
-image bg bedroom_afternoon = "room_afternoon_light_loff.jpg"
+image bg bedroom_afternoon = "room_afternoon_light_off.jpg"
 image bg bedroom_dusk = "room_dusk_light_on.jpg"
 image bg bedroom_morning = "room_morning_light_off.jpg"
 image bg bedroom_night = "room_night_light_off.jpg"
 image bg dining_room = "condo_Day 03.jpg"
 image bg living_room = "condo_Day 05.jpg"
 
-screen new_episode_menu():
-    text "Episode Menu" align (0.5, 0.5)
+# aura points for route percentage
+default p_points = 0
+default n_points = 0
+default g_points = 0
+default w_points = 0
+
+# screen new_episode_menu():
+
+#     tag menu
+
+#     text "Episode Menu" align (0.5, 0.5)
+    
+#     vbox:
+#         xalign 0.5
+#         yalign 0.5
+
+#         textbutton "Episode 1" action
 
 # The game starts here.
 
 label start:
 
-    call screen new_episode_menu
+    # call screen new_episode_menu
+
+    $ playername = "You"
+    $ performative = "???"
+    $ narcissist = "Guy Sitting By Himself"
+    $ weeb = "Guy With Disheveled Hair"
+    $ gymbro = "Tough Looking Guy"
+    $ meangirl = "???"
 
     scene bg black_background
 

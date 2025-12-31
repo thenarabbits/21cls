@@ -1,30 +1,42 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 1285, in script
-    hide king disgusted with moveoutleft_plus_fade
-TypeError: ComposeTransition() missing 1 required positional argument: 'trans'
+  File "renpy/common/00start.rpy", line 216, in script call
+    call _load_reload_game from _call__load_reload_game_1
+  File "renpy/common/00keymap.rpy", line 531, in script
+    python hide:
+  File "renpy/common/00keymap.rpy", line 531, in <module>
+    python hide:
+  File "renpy/common/00keymap.rpy", line 542, in _execute_python_hide
+    renpy.load(renpy.session["_reload_slot"])
+Exception: Couldn't find a place to stop rolling back. Perhaps the script changed in an incompatible way?
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 1285, in script
-    hide king disgusted with moveoutleft_plus_fade
-  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\ast.py", line 1363, in execute
-    renpy.exports.with_statement(trans, paired=paired)
-  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\exports.py", line 1782, in with_statement
-    return renpy.game.interface.do_with(trans, paired, clear=clear)
-  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\display\core.py", line 1549, in do_with
-    return self.interact(trans_pause=True,
-  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\display\core.py", line 2166, in interact
-    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
-  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\display\core.py", line 2609, in interact_core
-    trans = instantiate_transition(None, old_root, layers_root)
-  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\display\core.py", line 2519, in instantiate_transition
-    trans = self.ongoing_transition[layer](
-TypeError: ComposeTransition() missing 1 required positional argument: 'trans'
+  File "renpy/common/00start.rpy", line 216, in script call
+    call _load_reload_game from _call__load_reload_game_1
+  File "renpy/common/00keymap.rpy", line 531, in script
+    python hide:
+  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\ast.py", line 823, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\python.py", line 1178, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+  File "renpy/common/00keymap.rpy", line 531, in <module>
+    python hide:
+  File "renpy/common/00keymap.rpy", line 542, in _execute_python_hide
+    renpy.load(renpy.session["_reload_slot"])
+  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\loadsave.py", line 829, in load
+    log.unfreeze(roots, label="_after_load")
+  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\rollback.py", line 1130, in unfreeze
+    self.rollback(0, force=True, label=label, greedy=greedy, on_load=True)
+  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\rollback.py", line 925, in rollback
+    self.load_failed()
+  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\rollback.py", line 843, in load_failed
+    raise Exception("Couldn't find a place to stop rolling back. Perhaps the script changed in an incompatible way?")
+Exception: Couldn't find a place to stop rolling back. Perhaps the script changed in an incompatible way?
 
 Windows-10-10.0.26100 AMD64
 Ren'Py 8.2.3.24061702
 21st Century Love Story 1.0
-Tue Dec  9 14:38:49 2025
+Tue Dec 30 22:26:59 2025

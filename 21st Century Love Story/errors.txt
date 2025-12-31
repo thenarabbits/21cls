@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 1904: Menu does not contain any choices.
-    menu:
-         ^
+File "game/script.rpy", line 98: the action keyword argument was not given a value.
+    textbutton "Episode 1" action
+                                 ^
 
 Ren'Py Version: Ren'Py 8.2.3.24061702
-Sat Dec 20 18:31:46 2025
+Tue Dec 30 21:27:43 2025
