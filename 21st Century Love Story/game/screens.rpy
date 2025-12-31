@@ -241,7 +241,7 @@ style choice_button_text is default:
 #     zorder 99
 
 style quick_nav:
-    
+
     background Image("gui/quick_nav.png")
     xalign 0.5
     yalign 1.0
@@ -311,7 +311,7 @@ screen episode_selection():
     # modal True
 
     text "Episode Menu" align (0.5, 0.5)
-    
+
     vbox:
         xalign 0.5
         yalign 0.5

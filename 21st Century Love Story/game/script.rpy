@@ -79,12 +79,6 @@ image bg bedroom_night = "room_night_light_off.jpg"
 image bg dining_room = "condo_Day 03.jpg"
 image bg living_room = "condo_Day 05.jpg"
 
-# aura points for route percentage
-default p_points = 0
-default n_points = 0
-default g_points = 0
-default w_points = 0
-
 # screen new_episode_menu():
 
 #     tag menu
@@ -99,13 +93,58 @@ default w_points = 0
 
 label open_episode_selection:
     call screen episode_selection
-    return
+    
+# aura points for route percentage
+default p_aura = 0
+default n_aura = 0
+default g_aura = 0
+default w_aura = 0
+
+# AURAAAAAAAAA SYSTEM ICONS
+
+screen p_heart_box():
+    add "kyren_heart.png":
+        xpos 0.92
+        ypos 0.1
+    text "[p_aura]":
+        # just eyeballing...
+        xpos 0.9435
+        ypos 0.132
+
+# idea: hearts appear on screen with each encounter!
+
+screen n_heart_box():
+    add "ronan_heart.png":
+        xpos 0.92
+        ypos 0.22
+    text "[n_aura]":
+        xpos 0.9435
+        ypos 0.252
+
+screen g_heart_box():
+    add "king_heart.png":
+        xpos 0.92
+        ypos 0.34
+    text "[g_aura]":
+        xpos 0.9435
+        ypos 0.372
+
+screen w_heart_box():
+    add "lucien_heart.png":
+        xpos 0.92
+        ypos 0.46
+    text "[w_aura]":
+        xpos 0.9435
+        ypos 0.492
 
 # The game starts here.
 
 label start:
 
-    # call screen new_episode_menu
+    show screen p_heart_box
+    show screen n_heart_box
+    show screen g_heart_box
+    show screen w_heart_box
 
     $ playername = "You"
     $ performative = "???"
@@ -268,7 +307,7 @@ label intro:
 
 label episode_1:
 
-    scene bg cafe_2 with fade 
+    scene bg cafe_2 with fade
 
     "You take a sip as you walk towards the closest empty table."
     "As the drink makes contact with your tongue, the taste of artificial sweetness floods your mouth."
