@@ -1,42 +1,76 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "renpy/common/00start.rpy", line 216, in script call
-    call _load_reload_game from _call__load_reload_game_1
-  File "renpy/common/00keymap.rpy", line 531, in script
-    python hide:
-  File "renpy/common/00keymap.rpy", line 531, in <module>
-    python hide:
-  File "renpy/common/00keymap.rpy", line 542, in _execute_python_hide
-    renpy.load(renpy.session["_reload_slot"])
-Exception: Couldn't find a place to stop rolling back. Perhaps the script changed in an incompatible way?
+  File "game/script.rpy", line 133, in script
+    "You could stay like this forever-"
+  File "renpy/common/00action_menu.rpy", line 120, in __call__
+    renpy.call_in_new_context("_game_menu", *self.args, _game_menu_screen=screen, **self.kwargs)
+  File "renpy/common/00gamemenu.rpy", line 174, in script call
+    $ ui.interact()
+  File "renpy/common/00gamemenu.rpy", line 174, in script call
+    $ ui.interact()
+ScriptError: could not find label 'episode_selection'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "renpy/common/00start.rpy", line 216, in script call
-    call _load_reload_game from _call__load_reload_game_1
-  File "renpy/common/00keymap.rpy", line 531, in script
-    python hide:
-  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\ast.py", line 823, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\python.py", line 1178, in py_exec_bytecode
-    exec(bytecode, globals, locals)
-  File "renpy/common/00keymap.rpy", line 531, in <module>
-    python hide:
-  File "renpy/common/00keymap.rpy", line 542, in _execute_python_hide
-    renpy.load(renpy.session["_reload_slot"])
-  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\loadsave.py", line 829, in load
-    log.unfreeze(roots, label="_after_load")
-  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\rollback.py", line 1130, in unfreeze
-    self.rollback(0, force=True, label=label, greedy=greedy, on_load=True)
-  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\rollback.py", line 925, in rollback
-    self.load_failed()
-  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\rollback.py", line 843, in load_failed
-    raise Exception("Couldn't find a place to stop rolling back. Perhaps the script changed in an incompatible way?")
-Exception: Couldn't find a place to stop rolling back. Perhaps the script changed in an incompatible way?
+  File "game/script.rpy", line 133, in script
+    "You could stay like this forever-"
+  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\ast.py", line 2560, in execute
+    Say.execute(self)
+  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\ast.py", line 615, in execute
+    renpy.exports.say(who, what, *args, **kwargs)
+  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\exports.py", line 1494, in say
+    who(what, *args, **kwargs)
+  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\character.py", line 1394, in __call__
+    self.do_display(who, what, cb_args=self.cb_args, dtt=dtt, **display_args)
+  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\character.py", line 1045, in do_display
+    display_say(who,
+  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\character.py", line 741, in display_say
+    rv = renpy.ui.interact(mouse='say', type=type, roll_forward=roll_forward)
+  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\ui.py", line 301, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\display\core.py", line 2166, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
+  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\display\core.py", line 3208, in interact_core
+    rv = root_widget.event(ev, x, y, 0)
+  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\display\layout.py", line 1202, in event
+    rv = i.event(ev, x - xo, y - yo, cst)
+  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\display\layout.py", line 1202, in event
+    rv = i.event(ev, x - xo, y - yo, cst)
+  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\display\layout.py", line 1202, in event
+    rv = i.event(ev, x - xo, y - yo, cst)
+  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\display\screen.py", line 793, in event
+    rv = self.child.event(ev, x, y, st)
+  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\display\layout.py", line 1202, in event
+    rv = i.event(ev, x - xo, y - yo, cst)
+  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\display\layout.py", line 1430, in event
+    rv = super(Window, self).event(ev, x, y, st)
+  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\display\layout.py", line 288, in event
+    rv = d.event(ev, x - xo, y - yo, st)
+  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\display\layout.py", line 1202, in event
+    rv = i.event(ev, x - xo, y - yo, cst)
+  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\display\behavior.py", line 1174, in event
+    return handle_click(self.clicked)
+  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\display\behavior.py", line 1095, in handle_click
+    rv = run(action)
+  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\display\behavior.py", line 395, in run
+    return action(*args, **kwargs)
+  File "renpy/common/00action_menu.rpy", line 120, in __call__
+    renpy.call_in_new_context("_game_menu", *self.args, _game_menu_screen=screen, **self.kwargs)
+  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\game.py", line 358, in call_in_new_context
+    return renpy.execution.run_context(False)
+  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\execution.py", line 955, in run_context
+    context.run()
+  File "renpy/common/00gamemenu.rpy", line 174, in script call
+    $ ui.interact()
+  File "renpy/common/00gamemenu.rpy", line 174, in script call
+    $ ui.interact()
+  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\script.py", line 1103, in lookup
+    raise ScriptError("could not find label '%s'." % str(original))
+ScriptError: could not find label 'episode_selection'.
 
 Windows-10-10.0.26100 AMD64
 Ren'Py 8.2.3.24061702
 21st Century Love Story 1.0
-Tue Dec 30 22:26:59 2025
+Tue Dec 30 23:20:50 2025

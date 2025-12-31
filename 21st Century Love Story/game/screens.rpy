@@ -308,6 +308,7 @@ style quick_button_text:
 screen episode_selection():
 
     tag menu
+    # modal True
 
     text "Episode Menu" align (0.5, 0.5)
     
@@ -315,11 +316,26 @@ screen episode_selection():
         xalign 0.5
         yalign 0.5
 
-        textbutton "Episode 1" action Jump("episode_1")
-        textbutton "Episode 2" action Jump("episode_2")
-        textbutton "Episode 3" action Jump("episode_3")
-        textbutton "Episode 4" action Jump("episode_4")
-        textbutton "Episode 5" action Jump("episode_5")
+        if main_menu:
+            textbutton "Episode 1" action Start("episode_1")
+            textbutton "Episode 2" action Start("episode_2")
+            textbutton "Episode 3" action Start("episode_3")
+            textbutton "Episode 4" action Start("episode_4")
+            textbutton "Episode 5" action Start("epsiode_5")
+        else:
+            # textbutton "Episode 1" action [Return(), Jump("episode_1")]
+            # textbutton "Episode 2" action [Return(), Jump("episode_2")]
+            # textbutton "Episode 3" action [Return(), Jump("episode_3")]
+            # textbutton "Episode 4" action [Return(), Jump("episode_4")]
+            # textbutton "Episode 5" action [Return(), Jump("episode_5")]
+
+            # for now, ep selection in game is disabled
+
+            textbutton "Episode 1" action [Return(), Jump("episode_1")]
+            textbutton "Episode 2" action [Return(), Jump("episode_2")]
+            textbutton "Episode 3" action [Return(), Jump("episode_3")]
+            textbutton "Episode 4" action [Return(), Jump("episode_4")]
+            textbutton "Episode 5" action [Return(), Jump("episode_5")]
 
 screen navigation():
 
@@ -344,7 +360,6 @@ screen navigation():
         textbutton _("Load") action ShowMenu("load")
 
         if main_menu:
-
             textbutton _("Episode Selection") action ShowMenu("episode_selection")
 
         textbutton _("Preferences") action ShowMenu("preferences")

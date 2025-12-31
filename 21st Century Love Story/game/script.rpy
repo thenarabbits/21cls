@@ -97,6 +97,10 @@ default w_points = 0
 
 #         textbutton "Episode 1" action
 
+label open_episode_selection:
+    call screen episode_selection
+    return
+
 # The game starts here.
 
 label start:
