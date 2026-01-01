@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 110: The text statement is not a valid child of the add statement.
-    text "[p_aura]":
-        ^
+File "game/script.rpy", line 285: expected statement.
+    p_aura += 1
+           ^
 
 Ren'Py Version: Ren'Py 8.2.3.24061702
-Wed Dec 31 04:11:41 2025
+Thu Jan  1 00:24:53 2026

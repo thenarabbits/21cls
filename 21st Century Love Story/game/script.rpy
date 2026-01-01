@@ -94,11 +94,18 @@ image bg living_room = "condo_Day 05.jpg"
 label open_episode_selection:
     call screen episode_selection
     
-# aura points for route percentage
-default p_aura = 0
-default n_aura = 0
-default g_aura = 0
-default w_aura = 0
+# aura points/level for route percentage
+default p_aura = 1
+# default p_points = 0
+
+default n_aura = 1
+# default n_points = 0
+
+default g_aura = 1
+# default g_points = 0
+
+default w_aura = 1
+# default w_points = 0
 
 # AURAAAAAAAAA SYSTEM ICONS
 
@@ -106,10 +113,15 @@ screen p_heart_box():
     add "kyren_heart.png":
         xpos 0.92
         ypos 0.1
-    text "[p_aura]":
-        # just eyeballing...
-        xpos 0.9435
-        ypos 0.132
+    if (p_aura < 10) or (p_aura < 0):
+        text "[p_aura]":
+            # just eyeballing...
+            xpos 0.9435
+            ypos 0.13
+    else:
+        text "[p_aura]":
+            xpos 0.9385
+            ypos 0.13
 
 # idea: hearts appear on screen with each encounter!
 
@@ -117,25 +129,42 @@ screen n_heart_box():
     add "ronan_heart.png":
         xpos 0.92
         ypos 0.22
-    text "[n_aura]":
-        xpos 0.9435
-        ypos 0.252
+    
+    if (n_aura < 10) or (n_aura < 0):
+        text "[n_aura]":
+            xpos 0.9435
+            ypos 0.25
+    else:
+        text "[n_aura]":
+            xpos 0.9385
+            ypos 0.25
 
 screen g_heart_box():
     add "king_heart.png":
         xpos 0.92
         ypos 0.34
-    text "[g_aura]":
-        xpos 0.9435
-        ypos 0.372
+    
+    if (g_aura < 10) or (g_aura < 0):
+        text "[g_aura]":
+            xpos 0.9435
+            ypos 0.37
+    else:
+        text "[g_aura]":
+            xpos 0.9385
+            ypos 0.37
 
 screen w_heart_box():
     add "lucien_heart.png":
         xpos 0.92
         ypos 0.46
-    text "[w_aura]":
-        xpos 0.9435
-        ypos 0.492
+    if (w_aura < 10) or (w_aura < 0):
+        text "[w_aura]":
+            xpos 0.9435
+            ypos 0.49
+    else:
+        text "[w_aura]":
+            xpos 0.9385
+            ypos 0.49
 
 # The game starts here.
 
@@ -268,12 +297,14 @@ label intro:
         cashier "Our matcha is the drink of the day for only $5.25!"
     elif choice == "frappuccino":
         mc neutral "Could I get a frappuccino?"
-        cashier "Are you sure? Our mathc alattes are the drink of the day for only $5.25!"
+        cashier "Are you sure? Our matcha lattes are the drink of the day for only $5.25!"
         mc deadpan "Um..."
         menu:
             "Order the matcha latte":
                 mc deadpan "Um... sure."
                 mc neutral "(Doesn't hurt to give it a try...)"
+                $ p_aura += 1
+                "+1 Aura!"
             "Order the frappuccino":
                 mc deadpan "...No, I'll take the frappuccino'."
 
@@ -825,7 +856,9 @@ label episode_2_join:
                 mc deadpan "..."
                 mc "(He's not supposed to be in elementary school, right...?)"
             "(Pretend like you didn't hear anything.)":
-                mc neutral "..."
+                $ n_aura += 1
+                "+1 Aura!"
+                pass
         "Ronan slicks his hair back. It's, like, the equivalent of a cool girl's hair flip."
         n "Hmph! I forgive you for your transgressions."
         n "After all, I'm young, rich, tall, handsome, AND nice."
@@ -962,6 +995,8 @@ label episode_2_nurse:
         "Don't worry about it.":
             #LOWKEYYYYYYYYYYYYYYYYYY i feel like this scene is not in character?! might remove/move to later episode
             mc happy "Don't worry about it."
+            $ n_aura += 1
+            "+1 Aura!"
             n "Hm...Hmph. You're quite down to earth."
             mc happy "Thank you."
             n "..."
@@ -1414,6 +1449,9 @@ label episode_3_savior:
     "*RING!*"
     "Fortunately, the bell saved you! As students fill the halls, you turn to go to your next class."
 
+    $ w_aura += 1
+    "+1 Aura!"
+
     mc neutral "Well... bye."
     w "W-w-w-wait!! Suzuki Harukaaaaaaa!!!!"
 
@@ -1482,6 +1520,8 @@ label episode_4_outside:
             "The tough-looking guy turns around and goes back into the classroom."
 
             #minus 500 aura
+            $ g_aura -= 1
+            "-1 Aura!"
 
             mc neutral "..."
             mc deadpan "(What the?)"
@@ -1521,6 +1561,8 @@ label episode_4_outside:
                 "I didn't do anything.":
                     o "Aw, you're SUCH a humble queen."
                     mc deadpan "Uhh...thank you."
+                    $ g_aura += 1
+                    "+1 Aura!"
                 "No problem.":
                     pass
 
@@ -1528,6 +1570,8 @@ label episode_4_outside:
             o "*giggle* When I heard the heiress to Fuyu Group was coming to OUR school..."
             o "I didn't think you'd be so pretty AND kind!"
             mc neutral "Thank you."
+            $ g_aura += 1
+            "+1 Aura!"
             # "Olivia looks away into the distance as her voice trails off..."
             "*RING RING RING*"
             o "And would you look at the time! Sorry our meeting was so short. I have an IMPORTANT call to take right now."
@@ -1726,11 +1770,15 @@ label episode_5_english:
             "You quickly extend your hand to grab the book."
             mc neutral "...I'll take this."
             p neutral "Huh? Oh, feel free!"
+            $ p_aura -= 1
+            "-1 Aura!"
         # +1 point
         "Let Kyren take it":
             "Your eyes glance over to the book before making their way back to Kyren."
             mc neutral "You can have the book."
             p neutral "Huh? Oh, don't worry. You can have it."
+            $ p_aura += 1
+            "+1 Aura!"
 
     p neutral "It's only natural that I let women choose first."
     p neutral "Are you going to make your presentation about this author?"
@@ -1761,11 +1809,15 @@ label episode_5_english:
             mc neutral "I'll use this one."
             p sad "Oh, alright then."
             "You watch as Kyren returns the book to his bag, almost looking disappointed that you didn't choose it."
+            $ p_aura -= 1
+            "-1 Aura!"
         # +1 point
         "Choose y":
             mc neutral "I'll use that one."
             p happy "Of course! You can keep it too."
             p neutral "It's a signed copy, by the way."
+            $ p_aura += 1
+            "+1 Aura!"
     
     p neutral "Are you going to work on your presentation here?"
     p neutral "If so, do you mind if I accompany you?"
@@ -1773,6 +1825,8 @@ label episode_5_english:
     menu:
         # +1 point
         "Let Kyren accompany you":
+            $ p_aura += 1
+            "+1 Aura!"
             mc neutral "That's fine."
             p happy "Thanks!"
             p neutral "I won't disturb you, I promise!"
@@ -1780,6 +1834,8 @@ label episode_5_english:
         "Don't let Kyren accompany you":
             mc deadpan "No thank you."
             p sad "...Oh, that's okay."
+            $ p_aura -= 1
+            "-1 Aura!"
             p neutral "I'll get going now then."
             p neutral "See you at school, [playername]."
             jump episode_6
@@ -1799,10 +1855,14 @@ label episode_5_english:
         "Accept Kyren's laptop charger":
             mc neutral "Thank you."
             p happy "Of course!"
+            $ p_aura += 1
+            "+1 Aura!"
         # -1
         "Reject Kyren's laptop charger":
             mc neutral "I'll just work on it at home."
             p sad "Huh? Oh, that's fine..."
+            $ p_aura -= 1
+            "-1 Aura!"
             p neutral "See you at school then, [playername]."
             jump episode_6
 
@@ -1827,6 +1887,8 @@ label episode_5_english:
             mc neutral "(I could just call my chauffeur...)"
             mc deadpan "(Eh, whatever.)"
             mc neutral "Sure."
+            $ p_aura += 1
+            "+1 Aura!"
             p happy "Okay!"
         "Don't let Kyren take you home":
             mc neutral "No, I'll have someone drive me home."
@@ -1844,6 +1906,8 @@ label episode_5_english:
         # +1
         "Accept":
             "You reach out to accept the earbud and insert it in your ear."
+            $ p_aura += 1
+            "+1 Aura!"
             "What plays in your ear is a popular RnB song you've heard being played in the school cafe several times."
             "Glancing over to you again, Kyren softly whispers, only inches away from your face."
             p neutral "Do you know this song?"
@@ -1852,6 +1916,8 @@ label episode_5_english:
         "Reject":
             mc neutral "...No thank you."
             "With an apologetic look, Kyren retracts his hand and inserts the earbud into his ear."
+            $ p_aura -= 1
+            "-1 Aura!"
             "However, you realize that the earbuds must be of low quality, as you can hear his music spilling out."
             "It's not too noticeable, but you identify a popular RnB song you've heard being played in the school cafe several times."
     
