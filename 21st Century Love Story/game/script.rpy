@@ -12,6 +12,7 @@ default narcissist = "Ronan"
 default weeb = "Lucien"
 default gymbro = "King"
 default meangirl = "Olivia"
+default olivia_ticked_off = False
 
 # character define
 define mc = Character("[playername]", image="player")
@@ -52,6 +53,7 @@ image weeb_neutral = "weeb_neutral.png"
 
 image b1_neutral = "bully1 neutral.png"
 image b2_neutral = "bully2 neutral.png"
+image olivia_neutral = "olivia neutral.png"
 
 # define backgrounds
     # general backgrounds
@@ -1476,9 +1478,6 @@ label episode_4:
         "(Eat lunch outside.)":
             # just encounter with gymbro
             jump episode_4_outside
-        "(Grab something from the cafe.)":
-            # another encounter with performative maybe?
-            jump episode_4_cafe
     
     return
 
@@ -1537,8 +1536,8 @@ label episode_4_outside:
             $ olivia_temperament_counter = 0
 
             o "Soooo...YOU'RE [playername]?"
-            "Mid=chew, you look up and see..."
-            show o neutral
+            "Mid-chew, you look up and see..."
+            show olivia_neutral with dissolve
             "...an unfamiliar face."
 
             menu:
@@ -1571,8 +1570,8 @@ label episode_4_outside:
 
             "Flashing a pretty corporate smile, Olivia presents the small card to you, which you recognize to be a business card. You accept the card and glance at the printed text."
             # "Olivia smoothly takes your hand and curls your fingers over her business card."
-            mc neutral ("Olivia Johnson...")
-            mc deadpan ("...on WinkedIn.")
+            mc neutral "(Olivia Johnson...)"
+            mc deadpan "(...on WinkedIn.)"
 
             # o "Oh my gosh, you don't know how EXCITED I've been to meet you!"
             o "*giggle* When I heard the heiress to Fuyu Group was coming to OUR school..."
@@ -1602,7 +1601,7 @@ label episode_4_outside:
                             "Olivia Johnson's blood is boiling now. Her voice goes up a couple decibels, and you notice some students staring at you two from a distance."
                             o "Take another good look at that business card I gave you."
                             
-                            "In small print at the bottom of the card, you read: \"Johnson Big Law Firm\"".
+                            "In small print at the bottom of the card, you read: \"Johnson Big Law Firm\"."
                             o "I was trying to be humble, but you SHOULD know that I'm also Olivia JOHNSON, next in line to take over the Johnson Big Law Firm!"
                             mc happy "(She kind of reminds me of someone...)"
                             mc neutral "Ahem. I see. Noted."
@@ -1618,15 +1617,28 @@ label episode_4_outside:
             # "Olivia looks away into the distance as her voice trails off..."
 
             "*RING RING RING*"
+            "It's Olivia's phone, and she once again rummages through her bag to find it."
 
             if (olivia_temperament_counter < 3):
-                o "And would you look at the time! Sorry our meeting was so short. I have an IMPORTANT call to take right now."
-                o "Anyways, I just gave you my business card, with my WinkedIn on the back side. We're friends now, 'kay?"
+                o "Oh my, would you look at the time. Sorry our meeting was so short. I have an IMPORTANT call to take right now."
+                o "ANYWAYS, I just gave you my business card, with my WinkedIn on the back side. We're friends now, 'kay?"
                 mc neutral "Uh-"
                 o "[playername], don't hesitate to say hello when you see me in the halls. Bye now!"
+                hide olivia_neutral
             else:
-                o "Well."
-                pass
+                
+                $ olivia_ticked_off = True
+
+                o "See, this is an IMPORTANT call I have to take right now."
+                o "Bye, [playername]."
+
+                hide olivia_neutral
+
+                "Olivia runs past you in a jiffy, and you watch as she wears her corporate smile, answering her phone with her happy corporate voice."
+                "As if you two weren't just on the verge of pulling each other's hair."
+
+                mc neutral "(Finally, some peace and quiet.)"
+                mc neutral "(But that whole fiasco made ne lose my appetite.)"
 
             # or should she deliberately knock over the bento? maybe add ANOTHER route for that? (if you tick her off)
 
@@ -1694,26 +1706,6 @@ label episode_4_outside:
                     #     "(Walk away.)":
                     #         # idk yet
 
-    jump episode_5
-    return
-
-label episode_4_cafe:
-    scene bg quad_outside_arts_building with fade
-    mc neutral "(Hmm...I think the cafe should be this way.)"
-
-    show kyren neutral with dissolve
-    p happy "[playername]? What a coincidence! You're going to the cafe too?"
-    p neutral "Wanna go together?"
-
-    # menu:
-    #     "Yes":
-    #         mc neutral "Sure, why not."
-    #         jump episode_4_in_cafe
-    #     "No":
-    #         mc neutral "No, thank you.":
-    #         #idk
-
-    scene bg cafe_memoria_outside_04_afternoon with dissolve
     jump episode_5
     return
 

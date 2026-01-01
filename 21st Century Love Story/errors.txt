@@ -2,9 +2,17 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 285: expected statement.
-    p_aura += 1
-           ^
+File "game/script.rpy", line 1576: expected statement.
+    mc neutral ("Olivia Johnson...")
+               ^
+
+File "game/script.rpy", line 1577: expected statement.
+    mc deadpan ("...on WinkedIn.")
+               ^
+
+File "game/script.rpy", line 1607: expecting name after dot.
+    "In small print at the bottom of the card, you read: \"Johnson Big Law Firm\"".
+                                                                                   ^
 
 Ren'Py Version: Ren'Py 8.2.3.24061702
-Thu Jan  1 00:24:53 2026
+Thu Jan  1 13:55:45 2026
