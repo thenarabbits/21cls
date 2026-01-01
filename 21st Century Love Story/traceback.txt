@@ -1,28 +1,24 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "renpy/common/00start.rpy", line 279, in script
-    python:
-ScriptError: could not find label 'epsiode_5'.
+  File "game/script.rpy", line 406, in script
+    me neutral "I haven't been adjusting very well."
+Exception: Sayer 'me' is not defined.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\bootstrap.py", line 359, in bootstrap
-    renpy.main.main()
-  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\main.py", line 637, in main
-    run(restart)
-  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\main.py", line 145, in run
-    renpy.execution.run_context(True)
-  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\execution.py", line 955, in run_context
-    context.run()
-  File "renpy/common/00start.rpy", line 279, in script
-    python:
-  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\script.py", line 1103, in lookup
-    raise ScriptError("could not find label '%s'." % str(original))
-ScriptError: could not find label 'epsiode_5'.
+  File "game/script.rpy", line 406, in script
+    me neutral "I haven't been adjusting very well."
+  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\ast.py", line 2560, in execute
+    Say.execute(self)
+  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\ast.py", line 575, in execute
+    who = eval_who(self.who, self.who_fast)
+  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\ast.py", line 464, in eval_who
+    raise Exception("Sayer '%s' is not defined." % who)
+Exception: Sayer 'me' is not defined.
 
 Windows-10-10.0.26100 AMD64
 Ren'Py 8.2.3.24061702
 21st Century Love Story 1.0
-Thu Jan  1 01:14:10 2026
+Thu Jan  1 01:21:39 2026

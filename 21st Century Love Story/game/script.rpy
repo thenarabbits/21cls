@@ -403,7 +403,7 @@ label episode_1:
             mc neutral "It's been alright."
             p neutral "That's good!"
         "It's been bad":
-            me neutral "I haven't been adjusting very well."
+            mc neutral "I haven't been adjusting very well."
             p sad "Sorry to hear that, hopefully it gets better."
 
     p neutral "I saw you deciding between matcha and a frappuccino when I was waiting in line earlier."
@@ -1542,11 +1542,12 @@ label episode_4_outside:
             "...an unfamiliar face."
 
             menu:
-                "Yes, that's me.":
+                "Yes, I'm [playername].":
                     o "*gasp* It's SO great to meet you, [playername]!"
                 "Who are you?":
                     o "Oh GIRL, don't be so on edge!"
                     $ olivia_temperament_counter += 1
+                    mc deadpan "(How am I being on edge?)"
 
             $ meangirl = "Olivia"
             o "My NAME is Olivia. And I'm a total girls' girl."
@@ -1554,6 +1555,8 @@ label episode_4_outside:
             o "Um...HAHAHA...one moment please...where is it..."
             mc neutral "No, please. Take your time."
             "As if you gave a magician's command, Olivia instantly pulls a small card out of her bag with a slightly embarrassed smile."
+
+
             o "You're SO sweet, [playername]. I was looking for this--thanks for being patient."
             # inventory idea? collectible trophy/memento system? it can be the same menu as a cutscene gallery
             # display business card cutscene here
@@ -1561,23 +1564,69 @@ label episode_4_outside:
                 "I didn't do anything.":
                     o "Aw, you're SUCH a humble queen."
                     mc deadpan "Uhh...thank you."
-                    $ g_aura += 1
-                    "+1 Aura!"
+                    # $ g_aura += 1
+                    # "+1 Aura!"
                 "No problem.":
-                    pass
+                    $ olivia_temperament_counter += 1
+
+            "Flashing a pretty corporate smile, Olivia presents the small card to you, which you recognize to be a business card. You accept the card and glance at the printed text."
+            # "Olivia smoothly takes your hand and curls your fingers over her business card."
+            mc neutral ("Olivia Johnson...")
+            mc deadpan ("...on WinkedIn.")
 
             # o "Oh my gosh, you don't know how EXCITED I've been to meet you!"
             o "*giggle* When I heard the heiress to Fuyu Group was coming to OUR school..."
             o "I didn't think you'd be so pretty AND kind!"
-            mc neutral "Thank you."
-            $ g_aura += 1
-            "+1 Aura!"
+            menu:
+                "Thank you.":
+                    mc neutral "Thank you."
+                    # $ g_aura += 1
+                    # "+1 Aura!"
+                "So you thought I was ugly and mean?":
+                    mc angry "So you thought I was ugly and mean?"
+                    $ olivia_temperament_counter += 1
+                    o "WOAH, girl, way to put words into my mouth."
+                    o "I guess the rumors WERE right, then."
+
+                    menu:
+                        "(Scoff.)":
+                            $ olivia_temperament_counter += 3
+                            # mc angry "..."
+                            mc neutral "You're not really a \"girl's girl\" if you believe rumors and mindless gossip so easily."
+                            mc neutral "You're just a hypocrite."
+                            # olivia angry
+                            o "You...you're one to talk!"
+                            # o "You act all high and mighty just because your parents are loaded."
+                            o "You act all high and mighty just because your family owns a huge company."
+                            o "But listen carefully, [playername]. You're NOT special."
+                            "Olivia Johnson's blood is boiling now. Her voice goes up a couple decibels, and you notice some students staring at you two from a distance."
+                            o "Take another good look at that business card I gave you."
+                            
+                            "In small print at the bottom of the card, you read: \"Johnson Big Law Firm\"".
+                            o "I was trying to be humble, but you SHOULD know that I'm also Olivia JOHNSON, next in line to take over the Johnson Big Law Firm!"
+                            mc happy "(She kind of reminds me of someone...)"
+                            mc neutral "Ahem. I see. Noted."
+                            $ n_aura += 1
+                            "+1 Aura!"
+
+                        "(Say you were just kidding.)":
+                            mc neutral "I was just kidding."
+                            o "Oh, good. I HATE it when people can't take a joke."
+                            o "But you seem like a nice girl. I think we'll get along QUITE well."
+                            $ olivia_temperament_counter -= 2
+
             # "Olivia looks away into the distance as her voice trails off..."
+
             "*RING RING RING*"
-            o "And would you look at the time! Sorry our meeting was so short. I have an IMPORTANT call to take right now."
-            o "Anyways, I just gave you my business card, with my WinkedIn on the back side. We're friends now, 'kay?"
-            mc neutral "Uh-"
-            o "[playername], don't hesitate to say hello when you see me in the halls. Bye now!"
+
+            if (olivia_temperament_counter < 3):
+                o "And would you look at the time! Sorry our meeting was so short. I have an IMPORTANT call to take right now."
+                o "Anyways, I just gave you my business card, with my WinkedIn on the back side. We're friends now, 'kay?"
+                mc neutral "Uh-"
+                o "[playername], don't hesitate to say hello when you see me in the halls. Bye now!"
+            else:
+                o "Well."
+                pass
 
             # or should she deliberately knock over the bento? maybe add ANOTHER route for that? (if you tick her off)
 
