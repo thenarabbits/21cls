@@ -55,6 +55,9 @@ image b1_neutral = "bully1 neutral.png"
 image b2_neutral = "bully2 neutral.png"
 image olivia_neutral = "olivia neutral.png"
 
+image manga = "manga.png"
+image manga_run = "manga_run_cutscene.png"
+
 # define backgrounds
     # general backgrounds
 image bg black_background = "black-background.png"
@@ -1389,6 +1392,19 @@ label episode_3_savior:
     w "The poster on the wall above her had my waifu-"
 
     hide weeb_neutral
+
+    window hide
+
+    show manga with dissolve:
+        zoom 0.3
+        xalign 0.5
+        yalign 0.5
+    
+    pause
+
+    hide manga with dissolve
+    window show
+
     show b1_neutral with dissolve:
         zoom 0.25
         xalign 0.5
@@ -1416,12 +1432,30 @@ label episode_3_savior:
     show weeb_neutral with dissolve
 
     w "*Hic* S-S-S-Suzuki Harukaaaaaaaa!!!! M-m-m-my savior!!!!"
+
+    hide weeb_neutral
+
+    window hide
+
+    show manga_run with dissolve:
+        zoom 0.5
+        xalign 0.5
+        yalign 0.5
+    
+    pause
+
+    window show
+
     mc angry "If you call me that one more time, I'm going to beat you up myself."
+
+    hide manga_run with dissolve
+
+    show weeb_neutral with dissolve
     w "B-b-b-b-but you really are her!!!"
 
     hide weeb_neutral
 
-    "...Maybe you should've let this guy to get beat."
+    "...Maybe you should've just let this guy get beat."
     "After a few more minutes of running through the halls, you slow down to glance at a nearby clock."
     "15 seconds until the bell rings."
 
