@@ -573,7 +573,7 @@ label episode_1_tour:
 
     "You reach into your pocket to take out the slip of paper again."
 
-    mc neutral "Linear Algebra, English, Quantum Physics, and Discrete Math."
+    mc neutral "PE, Linear Algebra, English, Quantum Physics, Ethnic Studies, and Discrete Math."
     p neutral "Wow, two math classes and Quantum Physics?"
     p neutral "You're so smart. I could never do something like that..."
     p neutral "I'm just soooo average..."
@@ -1500,7 +1500,7 @@ label episode_4:
     scene bg classroom_04 with fade
     "One long lecture later..."
     "*RING!*"
-    mc happy "(It's finally time for lunch! What a day it's been...)"
+    mc happy "(It's finally time for lunch! English class can be so boring.)"
     # mc neutral "(Milkyway High School really is full of interesting characters.)"
     "Some students stay behind in the classroom, some students rush to leave, and some students come to eat with their friends."
     "Hopefully, you can get along with everyone, too. But first, where do you want to eat?"
@@ -1508,10 +1508,37 @@ label episode_4:
         "(Eat lunch in the classroom.)":
             # results in encounter with mean gurlz (olivia/sophia?)
             mc neutral "(Yep, I won't bother getting up right now.)"
-            "You reach into your bag and take out the bento you made this morning."
+            "You reach into your bag and take out your bento, which was prepared by your home cook before you woke up for school this morning."
+            # fun cutscene idea: show the bento! WITH DELICIOUS SPARKLES like in genshin!!
+            "Taking off the lid, you are delighted with a tender, butter-poached lobster (caught in the state of Maine) accompanied by a juicy, premium steak (only grass-fed, of course)."
+
+            mc happy "A truly beautiful surf and turf. Home-cooked food is always the best!"
+            mc neutral "*om nom nom nom nom*"
+
+            # other fun idea: change mc sprite to a dining bib
+            "The enticing aroma of your lunch draws a few peers closer to your table. It seems that everyone can smell the butter lobster, which you admit has been pan-seared a {i}little{/i} too well."
+            
+            show olivia_neutral with dissolve
+            o "OMG. Who brings an entire lobster to school? On the first day, no less!"
+
+            show king neutral with dissolve:
+                zoom 0.25
+                xcenter 0.5
+                yalign 1.0
+            
+
+            # "Mid-chew, you look up and see..."
+            # show olivia_neutral with dissolve
+            # "...an unfamiliar face."
+
+            # o "Wait...YOU'RE [playername], aren't you?"
+
+
         "(Eat lunch outside.)":
             # just encounter with gymbro
             jump episode_4_outside
+
+        
     
     return
 
@@ -1590,7 +1617,7 @@ label episode_4_outside:
             "As if you gave a magician's command, Olivia instantly pulls a small card out of her bag with a slightly embarrassed smile."
 
 
-            o "You're SO sweet, [playername]. I was looking for this--thanks for being patient."
+            o "You're SO sweet, [playername]. I was looking for this—thanks for being patient."
             # inventory idea? collectible trophy/memento system? it can be the same menu as a cutscene gallery
             # display business card cutscene here
             menu:
@@ -1672,7 +1699,12 @@ label episode_4_outside:
                 "As if you two weren't just on the verge of pulling each other's hair."
 
                 mc neutral "(Finally, some peace and quiet.)"
-                mc neutral "(But that whole fiasco made ne lose my appetite.)"
+                mc neutral "(But...lunch is just about to end. Better head to my next class.)"
+
+                menu:
+                    "Head back to the classroom.":
+                        scene bg black with fade
+
 
             # or should she deliberately knock over the bento? maybe add ANOTHER route for that? (if you tick her off)
 
