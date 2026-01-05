@@ -84,20 +84,7 @@ image bg bedroom_night = "room_night_light_off.jpg"
 image bg dining_room = "condo_Day 03.jpg"
 image bg living_room = "condo_Day 05.jpg"
 
-# screen new_episode_menu():
-
-#     tag menu
-
-#     text "Episode Menu" align (0.5, 0.5)
-    
-#     vbox:
-#         xalign 0.5
-#         yalign 0.5
-
-#         textbutton "Episode 1" action
-
-label open_episode_selection:
-    call screen episode_selection
+# ========================AURA STUFF=============================
     
 # aura points/level for route percentage
 default p_aura = 1
@@ -184,7 +171,7 @@ label start:
     $ performative = "???"
     $ narcissist = "Guy Sitting By Himself"
     $ weeb = "Guy With Disheveled Hair"
-    $ gymbro = "Tough Looking Guy"
+    $ gymbro = "Tough-Looking Guy"
     $ meangirl = "???"
 
     scene bg black_background
@@ -573,7 +560,7 @@ label episode_1_tour:
 
     "You reach into your pocket to take out the slip of paper again."
 
-    mc neutral "Linear Algebra, English, Quantum Physics, and Discrete Math."
+    mc neutral "PE, Linear Algebra, English, Quantum Physics, Ethnic Studies, and Discrete Math."
     p neutral "Wow, two math classes and Quantum Physics?"
     p neutral "You're so smart. I could never do something like that..."
     p neutral "I'm just soooo average..."
@@ -643,7 +630,7 @@ label episode_2_football:
     mc neutral "Oh?"
     "While your classmates are having fun tackling each other in the heat, someone sits by themself on a bench."
     menu:
-        "(Approach them.)":
+        "Approach them.":
             mc neutral "I'm not doing anything right now, anyways."
             $ choice = "care"
             jump episode_2_meeting
@@ -1500,7 +1487,7 @@ label episode_4:
     scene bg classroom_04 with fade
     "One long lecture later..."
     "*RING!*"
-    mc happy "(It's finally time for lunch! What a day it's been...)"
+    mc happy "(It's finally time for lunch! English class can be so boring.)"
     # mc neutral "(Milkyway High School really is full of interesting characters.)"
     "Some students stay behind in the classroom, some students rush to leave, and some students come to eat with their friends."
     "Hopefully, you can get along with everyone, too. But first, where do you want to eat?"
@@ -1508,11 +1495,72 @@ label episode_4:
         "(Eat lunch in the classroom.)":
             # results in encounter with mean gurlz (olivia/sophia?)
             mc neutral "(Yep, I won't bother getting up right now.)"
-            "You reach into your bag and take out the bento you made this morning."
+            "You reach into your bag and take out your bento, which was prepared by your home cook before you woke up for school this morning."
+            # fun cutscene idea: show the bento! WITH DELICIOUS SPARKLES like in genshin!!
+            "Taking off the lid, you are delighted with a tender, butter-poached lobster (caught in the state of Maine) accompanied by a juicy, premium steak (only grass-fed, of course)."
+
+            mc happy "A truly beautiful surf and turf. Home-cooked food is always the best!"
+            mc neutral "*om nom nom nom nom*"
+
+            # other fun idea: change mc sprite to a dining bib
+            "The enticing aroma of your lunch draws attention to your table. It seems that everyone can smell the butter-poached lobster especially, which you admit has been pan-seared a {i}little{/i} too well."
+            
+            show olivia_neutral with dissolve
+            o "OMG. Who brings an entire lobster to school? On the first day, no less!"
+
+            # idk, show sophia too?
+
+            show king neutral with dissolve:
+                zoom 0.25
+                xcenter 0.5
+                yalign 1.0
+            g disgusted "Women get jealous over every little thing."
+            g neutral "If anything, this is a meal packed with protein!"
+            
+            "Suddenly, this tough-looking guy throws a straight punch. With that scowl, you'd think he was gonna start shadowboxing."
+            "But then, he unfurls his index finger to point at your lunch."
+
+            # replace with happy sprite
+            g neutral "Yo, female! Could you cook me up some lobster and steak too?"
+            mc neutral "(Yeah, I'll cook YOU up.)"
+            mc angry "Don't call me \"female.\" My name is [playername]."
+            mc angry "So uncouth. Where are your manners?"
+            "The tough-looking guy retracts his pointer finger and relaxes his muscles, although still scowling."
+            $ gymbro = "King"
+            g neutral "Well pardon me, then. The name's King."
+            g neutral "[playername]... you seem different from other women."
+            "King's eyes dart around the classroom before they return to freeze at yours."
+            g neutral "In a world of 3s, you are a 10."
+            mc deadpan "(What's his deal?)"
+
+            menu:
+                "Tell King to be quiet.":
+                    pass
+                "Ask what he means.":
+                    pass
+                "Offer him food.":
+                    pass
+
+            # g neutral "That made you angry? ...Women are so emotional."
+
+
+
+
+            
+
+            # "Mid-chew, you look up and see..."
+            # show olivia_neutral with dissolve
+            # "...an unfamiliar face."
+
+            # o "Wait...YOU'RE [playername], aren't you?"
+
+
         "(Eat lunch outside.)":
             # just encounter with gymbro
             jump episode_4_outside
-    
+
+        
+    jump episode_5
     return
 
 # CURRENTLY UNFINISHED: sayhi, walkpast
@@ -1536,7 +1584,7 @@ label episode_4_outside:
     "That smell of coffee is probably coming from this tough-looking guy, who's leaving the classroom at the same time you are."
 
     menu:
-        "(Say hi.)":
+        "Say hi.":
             
             $ playername_length = len(playername)
 
@@ -1590,7 +1638,7 @@ label episode_4_outside:
             "As if you gave a magician's command, Olivia instantly pulls a small card out of her bag with a slightly embarrassed smile."
 
 
-            o "You're SO sweet, [playername]. I was looking for this--thanks for being patient."
+            o "You're SO sweet, [playername]. I was looking for this—thanks for being patient."
             # inventory idea? collectible trophy/memento system? it can be the same menu as a cutscene gallery
             # display business card cutscene here
             menu:
@@ -1672,7 +1720,12 @@ label episode_4_outside:
                 "As if you two weren't just on the verge of pulling each other's hair."
 
                 mc neutral "(Finally, some peace and quiet.)"
-                mc neutral "(But that whole fiasco made ne lose my appetite.)"
+                mc neutral "(But...lunch is just about to end. Better head to my next class.)"
+
+                menu:
+                    "Head back to the classroom.":
+                        scene bg black with fade
+
 
             # or should she deliberately knock over the bento? maybe add ANOTHER route for that? (if you tick her off)
 
@@ -1696,7 +1749,7 @@ label episode_4_outside:
 
             "This is a bookmark for testing purposes."
 
-        "(Walk past him.)":
+        "Walk past him.":
             "You stare straight ahead and walk just a little faster than usual, because you've got places to be and lunch to eat."
             g neutral "..."
             hide king disgusted
