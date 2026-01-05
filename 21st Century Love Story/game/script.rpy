@@ -84,20 +84,7 @@ image bg bedroom_night = "room_night_light_off.jpg"
 image bg dining_room = "condo_Day 03.jpg"
 image bg living_room = "condo_Day 05.jpg"
 
-# screen new_episode_menu():
-
-#     tag menu
-
-#     text "Episode Menu" align (0.5, 0.5)
-    
-#     vbox:
-#         xalign 0.5
-#         yalign 0.5
-
-#         textbutton "Episode 1" action
-
-label open_episode_selection:
-    call screen episode_selection
+# ========================AURA STUFF=============================
     
 # aura points/level for route percentage
 default p_aura = 1
@@ -643,7 +630,7 @@ label episode_2_football:
     mc neutral "Oh?"
     "While your classmates are having fun tackling each other in the heat, someone sits by themself on a bench."
     menu:
-        "(Approach them.)":
+        "Approach them.":
             mc neutral "I'm not doing anything right now, anyways."
             $ choice = "care"
             jump episode_2_meeting
@@ -1538,11 +1525,21 @@ label episode_4:
             mc neutral "(Yeah, I'll cook YOU up.)"
             mc angry "Don't call me \"female.\" My name is [playername]."
             mc angry "So uncouth. Where are your manners?"
-
             "The tough-looking guy retracts his pointer finger and relaxes his muscles, although still scowling."
-
             $ gymbro = "King"
             g neutral "Well pardon me, then. The name's King."
+            g neutral "[playername]... you seem different from other women."
+            "King's eyes dart around the classroom before they return to freeze at yours."
+            g neutral "In a world of 3s, you are a 10."
+            mc deadpan "(What's his deal?)"
+
+            menu:
+                "Tell King to be quiet.":
+                    pass
+                "Ask what he means.":
+                    pass
+                "Offer him food.":
+                    pass
 
             # g neutral "That made you angry? ...Women are so emotional."
 
@@ -1587,7 +1584,7 @@ label episode_4_outside:
     "That smell of coffee is probably coming from this tough-looking guy, who's leaving the classroom at the same time you are."
 
     menu:
-        "(Say hi.)":
+        "Say hi.":
             
             $ playername_length = len(playername)
 
@@ -1752,7 +1749,7 @@ label episode_4_outside:
 
             "This is a bookmark for testing purposes."
 
-        "(Walk past him.)":
+        "Walk past him.":
             "You stare straight ahead and walk just a little faster than usual, because you've got places to be and lunch to eat."
             g neutral "..."
             hide king disgusted
