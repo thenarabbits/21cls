@@ -115,7 +115,7 @@ screen p_heart_box():
             xpos 0.9385
             ypos 0.13
 
-# idea: hearts appear on screen with each encounter!
+# idea: hearts appear on screen with each encounter? not implemented yet
 
 screen n_heart_box():
     add "ronan_heart.png":
@@ -131,30 +131,33 @@ screen n_heart_box():
             xpos 0.9385
             ypos 0.25
 
-screen g_heart_box():
-    add "king_heart.png":
-        xpos 0.92
-        ypos 0.34
-    
-    if (g_aura < 10) or (g_aura < 0):
-        text "[g_aura]":
-            xpos 0.9435
-            ypos 0.37
-    else:
-        text "[g_aura]":
-            xpos 0.9385
-            ypos 0.37
 
 screen w_heart_box():
     add "lucien_heart.png":
         xpos 0.92
-        ypos 0.46
+        ypos 0.34
+
     if (w_aura < 10) or (w_aura < 0):
         text "[w_aura]":
             xpos 0.9435
-            ypos 0.49
+            ypos 0.37
     else:
         text "[w_aura]":
+            xpos 0.9385
+            ypos 0.37
+
+
+screen g_heart_box():
+    add "king_heart.png":
+        xpos 0.92
+        ypos 0.46
+    
+    if (g_aura < 10) or (g_aura < 0):
+        text "[g_aura]":
+            xpos 0.9435
+            ypos 0.49
+    else:
+        text "[g_aura]":
             xpos 0.9385
             ypos 0.49
 
@@ -560,7 +563,7 @@ label episode_1_tour:
 
     "You reach into your pocket to take out the slip of paper again."
 
-    mc neutral "PE, Linear Algebra, English, Quantum Physics, Ethnic Studies, and Discrete Math."
+    mc neutral "After PE, I have...Linear Algebra, English, Quantum Physics, Ethnic Studies, and Discrete Math."
     p neutral "Wow, two math classes and Quantum Physics?"
     p neutral "You're so smart. I could never do something like that..."
     p neutral "I'm just soooo average..."

@@ -305,6 +305,20 @@ style quick_button_text:
 ## This screen is included in the main and game menus, and provides navigation
 ## to other menus, and to start the game.
 
+init python:
+    def showHearts():
+        # $ p_aura = 1
+        # $ n_aura = 1
+        # $ g_aura = 1
+        # $ w_aura = 1
+        # show screen p_heart_box
+        # show screen n_heart_box
+        # show screen g_heart_box
+        # show screen w_heart_box
+        renpy.show_screen(_p_heart_box)
+        # TODO: find out how to show the hearts with python
+
+
 screen episode_selection():
 
     tag menu
@@ -331,11 +345,15 @@ screen episode_selection():
 
             # for now, ep selection in game is disabled
 
+            # textbutton "Episode 1" action [Return(), Jump("episode_1"), Show("p_heart_box")]
+            # textbutton "Episode 1" action [Return(), Jump("episode_1"), showHearts()]
             textbutton "Episode 1" action [Return(), Jump("episode_1")]
             textbutton "Episode 2" action [Return(), Jump("episode_2")]
             textbutton "Episode 3" action [Return(), Jump("episode_3")]
             textbutton "Episode 4" action [Return(), Jump("episode_4")]
             textbutton "Episode 5" action [Return(), Jump("episode_5")]
+    
+    text "Warning: Aura for each route will be set to Level 1."
 
 screen navigation():
 
