@@ -1577,7 +1577,8 @@ label episode_4:
                         xcenter 0.5
                         yalign 1.0
 
-                    mc neutral "Hey, if I give you $100, will you be quiet?"
+                    # mc neutral "Hey, if I give you $100, will you be quiet?"
+                    mc neutral "Will you be quiet if I give you $100?"
 
                     show king neutral at move_left
 
@@ -1594,13 +1595,22 @@ label episode_4:
                     o neutral "But anyways, don't give him the hundred bucks-"
 
                     g disgusted "Don't interrupt me, female. I don't need it anyways."
-                    g neutral "As a real man, I make my own money, have a podcast, and drive a Wamborghini."
-                    g neutral "Success is merely a byproduct of my discipline."
+                    g neutral "As a real man, I make my own money."
+                    # g neutral "I even have a podcast and drive a Wamborghini."
+                    g neutral "Wealth and success are merely byproducts of discipline."
+
+                    g disgusted "Besides, you're no better. You know you're only after Ronan for his money."
+                    o angry "You take that back right now."
+
+                    mc neutral "(Should I get involved?)"
 
                     pass
+
                 "Ask what he means.":
+                    mc neutral "I'm different from other women? What do you mean by that?"
                     pass
                 "Offer him food.":
+                    mc neutral "(Well...I've heard Americans say that you're not you when you're hungry.)"
                     pass
 
             # g neutral "That made you angry? ...Women are so emotional."
