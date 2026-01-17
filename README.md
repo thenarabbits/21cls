@@ -13,3 +13,4 @@ Official repository for **"21st Century Love Story"** by Athena Chang and Kaylee
 ![prologue scene](https://hc-cdn.hel1.your-objectstorage.com/s/v3/2c6b655e4049d6a3_image.png)
 ![meeting kyren scene](https://hc-cdn.hel1.your-objectstorage.com/s/v3/8d63a30b63360a0c_image.png)
 ![meeting king scene](https://hc-cdn.hel1.your-objectstorage.com/s/v3/dada105d5b3410c7_image.png)
+![scene with king and olivia](https://hc-cdn.hel1.your-objectstorage.com/s/v3/609a2761fd537c6e_image.png)

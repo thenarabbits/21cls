@@ -1502,6 +1502,12 @@ label episode_4:
             
             $ meangirl = "Some Girl In Your Class"
             $ gymbro = "Tough-Looking Guy"
+
+            transform move_left:
+                easeout 0.3 xalign 0.25
+
+            transform olivia_move_left:
+                easeout 0.3 xalign 0.75
             
             mc neutral "(Yep, I won't bother getting up right now.)"
             "You reach into your bag and take out your bento, which was prepared by your home cook before you woke up for school this morning."
@@ -1550,11 +1556,6 @@ label episode_4:
 
             menu:
                 "Buy his silence.":
-                    transform move_left:
-                        easeout 0.3 xalign 0.25
-
-                    transform olivia_move_left:
-                        easeout 0.3 xalign 0.75
 
                     show king neutral:
                         zoom 0.25
@@ -1607,21 +1608,25 @@ label episode_4:
                             mc neutral "What?"
                             g neutral "Anyways... you know Ronan Sinclair?"
                             mc neutral "He's in my PE class."
-                            g neutral "Ronan's taking PE? That's good. He should work out more, like I do."
+                            g neutral "Ronan's taking PE? That's good. He should work out more. Like I do."
 
                             "King goes on to talk about the importance of maintaining appearances, and he explains how it all starts with a healthy lifestyle."
-                            "He uses funny words like \"looksmaxxing\" and offers you tips for your next gym session."
+                            "He uses funny words like \"looksmaxxing\" and offers you plenty of tips for your next gym session."
                             "You decide to just let him keep talking while you finish eating your lunch."
 
-                            g neutral "Hey, you're a pretty good listener."
-                            g neutral "You should join me at the gym sometime. I'll be your personal trainer."
+                            g neutral "Hey [playername], you're a pretty good listener-"
+                            "*RING!*"
+                            g angry "...since I hate being interrupted."
+                            "The bell rings, signaling that lunch is over. You need to get going to Quantum Physics, which is all the way on the other side of campus!"
+                            "You frantically pack up your things and make a beeline for the door."
+                            mc neutral "Sorry, I gotta run."
+                            g neutral "Yeah, okay then."
+                            g neutral "Join me at the gym sometime. I'll be your personal trainer."
 
-                            # g neutral "Okay then. I have nothing more to say to you, so I'll be on my way."
-                            # g neutral "See you around, [playername]."
+                            # scrapped lines
                             
                             # g disgusted "This is why I don't get involved in female drama..."
                             # g neutral "Though you seem to have cooled down quick."
-                            
                             
                             # "What you thought would be a relaxing lunch ended up creating tension."
                             # "Tension in the air, and tension between you and your new classmates."
@@ -1664,9 +1669,40 @@ label episode_4:
                     mc neutral "(Though... I've heard Americans say that you're not you when you're hungry.)"
 
                     mc happy "King, would you like a lobster tail?"
-                    g disgusted "...?"
+                    show king disgusted:
+                        zoom 0.25
+                        xcenter 0.5
+                        yalign 1.0
+                    g "...?"
                     g neutral "You know what? Sure, okay."
                     g neutral "Protein is protein."
+
+                    "You serve King a lobster tail on a clean napkin."
+
+                    show king neutral at move_left
+
+                    show olivia happy:
+                        zoom 0.25
+                        xalign 0.9
+                        yalign 1.0
+                    show olivia happy at olivia_move_left
+
+                    o happy "Hey [playername]! Could I try a lobster tail too?"
+                    mc neutral "Sorry, but who are you?"
+
+                    $ meangirl = "Olivia"
+                    o neutral "I'm Olivia. Olivia JOHNSON, next in line to take over the Johnson Big Law Firm."
+                    o happy "I've heard all about you, [playername]. Let's be friends, okay?"
+
+                    mc neutral "(She could either become an ally or an enemy...let's just try to stay on her good side.)"
+
+                    mc happy "Okay."
+                    "Olivia brings her own napkin, and you serve her a lobster tail too."
+
+                    g disgusted "..."
+                    o angry "What are you looking at?"
+
+                    g neutral "Hm?"
 
                     pass
 
