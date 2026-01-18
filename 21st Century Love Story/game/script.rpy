@@ -9,6 +9,21 @@
 init:
     define config.layers = ['master', 'transient', 'screens', 'overlay', 'ontop']
 
+    transform blur_screen:
+        blur 0.0
+        easeout 0.5 blur 16.0
+
+    # far left side
+    transform move_left:
+        easeout 0.3 xalign 0.25
+
+    # right side
+    transform olivia_move_left:
+        easeout 0.3 xalign 0.75
+    
+    transform move_back_to_middle:
+        easeout 0.3 xalign 0.5
+
 default playername = "You"
 default performative = "Kyren"
 default narcissist = "Ronan"
@@ -1502,12 +1517,6 @@ label episode_4:
             
             $ meangirl = "Some Girl In Your Class"
             $ gymbro = "Tough-Looking Guy"
-
-            transform move_left:
-                easeout 0.3 xalign 0.25
-
-            transform olivia_move_left:
-                easeout 0.3 xalign 0.75
             
             mc neutral "(Yep, I won't bother getting up right now.)"
             "You reach into your bag and take out your bento, which was prepared by your home cook before you woke up for school this morning."
@@ -1592,6 +1601,7 @@ label episode_4:
                         #     mc angry "Too far, King."
                         "Interrogate Olivia.":
                             $ olivia_ticked_off = True
+                            show king neutral
                             mc neutral "Olivia... do you have feelings for Ronan?"
                             o shocked "That's...that's none of your business!"
                             o angry "We just met, [playername]. You don't even know me. Who are you to judge?"
@@ -1601,7 +1611,14 @@ label episode_4:
                             o shocked "..."
                             o angry "*mumbling* So annoying."
                             "Olivia mumbles some other things you can't hear. Maybe cursing you out."
+                            
+                            hide olivia angry
+                            with dissolve
+
                             "She shoves her way between you and King, storming out of the classroom."
+
+                            show king neutral at move_back_to_middle
+
                             mc neutral "Huh. I didn't expect her to just leave like that."
                             g neutral "Yeah! I knew you'd win."
                             g neutral "Olivia's just a 3, but you're a solid 10."
@@ -1637,6 +1654,8 @@ label episode_4:
                             # g neutral "Hmm...it's probably better that I don't get involved with [playername]."
 
                             hide king with dissolve
+                            show bg classroom_04 at blur_screen
+                            with dissolve
 
                             pass
 
@@ -1645,10 +1664,6 @@ label episode_4:
                             hide olivia
                             hide king 
                             with dissolve
-                            
-                            transform blur_screen:
-                                blur 0.0
-                                easeout 0.5 blur 16.0
 
                             show bg classroom_04 at blur_screen
                             with dissolve
@@ -1693,16 +1708,30 @@ label episode_4:
                     $ meangirl = "Olivia"
                     o neutral "I'm Olivia. Olivia JOHNSON, next in line to take over the Johnson Big Law Firm."
                     o happy "I've heard all about you, [playername]. Let's be friends, okay?"
-
                     mc neutral "(She could either become an ally or an enemy...let's just try to stay on her good side.)"
-
                     mc happy "Okay."
                     "Olivia brings her own napkin, and you serve her a lobster tail too."
-
                     g disgusted "..."
                     o angry "What are you looking at?"
+                    g neutral "Hm? I was just thinking about how women can be so two-faced."
+                    o angry "Excuse me?"
+                    g neutral "Woah, calm down. I'm not just targeting you."
+                    mc deadpan "(What is going on?)"
+                    mc neutral "Not cool, King. I'm not sure what you have against women, but making comments like that say more about YOU than they do about us."
+                    o happy "YES!!! YOU TELL HIM SIS!!!"
+                    g neutral "..."
+                    "*RING*"
+                    "King doesn't say anything else before the bell rings, signaling that lunch has ended. You get up and pack your things."
+                    mc neutral "Let's go, Olivia."
+                    $ olivia_ticked_off = False
+                    # next scene can be gymbro apologizing!!
 
-                    g neutral "Hm?"
+                    hide olivia
+                    hide king 
+                    with dissolve
+
+                    show bg classroom_04 at blur_screen
+                    with dissolve
 
                     pass
 
