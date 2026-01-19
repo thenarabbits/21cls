@@ -24,6 +24,11 @@ init:
     transform move_back_to_middle:
         easeout 0.3 xalign 0.5
 
+    transform downsize_sprite:
+        zoom 0.25
+        xcenter 0.5
+        yalign 1.0
+
 default playername = "You"
 default performative = "Kyren"
 default narcissist = "Ronan"
@@ -32,6 +37,7 @@ default gymbro = "King"
 default meangirl = "Olivia"
 # if this is true, then olivia becomes your enemy - otherwise, you become friends
 default olivia_ticked_off = False
+default know_gymbro = True
 
 # character define
 define mc = Character("[playername]", image="player")
@@ -59,6 +65,7 @@ image kyren shocked = "kyren_shocked.png"
 image king neutral = "gymbro_neutral.png"
 image king disgusted = "gymbro_disgusted.png"
 image king angry = "gymbro_angry.png"
+image king focused = "gymbro_focused.png"
 
 image cashier_neutral = "cashier.png"
 image classmate_neutral = "billG.jpg"
@@ -1631,6 +1638,9 @@ label episode_4:
                             "He uses funny words like \"looksmaxxing\" and offers you plenty of tips for your next gym session."
                             "You decide to just let him keep talking while you finish eating your lunch."
 
+                            "+1 Aura!"
+                            $ g_aura += 1
+
                             g neutral "Hey [playername], you're a pretty good listener-"
                             "*RING!*"
                             g angry "...since I hate being interrupted."
@@ -1690,8 +1700,9 @@ label episode_4:
                         yalign 1.0
                     g "...?"
                     g neutral "You know what? Sure, okay."
-                    g neutral "Protein is protein."
+                    g focused "Protein is protein."
 
+                    show king neutral
                     "You serve King a lobster tail on a clean napkin."
 
                     show king neutral at move_left
@@ -1723,6 +1734,7 @@ label episode_4:
                     "*RING*"
                     "King doesn't say anything else before the bell rings, signaling that lunch has ended. You get up and pack your things."
                     mc neutral "Let's go, Olivia."
+                    "And then you girls leave the classroom."
                     $ olivia_ticked_off = False
                     # next scene can be gymbro apologizing!!
 
@@ -1730,8 +1742,11 @@ label episode_4:
                     hide king 
                     with dissolve
 
-                    show bg classroom_04 at blur_screen
+                    # show bg classroom_04 at blur_screen
+                    scene bg quad_outside_arts_building with fade
                     with dissolve
+
+                    show bg quad_outside_arts_building at blur_screen
 
                     pass
 
@@ -1759,7 +1774,6 @@ label episode_4_outside:
 
     # "When you exit the classroom, you're greeted by the smell of coffee."
     # "Exiting the classroom, you smell the scent of coffee, carried by a soft breeze."
-
     "As you leave the classroom, you get a strong whiff of coffee and cologne, but the cologne is so strong that it almost overpowers the coffee scent."
     mc neutral "*lowkey choking*"
     
@@ -1769,7 +1783,6 @@ label episode_4_outside:
         yalign 1.0
     
     g disgusted "Females... *sigh*"
-    
     "That smell of coffee is probably coming from this tough-looking guy, who's leaving the classroom at the same time you are."
 
     menu:
@@ -1798,12 +1811,10 @@ label episode_4_outside:
             mc deadpan "(So rude.)"
             mc neutral "(Whatever.)"
             mc happy "(All that matters is that I get to eat lunch now!)"
-
             "Finding an empty bench, you place down your bag and take out your bento."
             mc happy "Home-cooked food is always the best! *om nom nom nom nom*"
 
             # plan: olivia comes by and IS the one who spills the food hohoho...
-
             $ olivia_temperament_counter = 0
 
             o "Soooo...YOU'RE [playername]?"
@@ -1816,31 +1827,30 @@ label episode_4_outside:
 
             menu:
                 "Yes, I'm [playername].":
-                    o "*gasp* It's SO great to meet you, [playername]!"
+                    o happy "*gasp* It's SO great to meet you, [playername]!"
                 "Who are you?":
-                    o "Oh GIRL, don't be so on edge!"
+                    o sad "Oh GIRL, don't be so on edge!"
                     $ olivia_temperament_counter += 1
                     mc deadpan "(How am I being on edge?)"
 
             $ meangirl = "Olivia"
-            o "My NAME is Olivia. And I'm a total girls' girl."
+            o neutral "My NAME is Olivia. And I'm a total girls' girl."
             "Olivia reaches into her bag, and you hear the clink-clacking sounds of her rummaging through her items."
-            o "Um...HAHAHA...one moment please...where is it..."
+            o sad "Um...HAHAHA...one moment please...where is it..."
             mc neutral "No, please. Take your time."
             "As if you gave a magician's command, Olivia instantly pulls a small card out of her bag with a slightly embarrassed smile."
-
-
-            o "You're SO sweet, [playername]. I was looking for this—thanks for being patient."
+            o happy "You're SO sweet, [playername]. I was looking to give you my business card—thanks for being patient."
             # inventory idea? collectible trophy/memento system? it can be the same menu as a cutscene gallery
             # display business card cutscene here
             menu:
                 "I didn't do anything.":
-                    o "Aw, you're SUCH a humble queen."
+                    o happy "Aw, you're SUCH a humble queen."
                     mc deadpan "Uhh...thank you."
                     # $ g_aura += 1
                     # "+1 Aura!"
                 "No problem.":
                     $ olivia_temperament_counter += 1
+                    pass
 
             "Flashing a pretty corporate smile, Olivia presents the small card to you, which you recognize to be a business card. You accept the card and glance at the printed text."
             # "Olivia smoothly takes your hand and curls your fingers over her business card."
@@ -1858,8 +1868,8 @@ label episode_4_outside:
                 "So you thought I was ugly and mean?":
                     mc angry "So you thought I was ugly and mean?"
                     $ olivia_temperament_counter += 1
-                    o "WOAH, girl, way to put words into my mouth."
-                    o "I guess the rumors WERE right, then."
+                    o angry "WOAH, girl, way to put words into my mouth."
+                    o neutral "I guess the rumors WERE right, then."
 
                     menu:
                         "(Scoff.)":
@@ -1868,7 +1878,7 @@ label episode_4_outside:
                             mc neutral "You're not really a \"girl's girl\" if you believe rumors and mindless gossip so easily."
                             mc neutral "You're just a hypocrite."
                             # olivia angry
-                            o "You...you're one to talk!"
+                            o angry "You...you're one to talk!"
                             # o "You act all high and mighty just because your parents are loaded."
                             o "You act all high and mighty just because your family owns a huge company."
                             o "But listen carefully, [playername]. You're NOT special."
@@ -1876,7 +1886,7 @@ label episode_4_outside:
                             o "Take another good look at that business card I gave you."
                             
                             "In small print at the bottom of the card, you read: \"Johnson Big Law Firm\"."
-                            o "I was trying to be humble, but you SHOULD know that I'm also Olivia JOHNSON, next in line to take over the Johnson Big Law Firm!"
+                            o happy "I was trying to be humble, but you SHOULD know that I'm also Olivia JOHNSON, next in line to take over the Johnson Big Law Firm!"
                             mc happy "(She kind of reminds me of someone...)"
                             mc neutral "Ahem. I see. Noted."
                             $ n_aura += 1
@@ -1884,8 +1894,8 @@ label episode_4_outside:
 
                         "(Say you were just kidding.)":
                             mc neutral "I was just kidding."
-                            o "Oh, good. I HATE it when people can't take a joke."
-                            o "But you seem like a nice girl. I think we'll get along QUITE well."
+                            o neutral "Oh, good. I HATE it when people can't take a joke."
+                            o happy "But you seem like a nice girl. I think we'll get along QUITE well."
                             $ olivia_temperament_counter -= 2
 
             # "Olivia looks away into the distance as her voice trails off..."
@@ -1894,18 +1904,18 @@ label episode_4_outside:
             "It's Olivia's phone, and she once again rummages through her bag to find it."
 
             if (olivia_temperament_counter < 3):
-                o "Oh my, would you look at the time. Sorry our meeting was so short. I have an IMPORTANT call to take right now."
-                o "ANYWAYS, I just gave you my business card, with my WinkedIn on the back side. We're friends now, 'kay?"
+                o shocked "Oh my, would you look at the time. Sorry our meeting was so short. I have an IMPORTANT call to take right now."
+                o neutral "ANYWAYS, I just gave you my business card, with my WinkedIn on the back side. We're friends now, 'kay?"
                 mc neutral "Uh-"
-                o "[playername], don't hesitate to say hello when you see me in the halls. Bye now!"
+                o happy "[playername], don't hesitate to say hello when you see me in the halls. Bye now!"
                 hide olivia neutral
                 mc neutral "(...What a character.)"
             else:
                 
                 $ olivia_ticked_off = True
 
-                o "See, this is an IMPORTANT call I have to take right now."
-                o "Bye, [playername]."
+                o angry "See, this is an IMPORTANT call I have to take right now."
+                o neutral "Bye, [playername]."
 
                 hide olivia neutral
 
@@ -1918,6 +1928,8 @@ label episode_4_outside:
             "Sluggishly, you take out your phone to check the time. As you thought, lunch is ending soon."
             mc neutral "(Better head to my next class, Quantum Physics.)"
 
+            $ know_gymbro = False
+
             menu:
                 "Head to your next class.":
                     scene bg classroom_04 with fade
@@ -1929,8 +1941,7 @@ label episode_4_outside:
 
         "Walk past him.":
             "You stare straight ahead and walk just a little faster than usual, because you've got places to be and lunch to eat."
-            g neutral "..."
-            hide king disgusted
+            hide king disgusted with dissolve
 
             # maybe cutscene of the bento
             "Finding an empty bench, you place down your bag and take out your bento."
@@ -1942,26 +1953,46 @@ label episode_4_outside:
             "And that tough-looking guy just now..."
             with hpunch
             mc neutral "*shudder*"
-            mc shocked "Ack! One of my chopsticks fell..."
+            mc shocked "Ack! One of my chopsticks fell onto the bench..."
 
-            "You reach down to grab your chopstick, which has left a sticky residue on the ground."
+            "You reach down to grab your chopstick, which has left a sticky residue on the bench."
             mc neutral "(Good thing I'm always prepared with napkins and spare utensils.)"
 
             menu:
-                "(Use napkins to clean up after yourself.)":
+                "Use napkins to clean up after yourself.":
+                    "Taking a napkin out of your pocket, you wipe your little spill."
+                    mc happy "There. All clean."
                     # olivia: "wowww ur cleaning urself? ur not having ur little housemaids do it for u?" (pretentious, fake tone)
-                    mc happy "All clean. Time to throw this napkin in the trash can."
-                    "You throw away your trash, and once again smell the pungent cologne and coffee combination from before."
-                    show king neutral with dissolve:
-                        zoom 0.25
-                        xcenter 0.5
-                        yalign 1.0
-                    g "In a world of 3s, you are a 10."
-                    # gym bro sees olivia, is like "you women are so emotional. at least this girl has potential"
-                    mc deadpan "(What's his deal?)"
+                    mc neutral "..."
+                    mc deadpan "(Wait, why does this feel like déjà vu...)"
+                    "You get up to throw away your trash in a nearby garbage can."
+                    "But as you return to the bench where you were eating, you smell a familiar cologne and coffee combination."
+                    "It's REALLY strong now, so like, look behind you."
 
-                    # bookmark
-                    "Go back?"
+                    show king neutral at downsize_sprite
+                    with dissolve
+
+                    g focused "In a world of 3s, you are a 10."
+                    mc deadpan "(Really? Right in front of my salad?)"
+                    mc shocked "(Wait, that's the guy I ran into earlier!)"
+                    mc neutral "Um, who are you?"
+                    g neutral "King."
+                    mc neutral "Okay... nice. To. Meet you. King."
+                    mc "(He's seems to be much more friendly than earlier.)"
+                    g neutral "I really misjudged you. I thought you were just like other women... but you're not."
+                    g "You get what I mean?"
+                    mc deadpan "No, I do not."
+                    g neutral "Aha. Not everyone can comprehend complex ideas like this."
+                    g neutral "Basically, yeah"
+
+                    
+
+                    # gym bro sees olivia, is like "you women are so emotional. at least this girl has potential"
+                    # mc deadpan "(What's his deal?)"
+
+                    # menu:
+                    #     "Who are you?":
+                    #         pass
 
                     # menu:
                     #     "Throwing away trash is the bare minimum.":
@@ -1978,6 +2009,7 @@ label episode_4_outside:
                     # |   _ _|
                     # (    ^ )
                     # different route...
+                    # bruh i really did not know what to write for this part
 
     jump episode_5
     return
