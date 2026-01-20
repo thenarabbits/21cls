@@ -1969,6 +1969,7 @@ label episode_4_outside:
                 "I don't use WinkedIn.":
                     mc neutral "I don't use WinkedIn."
                     g "What?"
+                    with vpunch
                     g angry "You NEED to get WinkedIn. Don't you know how important networking is? How else will you prove yourself?"
                     mc deadpan "(I don't really need to.)"
                     g neutral "*sigh* Apologies. I don't mean to get aggravated."
@@ -2006,97 +2007,69 @@ label episode_4_outside:
 
             jump episode_5
 
-        "Walk past him.":
-            "You stare straight ahead and walk just a little faster than usual, because you've got places to be and lunch to eat."
-            hide king disgusted with dissolve
+        # "Walk past him.":
+        #     "You stare straight ahead and walk just a little faster than usual, because you've got places to be and lunch to eat."
+        #     hide king disgusted with dissolve
 
-            # maybe cutscene of the bento
-            "Finding an empty bench, you place down your bag and take out your bento."
-            mc happy "Home-cooked food is always the best! *om nom nom nom nom*"
+        #     # maybe cutscene of the bento
+        #     "Finding an empty bench, you place down your bag and take out your bento."
+        #     mc happy "Home-cooked food is always the best! *om nom nom nom nom*"
             
-            "As you eat by yourself, you're left with your own thoughts. You think about all the new people you've met today."
-            mc neutral "(Kyren, Mr. Teacher, Ronan and the two peasants...Lucien...)"
-            # mc neutral "(I wonder what they're all doing during lunch.)"
-            "And that tough-looking guy just now..."
-            with hpunch
-            mc neutral "*shudder*"
-            mc shocked "Ack! One of my chopsticks fell onto the bench..."
+        #     "As you eat by yourself, you're left with your own thoughts. You think about all the new people you've met today."
+        #     mc neutral "(Kyren, Mr. Teacher, Ronan and the two peasants...Lucien...)"
+        #     # mc neutral "(I wonder what they're all doing during lunch.)"
+        #     "And that tough-looking guy just now..."
+        #     with hpunch
+        #     mc neutral "*shudder*"
+        #     mc shocked "Ack! One of my chopsticks fell onto the bench..."
 
-            "You reach down to grab your chopstick, which has left a sticky residue on the bench."
-            mc neutral "(Good thing I'm always prepared with napkins and spare utensils.)"
+        #     "You reach down to grab your chopstick, which has left a sticky residue on the bench."
+        #     mc neutral "(Good thing I'm always prepared with napkins and spare utensils.)"
 
-            menu:
-                "Use napkins to clean up after yourself.":
+        #     menu:
+        #         "Use napkins to clean up after yourself.":
                     
-                    $ meangirl = "???"
+        #             $ meangirl = "???"
 
-                    "Taking a napkin out of your pocket, you wipe your little spill."
-                    mc happy "There. All clean."
-                    # olivia: "wowww ur cleaning urself? ur not having ur little housemaids do it for u?" (pretentious, fake tone)
-                    mc neutral "..."
-                    mc deadpan "(Wait, why does this feel like déjà vu...)"
-                    "You get up to throw away your trash in a nearby garbage can."
-                    "But as you return to the bench where you were eating, you smell a familiar cologne and coffee combination."
-                    "It's REALLY strong now, so like, look behind you."
+        #             "Taking a napkin out of your pocket, you wipe your little spill."
+        #             mc happy "There. All clean."
+        #             # olivia: "wowww ur cleaning urself? ur not having ur little housemaids do it for u?" (pretentious, fake tone)
+        #             mc neutral "..."
+        #             mc deadpan "(Wait, why does this feel like déjà vu...)"
+        #             "You get up to throw away your trash in a nearby garbage can."
+        #             "But as you return to the bench where you were eating, you smell a familiar cologne and coffee combination."
+        #             "It's REALLY strong now, so like, look behind you."
 
-                    show king neutral at downsize_sprite
-                    with dissolve
+        #             show king neutral at downsize_sprite
+        #             with dissolve
 
-                    g focused "In a world of 3s, you are a 10."
-                    mc deadpan "(Really? Right in front of my salad?)"
-                    mc shocked "(Wait, that's the guy I ran into earlier!)"
-                    mc neutral "Um, who are you?"
-                    g neutral "King."
-                    mc neutral "Okay. Nice. To. Meet. You. King."
-                    g neutral "I really misjudged you. I thought you were just like other women... but you're not."
-                    g "You get what I mean?"
-                    mc deadpan "No, I do not."
-                    mc neutral "(At least, he seems to be much more friendly than earlier.)"
-                    mc happy "...But maybe I misjudged you too."
-                    g focused "Aha. Not everyone can comprehend complex ideas like this, but it looks like you've got potential."
-                    g neutral "When I saw you pick up that napkin..."
-                    show mc shocked
-                    g neutral "I just thought that you would be a good, stable partner to have."
-                    g neutral "To your advantage, you're attractive and composed. Truly a traditional woman. I respect you for that."
-                    mc "Uh..."
+        #             g focused "In a world of 3s, you are a 10."
+        #             mc deadpan "(Really? Right in front of my salad?)"
+        #             mc shocked "(Wait, that's the guy I ran into earlier!)"
+        #             mc neutral "Um, who are you?"
+        #             g neutral "King."
+        #             mc neutral "Okay. Nice. To. Meet. You. King."
+        #             g neutral "I really misjudged you. I thought you were just like other women... but you're not."
+        #             g "You get what I mean?"
+        #             mc deadpan "No, I do not."
+        #             mc neutral "(At least, he seems to be much more friendly than earlier.)"
+        #             mc happy "...But maybe I misjudged you too."
+        #             g focused "Aha. Not everyone can comprehend complex ideas like this, but it looks like you've got potential."
+        #             g neutral "When I saw you pick up that napkin..."
+        #             show mc shocked
+        #             g neutral "I just thought that you would be a good, stable partner to have."
+        #             g neutral "To your advantage, you're attractive and composed. Truly a traditional woman. I respect you for that."
+        #             mc "Uh..."
 
-                    menu:
-                        "Pretend you didn't hear that.":
-                            pass
-                        "Thank you.":
-                            mc neutral "Thank you?"
-                            g focused "You're welcome."
+        #             menu:
+        #                 "Pretend you didn't hear that.":
+        #                     pass
+        #                 "Thank you.":
+        #                     mc neutral "Thank you?"
+        #                     g focused "You're welcome."
                     
-                    g neutral "Anyways, tell me more about yourself. "
+        #             g neutral "Anyways, tell me more about yourself. "
 
-                    # new strategy: don't try to force olivia in if she doesn't fit
-
-
-
-
-                    # gym bro sees olivia, is like "you women are so emotional. at least this girl has potential"
-                    # mc deadpan "(What's his deal?)"
-
-                    # menu:
-                    #     "Who are you?":
-                    #         pass
-
-                    # menu:
-                    #     "Throwing away trash is the bare minimum.":
-                    #         # idk yet
-                    #     "Not cool bro."
-                    #         mc neutral "Not cool bro. You shouldn't say things like that."
-                    #     "(Walk away.)":
-                    #         # idk yet
-
-                    # |COME BACK!!!!!|
-                    # ---------------
-                    #   __  __
-                    #  | |_| |
-                    # |   _ _|
-                    # (    ^ )
-                    # different route...
-                    # bruh i really did not know what to write for this part
 
     jump episode_5
     return
