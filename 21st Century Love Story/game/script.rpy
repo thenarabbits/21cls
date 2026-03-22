@@ -122,7 +122,9 @@ image bg living_room = "condo_Day 05.jpg"
 image bg street = "street_redux_day.webp"
 image bg park = "park_not_so_winter.webp"
 image bg mall_street = "mall_b_02 copy.webp"
+image bg mall_street_evening = "mall_e_02 copy.webp"
 image bg mall_street_2 = "mall_b_08 copy.webp"
+image bg mall_street_2_evening = "mall_e_08 copy.webp"
 
 # ========================AURA STUFF=============================
     
@@ -2894,8 +2896,12 @@ label episode_8:
         g disgusted "Right... you're the exchange student everyone's been raving about."
         g neutral "Of course everything is new to you."
         mc deadpan "By the way, um, how come people are \"raving\" about me?"
-        # scene bg mall_street_2 with dissolve 
+        scene bg mall_street_2 with dissolve 
         # maybe move it to weeb encounter? idk
+        show king neutral with dissolve:
+            zoom 0.25
+            xcenter 0.5
+            yalign 1.0
         g "Well... not only are you an exchange student, but you're the first ever exchange student."
         g "My buddies are excited about the exchange program because they think Milkyway is heading in a new direction."
         mc neutral "A new direction...?"
@@ -2920,6 +2926,8 @@ label episode_8:
             "Why would I?":
                 mc shocked "Why would I?"
                 mc neutral "I enjoy listening to you."
+                $ g_aura += 1
+                "+1 Aura!"
                 pass
         mc happy "I learn so much through our conversations. They're quite valuable to me."
         g "That's so..."
@@ -2955,24 +2963,89 @@ label episode_8:
         g disgusted "What is going through your head, bro?"
         n blingneutral "I ain't your bro. I'm Ronan X.Y. Sinclair."
         n neutral "Anyhow, Mimo Mall needs some serious renovating."
-        n neutral "There are so many random shops that no one needs... like there's a store that sells mattresses and even a store that sells ginseng candies."
+        n neutral "There are so many random shops that no one needs... like, there's a store that sells mattresses and even a store that sells ginseng candies."
+        n neutral "Wouldn't you agree, [playername]?"
+        mc neutral "I..."
 
-        mc neutral "Actually..."
         menu:
-            "I'm here to buy a mattress.":
-                mc neutral "I'm here to buy a mattress."
-                n neutral "What? Do you not already have a [[insert fancy brand name] mattress for your luxurious, king-sized bed?"
-                mc neutral "Of course I have one. But it's a bit too fancy for me. It kind of hurts my back."
-            "I'm here to buy ginseng candies.":
+            "Agree.":
+                mc neutral "...I agree. I wouldn't think to buy mattresses and ginseng candies at a mall."
+                n neutral "Right? Since this is an American mall, after all, we should really emphasize the food court and luxury stores that appeal to everyone."
+                n neutral "Instead of niche things like mattresses and ginseng candies!"
+                g neutral "..."
+                n "Anyhow, [playername], I'm really glad we see eye-to-eye."
+                n "I hope you, on behalf of Fuyu Group will take Mimo Mall as an opportunity to expand your business in America."
+                n "And don't forget--it's a gift from Sinclair X.Y. Industries."
+                n blinghappy "Ahem. That's all I wanted to say! Farewell, you two!"
+                hide narcissist blinghappy
+                show king angry at move_back_to_middle
+                g "[playername]. What's this all about?"
+                mc neutral "I have no idea. Fuyu Group and Sinclair X.Y. Industries have never worked together before..."
+                mc "I'm not sure what partnership he's talking about."
+                g neutral "Hmph."
+                $ g_aura -=1
+                "-1 Aura!"
+            "Disagree.":
+                mc neutral "...I disagree. The mattresses and ginseng candies bring variety and a touch of uniqueness to the mall."
                 $ g_aura += 1
                 "+1 Aura!"
-                mc neutral "I'm here to buy ginseng candies."
-                g focused "Yes. The ginseng candies at Mimo Mall are the best."
+                g focused "Yeah. *nod of approval*"
+                n neutral "Well, okay. Whatever." 
+                n blingneutral "This conversation has dragged on for too long."
+                n "I'm out of here!"
+                hide narcissist blingneutral
+                show king neutral at move_back_to_middle
+                mc deadpan "..."
+                g angry "*SIGH*"
+                mc neutral "Ronan coming out of nowhere really caught me off guard."
+                g "No shot."
+            
+        scene bg mall_street_2_evening with dissolve
+        
+        "Minutes pass by as you two walk side-by-side."
+        "It's quiet, except for the sounds of the city all around you."
+        "The air is clear, and the sun is setting."
+        "When you eventually return to China, you'll probably reminiscence on this scene."
+
+        show king neutral with dissolve:
+            zoom 0.25
+            xcenter 0.5
+            yalign 1.0
+        g focused "Hold on."
+        "King slides his phone out of his back pocket, just pausing to glance at the clock."
+        mc neutral "What time is it?"
+        g neutral "Time for me to go to the gym."
+        mc neutral "Oh, okay. Bye."
+
+        # if aura is high enough then he will offer to take you home? maybe?
+        g neutral "Wait, are you okay getting home by yourself?"
+
+        menu:
+            "I have a chauffeur":
+                mc neutral "Yeah, I'm good. I'll just call my chauffeur."
+                $ g_aura += 1
+                "+1 Aura!"
+            "No":
+                mc neutral "No."
+                
                 pass
 
-        "For the sake of this demo, here's a short summary of what happened in between now and the next episode:"
-        "You either sided with King or Ronan. Depending on your accumulated choices, you became enemies with one of them."
-        "Your outing ended on a bit of a sour note, so you went home right after, and then just rested for the remaining part of your weekend."
+
+        # menu:
+        #     "I'm here to buy a mattress.":
+        #         mc neutral "I'm here to buy a mattress."
+        #         n neutral "What? Do you not already have a [[insert fancy brand name] mattress for your luxurious, king-sized bed?"
+        #         mc neutral "Of course I have one. But it's a bit too fancy for me. It kind of hurts my back."
+        #     "I'm here to buy ginseng candies.":
+        #         $ g_aura += 1
+        #         "+1 Aura!"
+        #         mc neutral "I'm here to buy ginseng candies."
+        #         g focused "Yes. The ginseng candies at Mimo Mall are the best."
+        #         pass
+
+        # "For the sake of this demo, here's a short summary of what happened in between now and the next episode:"
+        # "You either sided with King or Ronan. Depending on your accumulated choices, you became enemies with one of them."
+        # "Your outing ended on a bit of a sour note, so you went home right after, and then just rested for the remaining part of your weekend."
 
 
         

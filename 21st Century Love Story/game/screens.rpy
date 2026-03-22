@@ -341,8 +341,8 @@ screen episode_selection():
             textbutton "Episode 6" action Start("episode_6")
             textbutton "Episode 7" action Start("episode_7")
             textbutton "Episode 8" action Start("episode_8")
-            textbutton "Episode 8" action Start("episode_9")
-            textbutton "Episode 8" action Start("episode_10")
+            textbutton "Episode 9" action Start("episode_9")
+            textbutton "Episode 10" action Start("episode_10")
         else:
             # textbutton "Episode 1" action [Return(), Jump("episode_1")]
             # textbutton "Episode 2" action [Return(), Jump("episode_2")]
