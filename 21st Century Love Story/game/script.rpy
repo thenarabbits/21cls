@@ -125,6 +125,8 @@ image bg mall_street = "mall_b_02 copy.webp"
 image bg mall_street_evening = "mall_e_02 copy.webp"
 image bg mall_street_2 = "mall_b_08 copy.webp"
 image bg mall_street_2_evening = "mall_e_08 copy.webp"
+image bg mall_street_4_evening = "mall_e_04 copy.webp"
+image bg bus_stop_night = "bus_stop_night.webp"
 
 # ========================AURA STUFF=============================
     
@@ -3002,7 +3004,7 @@ label episode_8:
             
         scene bg mall_street_2_evening with dissolve
         
-        "Minutes pass by as you two walk side-by-side."
+        "What feels like an hour passes by as you two walk side-by-side."
         "It's quiet, except for the sounds of the city all around you."
         "The air is clear, and the sun is setting."
         "When you eventually return to China, you'll probably reminiscence on this scene."
@@ -3021,13 +3023,41 @@ label episode_8:
         g neutral "Wait, are you okay getting home by yourself?"
 
         menu:
-            "I have a chauffeur":
+            "Yes.":
                 mc neutral "Yeah, I'm good. I'll just call my chauffeur."
                 $ g_aura += 1
                 "+1 Aura!"
+                "As you dial up your chauffeur, King walks away. Of course, he transitions into a jog."
+                "You watch him speedily disappear into the distance."
             "No":
                 mc neutral "No."
+                g neutral "Then, follow me. I'll take you walk you over to the bus stop."
+                "King speed-walks ahead of you."
+                mc angry "Hey, why are you walking so fast?"
+                g focused "Nah, you just gotta keep up."
+                "By the time those words come out of his mouth, King's already a good 5 meters ahead."
+                "And in American units, that's about 16.4 feet."
+                scene bg mall_street_4_evening with fade
+                show king neutral with dissolve:
+                    zoom 0.25
+                    xcenter 0.5
+                    yalign 1.0
+                g neutral "There's a bus stop just up ahead."
+                g "If you can't see it, that means you need glasses."
+                mc angry "I see it, thanks."
+                g "Yeah. I'm leaving now."
+                mc neutral "See you."
+                hide king neutral with fade
+                scene bg mall_street_4_evening at blur_screen
+
+                "Soon enough, you hop on a bus that has stopped by."
+                "You close your eyes, just for a moment."
+                scene bg bus_stop_night
+                "And then you're back onto a familiar street."
+                mc "(It's been a long day.)"
+                mc "(What I thought would be a short outing turned into a full-on side quest...)"
                 
+
                 pass
 
 
