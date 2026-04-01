@@ -1828,7 +1828,7 @@ label episode_4:
     jump episode_5
     return
 
-# CURRENTLY UNFINISHED: sayhi, walkpast
+# walkpast not written
 label episode_4_outside:
 
     scene bg quad_outside_arts_building with fade
@@ -1843,7 +1843,7 @@ label episode_4_outside:
         xcenter 0.5
         yalign 1.0
     
-    g disgusted "Wom... *sigh*"
+    g disgusted "*sigh of disapproval*"
     "That smell of coffee is probably coming from this tough-looking guy, who's leaving the classroom at the same time you are."
 
     menu:
@@ -2855,6 +2855,7 @@ label episode_7:
                 $ called_it_a_day = True
                 jump episode_9
             "Check out Mimo Mall.":
+                $ mall_with_gymbro = False
                 jump episode_8
     else:
         menu:
@@ -2877,7 +2878,6 @@ label episode_7:
 label episode_8:
     # MALL EPISODE
     $ completed_n_date = True
-    $ mall_with_gymbro = True
 
     scene bg mall_street with fade
     
@@ -3054,12 +3054,13 @@ label episode_8:
                 "You close your eyes, just for a moment."
                 scene bg bus_stop_night
                 "And then you're back onto a familiar street."
-                mc "(It's been a long day.)"
-                mc "(What I thought would be a short outing turned into a full-on side quest...)"
+                mc happy "(It's been a long day.)"
+                mc neutral "(What I thought would be a short outing turned into a full-on side quest...)"
+                mc "(I'm just gonna go straight home and rest.)"
+
+                scene bg black_background with fade
                 
-
                 pass
-
 
         # menu:
         #     "I'm here to buy a mattress.":
@@ -3072,23 +3073,28 @@ label episode_8:
         #         mc neutral "I'm here to buy ginseng candies."
         #         g focused "Yes. The ginseng candies at Mimo Mall are the best."
         #         pass
-
         # "For the sake of this demo, here's a short summary of what happened in between now and the next episode:"
         # "You either sided with King or Ronan. Depending on your accumulated choices, you became enemies with one of them."
         # "Your outing ended on a bit of a sour note, so you went home right after, and then just rested for the remaining part of your weekend."
 
+    else: # when gymbro is not at the mall
+        #by yourself, but run into weeb?
+        scene bg mall_street with fade
+        "Saturday, 3:00 PM. Mimo Mall."
 
-        
+        "It's a weekend afternoon, so Mimo Mall's parking lot is packed to the brim."
+        "The cars are lined up like sardines in a can, while a few unlucky cars circle around the lot in search of a clearing."
 
+        mc neutral "(I should check to see if the traffic is better before I call my chauffeur later.)"
+        mc happy "Anyways... where to first?"
+        "*growl*"
 
-    
+        mc deadpan "Woah, I just realized how hungry I am."
+        mc "Definitely going to the food court first."
 
+        menu:
+            "Check out the food court."
 
-    # else: # when gymbro is not at the mall
-    #     "Saturday, 12:00 PM. The bus stop."
-
-    #     "To be continued"
-    #     pass
 
     jump episode_9
     return
@@ -3122,6 +3128,7 @@ label episode_9:
         "Besides the strange note you found, the rest of your weekend is nothing but calm and peaceful. You could get definitely get used to this."
         "Enjoy it before you have to go back to school on Monday."
         mc angry "Ugh."
+        scene bg black_background with fade
 
     else:
         pass
@@ -3344,7 +3351,7 @@ label episode_10:
         xcenter 0.5
         yalign 1.0
     
-    "Kyren Miller, the guy you met yesterday morning."
+    "Kyren Miller, the guy you met last week."
 
     p neutral "Hey, [playername], what a coincidence!"
     p happy "I didn't think you would be up here as well."
