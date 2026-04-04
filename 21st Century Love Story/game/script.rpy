@@ -140,6 +140,7 @@ image bg bus_stop_night = "bus_stop_night.webp"
 image bg mall_food_court = "mall_b_07 copy.webp"
 image bg mall_food_court_2 = "mall_b_09 copy.webp"
 image bg mall_plaza = "mall_b_05 copy.webp"
+image bg inside_bus = "train_one.webp"
 
 # ========================AURA STUFF=============================
     
@@ -3195,6 +3196,10 @@ label episode_8:
                 mc neutral "He asked for number 13."
                 
                 hide cashier_neutral
+
+                $ w_aura += 1
+                "+1 Aura!"
+
                 show weeb surprised with dissolve:
                     zoom 0.25
                     xcenter 0.5
@@ -3226,6 +3231,8 @@ label episode_8:
                 
                 cashier "Okay. Are you paying together?"
                 mc neutral "Yes, I'll pay."
+                $ w_aura += 1
+                "+1 Aura!"
                 cashier "Your total will be $32.72. And your order number is 51."
                 mc happy "Thank you."
 
@@ -3302,6 +3309,7 @@ label episode_8:
                     "But once you take a bite..."
                     "A burst of flavors dance on your tongue. Juicy tomato, soft cheese, something sweet..."
                     mc happy "(And I was so worried that the bread would be too dry. Silly me, it was just nicely toasted.)"
+                    $ w_aura += 1
                 else:
                     w "Okay, 13 is mine... and here's your food."
                     hide weeb neutral
@@ -3339,19 +3347,54 @@ label episode_8:
                 scene bg mall_street_evening
 
                 "By now, the sun is beginning to set. The sky has turned peachy orange."
-                mc happy "Ooh. I want peaches."
 
+                if w_aura >= 5:
+                    show weeb neutral with dissolve:
+                        zoom 0.25
+                        xcenter 0.5
+                        yalign 1.0
+                    w "Now I'm kind of craving peaches..."
+                    mc shocked "Woah, how did you read my mind?"
+                    w happy "H-huh? I was just thinking that the color of the sky is like peach ice cream..."
+                    mc "Peach ice cream sounds delicious."
+                    w neutral "A-a-a-actually I-I know a good ice cream s-shop in our city!"
+                    w "You should-I mean, we should go sometime."
 
+                    $ w_aura += 1
+                    "+1 Aura!"
                 
+                # menu:
+                #     "Yes":
+                #         mc happy "I'd like that."
+                #         $ w_aura += 1
+                #         "+1 Aura!"
+                #         w happy "Okay then."
+                #     "No.":
+                #         mc "Nah, that's okay."
+                #         w "Okay then."
 
+                "Soon enough, you and Lucien get to the bus stop, where you briefly wait for the next bus."
 
+                scene bg inside_bus with dissolve
 
+                show weeb happy with dissolve:
+                    zoom 0.25
+                    xcenter 0.5
+                    yalign 1.0
                 
+                w "That was a lot of fun, don't you think?"
+                w neutral "Um, w-what I meant to say was, I had fun. Thanks, [playername]."
 
-
-
-                
-
+                menu:
+                    "I had fun too":
+                        mc happy "I had fun too."
+                    "I can't wait to be home.":
+                        mc neutral "I can't wait to be home."
+                        w "Oh... haha, yeah..."
+                        pass
+            
+                "Now, you're starting to feel the food coma after filling your belly to your heart's content. You close your eyes to rest."
+                "And before you know it, you're back to the familiar street where your penthouse is."
 
     jump episode_9
     return
@@ -3388,6 +3431,26 @@ label episode_9:
         scene bg black_background with fade
 
     else:
+        scene bg bedroom_night
+        
+        "Saturday, 11:00 PM."
+        mc neutral "Woah, I dozed off for quite a bit."
+        mc "I guess the outing took a toll on me. I don't think I'll do much more by the time the school week starts."
+
+        mc "Should I doomscroll?"
+
+        if g_aura >= 10:
+            pass
+        elif p_aura >= 10:
+            pass
+        elif n_aura >= 10:
+            pass
+        elif w_aura >= 10:
+            pass
+
+        mc "Nah, forget it... I'll just go back to sleep."
+        mc "I don't know why, but I get the feeling that a lot will happen next week."
+
         pass
     
     jump episode_10
