@@ -3287,23 +3287,61 @@ label episode_8:
                 # AT THE PLAZA =============================
                 scene bg mall_plaza with fade
                 
+                "After walking around the plaza, the two of you are pleased to find a more spacious table, underneath the cool shade of the surrounding trees."
+                
                 show weeb neutral with dissolve:
                     zoom 0.25
                     xcenter 0.5
                     yalign 1.0
+
                 if order_with_lucien == 13:
                     w "Um, since we both ordered 13, you can take this one."
-                    hide weeb_neutral
+                    hide weeb neutral
                     "Lucien hands you a container."
                     "You open it and, not gonna lie, this is a sad looking sandwich."
                     "But once you take a bite..."
-                    "A burst of flavors dance on your tongue. Juicy tomato, soft cheese, and something sweet."
+                    "A burst of flavors dance on your tongue. Juicy tomato, soft cheese, something sweet..."
+                    mc happy "(And I was so worried that the bread would be too dry. Silly me, it was just nicely toasted.)"
                 else:
                     w "Okay, 13 is mine... and here's your food."
-                    hide weeb_neutral
+                    hide weeb neutral
                     "Lucien hands you a container."
-                    "It's rice, just like you thought. But the portion is much bigger than you had imagined."
+                    "It's rice, just like you thought. But... amidst heaps of meat and veggies, the portion is much bigger than you had imagined."
                     mc neutral "(So these are American-sized portions.)"
+                    mc "I'm going to conquer this rice."
+                
+                show weeb happy with dissolve:
+                    zoom 0.25
+                    xcenter 0.5
+                    yalign 1.0
+                w "Itadakimasu!"
+
+                hide weeb happy
+                
+                "Lucien is just ecstatic to be eating lunch with you, and the two of you devour your food like cavemen. In this moment, there is no judgement."
+                "1 hour later..."
+
+                show weeb neutral with dissolve:
+                    zoom 0.25
+                    xcenter 0.5
+                    yalign 1.0
+                w "I'm so full..."
+                mc neutral "Me too."
+
+                w "I-I think I should start heading home now... I have to start reading the newest chapter before it's leaked everywhere on Weddit..."
+                w surprised "[playername], are you heading home soon? W-w-we can take the bus t-t-together."
+
+                mc neutral "(Hmm... I do want to see what an American bus is like.)"
+                mc "Okay, sounds good."
+
+                "The two of you start walking to the bus stop."
+
+                scene bg mall_street_evening
+
+                "By now, the sun is beginning to set. The sky has turned peachy orange."
+                mc happy "Ooh. I want peaches."
+
+
                 
 
 
