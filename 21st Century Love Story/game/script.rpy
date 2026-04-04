@@ -50,7 +50,7 @@ define mc = Character("[playername]", image="player")
 define cashier = Character("Cashier")
 define p = Character("[performative]", image="kyren")
 define n = Character("[narcissist]", image="narcissist")
-define w = Character("[weeb]")
+define w = Character("[weeb]", image="weeb")
 define g = Character("[gymbro]", image="king")
 define teacher = Character("Mr. Teacher")
 define classmate = Character("classmate")
@@ -80,7 +80,17 @@ image narcissist neutral = "narcissist_neutral.png"
 image narcissist blingneutral = "narcissist_bling_neutral.png"
 image narcissist blinghappy = "narcissist_bling_happy.png"
 
-image weeb_neutral = "weeb_neutral.png"
+image weeb neutral = "weeb_neutral.png"
+image weeb happy = "weeb_happy.png"
+image weeb confused = "weeb_confused.png"
+image weeb surprised = "weeb_surprised.png"
+
+image weeb noglasses_neutral = "weeb_neutral_OFF.png"
+image weeb noglasses_happy = "weeb_happy_OFF.png"
+image weeb noglasses_confused = "weeb_confused_OFF.png"
+image weeb noglasses_surprised = "weeb_surprised_OFF.png"
+
+# maybe rewrite...
 image b1_neutral = "bully1 neutral.png"
 image b2_neutral = "bully2 neutral.png"
 
@@ -1235,7 +1245,10 @@ label episode_3_meeting_2:
 
     mc shocked "Ow!"
 
-    show weeb_neutral with dissolve
+    show weeb surprised with dissolve:
+        zoom 0.25
+        xcenter 0.5
+        yalign 1.0
 
     w "A-ah!"
 
@@ -1247,25 +1260,38 @@ label episode_3_meeting_2:
     "Brushing off your clothes, you stand up and extend a hand out to the boy."
 
     mc neutral "Are you alright?"
-    w "..."
+    w neutral "..."
     mc deadpan "...Hello?"
+
+    hide weeb surprised with dissolve
 
     "Without responding to you, the boy takes off his glasses with shaky hands and wipes the lenses with the bottom of his shirt before finally making eye contact with you."
     # cutscene start
+
+    # show weeb noglasses_neutral with dissolve:
+    #     zoom 0.25
+    #     xcenter 0.5
+    #     yalign 1.0
+
+    show weeb noglasses_confused with dissolve:
+        zoom 0.25
+        xcenter 0.5
+        yalign 1.0
+
     "And before you could repeat yourself, you can't help but notice the guy is..."
     "...oddly good looking for someone so disheveled?"
     # cutscene end
 
     mc deadpan "Um, I said, are you alright?"
-    w "..."
+    w noglasses_surprised "..."
     mc angry "Can't you hear me? I asked if-"
     w "Suzuki Haruka?!"
     mc deadpan "...What?"
     w "Y-y-y-you... y-y-y-you're a carbon copy!! She's... she's real!!! I knew it!!"
     mc angry "What are you talking about? Are you alright or not?"
-    w "Oh my god, oh my god, oh my god..."
+    w noglasses_neutral "Oh my god, oh my god, oh my god..."
 
-    hide weeb_neutral
+    hide weeb noglasses_neutral with dissolve
 
     "Before you could question what on earth this guy was talking about, a rowdy yell interrupts:"
     "\"Ugh, where did that kid go?!\""
@@ -1282,7 +1308,11 @@ label episode_3_meeting_2:
     b1 "Nepo baby! Why are you here?"
 
     hide b1_neutral
-    show weeb_neutral with dissolve
+    
+    show weeb noglasses_surprised with dissolve:
+        zoom 0.25
+        xcenter 0.5
+        yalign 1.0
 
     w "G-G-GAH!!!"
 
@@ -1291,7 +1321,8 @@ label episode_3_meeting_2:
     w "P-p-p-please save meeeeeeeeeeeeee!!!!!!"
     mc deadpan "...What's going on?"
     
-    hide weeb_neutral
+    hide weeb noglasses_surprised
+
     show b2_neutral with dissolve:
         zoom 0.3
         xalign 0.5
@@ -1313,11 +1344,15 @@ label episode_3_meeting_2:
     b1 "Right?"
 
     hide b1_neutral
-    show weeb_neutral
+
+    show weeb noglasses_neutral with dissolve:
+        zoom 0.25
+        xcenter 0.5
+        yalign 1.0
 
     w "...*Hic*"
 
-    hide weeb_neutral
+    hide weeb noglasses_neutral
     show b1_neutral with dissolve:
         zoom 0.25
         xalign 0.5
@@ -1352,12 +1387,16 @@ label episode_3_savior:
     scene bg school_hallway_2
     hide b1_neutral
     hide b2_neutral
-    show weeb_neutral with dissolve
+    
+    show weeb noglasses_neutral with dissolve:
+        zoom 0.25
+        xcenter 0.5
+        yalign 1.0
 
     w "Y-y-you... *sniff* you cannot break us apart!"
     w "I've been reading \"That Time I Got Reincarnated 21 Times in a Fantasy World\" since the first volume came out!"
-    w "A-a-and I've been loyal to my waifu, Suzuki Haruka, ever since!"
-    w "N-n-n-n-n-n-n-no matter what you do, you cannot tear this love apart!"
+    w noglasses_happy "A-a-and I've been loyal to my waifu, Suzuki Haruka, ever since!"
+    w noglasses_neutral "N-n-n-n-n-n-n-no matter what you do, you cannot tear this love apart!"
     w "This love, so fresh and whole, is bound to last forever!!!"
     w "I will not allow you to take my waifu away from me!!"
     mc shocked "..."
@@ -1392,7 +1431,11 @@ label episode_3_savior:
     b1 "What is That Time I Got... whatever world? What is a Suzu... what?"
 
     hide b1_neutral
-    show weeb_neutral
+
+    show weeb noglasses_neutral with dissolve:
+        zoom 0.25
+        xcenter 0.5
+        yalign 1.0
 
     w "No! Call her by her full name!"
     w "She is Princess Suzuki Haruka!"
@@ -1415,7 +1458,11 @@ label episode_3_savior:
     b1 "We're talking about how your lame self was hitting on my girl, Sophia."
 
     hide b1_neutral
-    show weeb_neutral with dissolve
+
+    show weeb noglasses_confused with dissolve:
+        zoom 0.25
+        xcenter 0.5
+        yalign 1.0
 
     w "...Huh? Who's Sophia?"
     mc shocked "..."
@@ -1450,8 +1497,11 @@ label episode_3_savior:
     b1 "...My girlfriend?"
 
     hide b1_neutral
-    show weeb_neutral with dissolve
 
+    show weeb noglasses_confused with dissolve:
+        zoom 0.25
+        xcenter 0.5
+        yalign 1.0
     w "Huh? I don't want her. My heart only belongs to my waifu!"
 
     hide weeb_neutral
@@ -3108,7 +3158,14 @@ label episode_8:
                 o neutral "This is so lame. I'm outta here."
                 hide olivia angry with dissolve
 
-                "C-c-c-c-c-can I get n-number t-th-thir-thir-thirteen please?"
+                "\"Um...uh.... I-I-I...\""
+                "\"Ugh, hurry up!\""
+                "\"Sorry, what would you like?\""
+                "\"C-c-c-c-c-can I get n-number t-th-thir-thir-thirteen please?\""
+                
+
+
+                
 
 
     jump episode_9
@@ -3425,3 +3482,5 @@ label episode_10:
 # mc "He asked for"
 # backhanded compliments to your face,,
 # gymbro switchup - kind of bipolar...? pretends to be nice
+
+#when you're ready, ctrl f COMEBACKHERE
