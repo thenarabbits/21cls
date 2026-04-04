@@ -1,16 +1,16 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 2871, in script
+  File "game/script.rpy", line 2888, in script
     if mall_with_gymbro == True:
-  File "game/script.rpy", line 2871, in <module>
+  File "game/script.rpy", line 2888, in <module>
     if mall_with_gymbro == True:
 NameError: name 'mall_with_gymbro' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 2871, in script
+  File "game/script.rpy", line 2888, in script
     if mall_with_gymbro == True:
   File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\ast.py", line 1845, in execute
     if renpy.python.py_eval(condition):
@@ -18,11 +18,11 @@ Full traceback:
     return py_eval_bytecode(code, globals, locals)
   File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\python.py", line 1202, in py_eval_bytecode
     return eval(bytecode, globals, locals)
-  File "game/script.rpy", line 2871, in <module>
+  File "game/script.rpy", line 2888, in <module>
     if mall_with_gymbro == True:
 NameError: name 'mall_with_gymbro' is not defined
 
-Windows-10-10.0.26100 AMD64
+Windows-10-10.0.26200 AMD64
 Ren'Py 8.2.3.24061702
 21st Century Love Story 1.0
-Mon Jan 26 19:02:56 2026
+Fri Apr  3 18:15:46 2026

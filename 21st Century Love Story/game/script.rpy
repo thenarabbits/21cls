@@ -40,8 +40,8 @@ default gymbro = "King" #WinkedIn
 default meangirl = "Olivia"
 # if this is true, then olivia becomes your enemy - otherwise, you become friends
 default olivia_ticked_off = False
-# default mall_with_gymbro = False
-$ mall_with_gymbro == True
+default mall_with_gymbro = False
+# $ mall_with_gymbro == True
 default called_it_a_day = False
 # default know_gymbro = True
 
@@ -127,6 +127,9 @@ image bg mall_street_2 = "mall_b_08 copy.webp"
 image bg mall_street_2_evening = "mall_e_08 copy.webp"
 image bg mall_street_4_evening = "mall_e_04 copy.webp"
 image bg bus_stop_night = "bus_stop_night.webp"
+image bg mall_food_court = "mall_b_07 copy.webp"
+image bg mall_food_court_2 = "mall_b_09 copy.webp"
+image bg mall_plaza = "mall_b_05 copy.webp"
 
 # ========================AURA STUFF=============================
     
@@ -3093,7 +3096,19 @@ label episode_8:
         mc "Definitely going to the food court first."
 
         menu:
-            "Check out the food court."
+            "Check out the food court.":
+                scene bg mall_food_court with fade
+                "Something smells really good. Probably... the aroma of some freshly baked bread. You look to your left, and then to your right. There's hungry people everywhere."
+                
+                show olivia angry with dissolve:
+                    zoom 0.25
+                    xcenter 0.5
+                    yalign 1.0
+                o "OMG. Why is this guy taking so long to order?"
+                o neutral "This is so lame. I'm outta here."
+                hide olivia angry with dissolve
+
+                "C-c-c-c-c-can I get n-number t-th-thir-thir-thirteen please?"
 
 
     jump episode_9
@@ -3396,3 +3411,17 @@ label episode_10:
     scene bg black with dissolve
     "Thank you for playing 21st Century Love Story!"
     return
+
+# story wireframe
+# ideas false promises, told his mom about u, jumping the gun
+# red flags: doesn't treat siblings well but tells you that they do
+# e.g. "they robbed me of that award"
+# try not to glamorize toxicity tho! just satirize it so it appears off putting
+
+# performative: insecure about height, my life sucks, still wants to buy you a ring, at least i'm good at school
+# my life is SOOOO hard..."
+
+# mall w/ weeb,, you order for him "C-c-c-c-c-can I get n-number t-th-thir-thir-thirteen please?"
+# mc "He asked for"
+# backhanded compliments to your face,,
+# gymbro switchup - kind of bipolar...? pretends to be nice

@@ -2,9 +2,21 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 2997: expected 'simple_expression' not found.
-    scene bg mall_street_2_evening with with dissolve
-                                        ^
+File "game/script.rpy", line 3103: show statement expects a non-empty block.
+    show olivia neutral with dissolve:
+                                      ^
+
+File "game/script.rpy", line 3104: expected statement.
+    zoom 0.25
+          ^
+
+File "game/script.rpy", line 3105: expected statement.
+    xcenter 0.5
+             ^
+
+File "game/script.rpy", line 3106: expected statement.
+    yalign 1.0
+            ^
 
 Ren'Py Version: Ren'Py 8.2.3.24061702
-Sat Mar 21 17:34:44 2026
+Fri Apr  3 18:18:02 2026
