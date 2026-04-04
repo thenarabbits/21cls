@@ -1513,10 +1513,14 @@ label episode_3_savior:
     b2 "Then why were you looking so intensely?!"
 
     hide b2_neutral
-    show weeb_neutral with dissolve
+
+    show weeb noglasses_confused with dissolve:
+        zoom 0.25
+        xcenter 0.5
+        yalign 1.0
 
     w "..."
-    w "The poster on the wall above her had my waifu-"
+    w noglasses_happy "The poster on the wall above her had my waifu-"
 
     hide weeb_neutral
 
@@ -1556,7 +1560,11 @@ label episode_3_savior:
     b1 "Wha- Hey!"
 
     hide b1_neutral
-    show weeb_neutral with dissolve
+    
+    show weeb noglasses_neutral with dissolve:
+        zoom 0.25
+        xcenter 0.5
+        yalign 1.0
 
     w "*Hic* S-S-S-Suzuki Harukaaaaaaaa!!!! M-m-m-my savior!!!!"
 
@@ -1577,7 +1585,11 @@ label episode_3_savior:
 
     hide manga_run with dissolve
 
-    show weeb_neutral with dissolve
+    show weeb noglasses_neutral with dissolve:
+        zoom 0.25
+        xcenter 0.5
+        yalign 1.0
+
     w "B-b-b-b-but you really are her!!!"
 
     hide weeb_neutral
@@ -1590,7 +1602,10 @@ label episode_3_savior:
     mc neutral "Hey, are you good now-"
     mc shocked "..."
 
-    show weeb_neutral with dissolve
+    show weeb noglasses_neutral with dissolve:
+        zoom 0.25
+        xcenter 0.5
+        yalign 1.0
 
     w "*Huff* Y-you,"
     w "Ugh... *gasp*"
@@ -1603,7 +1618,7 @@ label episode_3_savior:
     mc deadpan "(...Are you serious?)"
     mc neutral "What's your name?"
     mc neutral "(So I can make sure to avoid you in the future.)"
-    w "Y-y-y-you... w-w-want to know MY name!?!?!?"
+    w noglasses_happy "Y-y-y-you... w-w-want to know MY name!?!?!?"
     w "Suzuki Haruka... it's an honor!!!"
     $ weeb = "Lucien"
     w "I-I-I-I am Lucien Kim!!! At your service, always!!!!"
@@ -1616,7 +1631,7 @@ label episode_3_savior:
     "+1 Aura!"
 
     mc neutral "Well... bye."
-    w "W-w-w-wait!! Suzuki Harukaaaaaaa!!!!"
+    w noglasses_surprised "W-w-w-wait!! Suzuki Harukaaaaaaa!!!!"
 
     jump episode_4
 
@@ -3160,9 +3175,79 @@ label episode_8:
 
                 "\"Um...uh.... I-I-I...\""
                 "\"Ugh, hurry up!\""
-                "\"Sorry, what would you like?\""
-                "\"C-c-c-c-c-can I get n-number t-th-thir-thir-thirteen please?\""
+
+                show weeb neutral with dissolve:
+                    zoom 0.25
+                    xcenter 0.5
+                    yalign 1.0
+
+                w "S-sorry..."
+                w "C-c-c-c-c-c-can I get n-number t-th-thir-thir-thirteen?"
+
+                hide weeb neutral
+
+                show cashier_neutral with dissolve:
+                    zoom 1.5
+                    xcenter 0.5
+                    yalign 1.0
+                cashier "Sorry, what would you like?"
+
+                mc neutral "He asked for number 13."
                 
+                hide cashier_neutral
+                show weeb surprised with dissolve:
+                    zoom 0.25
+                    xcenter 0.5
+                    yalign 1.0
+
+                w "S-S-S-Suzuki H-Haruka!!!!!!"
+                mc neutral "Is that you, Lucien?"
+                w happy "Oh... y-you remembered my name!!"
+                mc neutral "Yeah."
+                mc neutral "(But you didn't remember my name...)"
+
+                hide weeb surprised
+                show cashier_neutral with dissolve:
+                    zoom 1.5
+                    xcenter 0.5
+                    yalign 1.0
+                cashier "And you, miss, will you be ordering anything today?"
+                
+                menu:
+                    "Order number 13.":
+                        mc neutral "Number 13 as well, please."
+                        $ order_with_lucien = 13
+                    "Order number 4.":
+                        "Glancing at the menu, \"number 4\" is some kind of rice dish. That should be a safe bet."
+                        mc neutral "Number 4, please."
+                        $ order_with_lucien = 4
+                
+                cashier "Okay. Are you paying together?"
+                mc neutral "Yes, I'll pay."
+                cashier "Your total will be $32.72. And your order number is 51."
+                mc happy "Thank you."
+
+                "You and Lucien find a table for two, sitting down to wait for your food."
+                
+                show weeb neutral with dissolve:
+                    zoom 0.25
+                    xcenter 0.5
+                    yalign 1.0
+                w "I-I-I should h-have p-paid for you..."
+                mc neutral "Don't worry about it."
+                mc neutral "(Otherwise, I'd still be waiting in line right now.)"
+                w happy "Y-you're so perfect... now that I'm wearing my glasses, you look way prettier in real life..."
+                mc deadpan "In real life?"
+                w neutral "I m-mean, y-y-you're also pretty in the manga too..."
+                mc neutral "What are you on about? I am not... Suzuki Haruka."
+                w confused "Huh? No, you're definitely my Princess Suzuki Haruka! You two look the exact same. There's no way-"
+                mc deadpan "..."
+                
+
+
+
+                
+
 
 
                 
@@ -3478,7 +3563,6 @@ label episode_10:
 # performative: insecure about height, my life sucks, still wants to buy you a ring, at least i'm good at school
 # my life is SOOOO hard..."
 
-# mall w/ weeb,, you order for him "C-c-c-c-c-can I get n-number t-th-thir-thir-thirteen please?"
 # mc "He asked for"
 # backhanded compliments to your face,,
 # gymbro switchup - kind of bipolar...? pretends to be nice
