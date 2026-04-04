@@ -3217,6 +3217,8 @@ label episode_8:
                     "Order number 13.":
                         mc neutral "Number 13 as well, please."
                         $ order_with_lucien = 13
+                        $ w_aura += 1
+                        "+1 Aura!"
                     "Order number 4.":
                         "Glancing at the menu, \"number 4\" is some kind of rice dish. That should be a safe bet."
                         mc neutral "Number 4, please."
@@ -3226,6 +3228,8 @@ label episode_8:
                 mc neutral "Yes, I'll pay."
                 cashier "Your total will be $32.72. And your order number is 51."
                 mc happy "Thank you."
+
+                hide cashier_neutral
 
                 "You and Lucien find a table for two, sitting down to wait for your food."
                 
@@ -3240,8 +3244,66 @@ label episode_8:
                 mc deadpan "In real life?"
                 w neutral "I m-mean, y-y-you're also pretty in the manga too..."
                 mc neutral "What are you on about? I am not... Suzuki Haruka."
-                w confused "Huh? No, you're definitely my Princess Suzuki Haruka! You two look the exact same. There's no way-"
+                w confused "Huh? No, you're definitely my Princess Suzuki Haruka! You two look and talk the exact same. There's no way-"
                 mc deadpan "..."
+                w neutral "But..."
+                mc neutral "My name is [playername]."
+                w "Okay, fine... but you're still my savior, [playername]!!!!!"
+                w "You helped me w-with those bullies when we first met, and then again here. I'm not sure what I should do to repay your kindness."
+                
+                hide weeb neutral
+
+                "*bzzt*"
+                "The buzzer on the table is telling you that your food is ready."
+                # show weeb neutral with dissolve:
+                #     zoom 0.25
+                #     xcenter 0.5
+                #     yalign 1.0
+                # w happy "Well. Let's go get our food."
+                # hide weeb neutral
+                
+                mc happy "Well. Let's go get our food."
+                
+                "At the pick-up counter, you're given a somewhat heavy bag holding utensils, napkins, and, of course, your food enclosed in paper containers."
+                show weeb neutral with dissolve:
+                    zoom 0.25
+                    xcenter 0.5
+                    yalign 1.0
+                w "U-um... I'll hold it for you."
+                mc neutral "Thanks."
+                hide weeb neutral
+
+                "When you two return to your spot, absolutely starving, you find that an elderly couple has usurped your table. It looks like they're having a delightful conversation."
+
+                mc neutral "(Man... I don't have the heart to ask them to leave.)"
+                mc neutral "Lucien, do you have time? Can we eat and walk around Mimo Mall's plaza area?"
+                show weeb surprised with dissolve:
+                    zoom 0.25
+                    xcenter 0.5
+                    yalign 1.0
+                w "O-of c-c-c-course!"
+                hide weeb surprised
+
+                # AT THE PLAZA =============================
+                scene bg mall_plaza with fade
+                
+                show weeb neutral with dissolve:
+                    zoom 0.25
+                    xcenter 0.5
+                    yalign 1.0
+                if order_with_lucien == 13:
+                    w "Um, since we both ordered 13, you can take this one."
+                    hide weeb_neutral
+                    "Lucien hands you a container."
+                    "You open it and, not gonna lie, this is a sad looking sandwich."
+                    "But once you take a bite..."
+                    "A burst of flavors dance on your tongue. Juicy tomato, soft cheese, and something sweet."
+                else:
+                    w "Okay, 13 is mine... and here's your food."
+                    hide weeb_neutral
+                    "Lucien hands you a container."
+                    "It's rice, just like you thought. But the portion is much bigger than you had imagined."
+                    mc neutral "(So these are American-sized portions.)"
                 
 
 
