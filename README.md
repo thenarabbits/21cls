@@ -9,8 +9,8 @@ Official repository for **"21st Century Love Story"** by Athena Chang and Kaylee
 
 ### <div align="center">[Play the 21CLS demo!](https://docachon.itch.io/21st-century-love-story)</div>
 
-![lucien cutscene](https://hc-cdn.hel1.your-objectstorage.com/s/v3/7c8ea249de4c4d71_image.png)
-![prologue scene](https://hc-cdn.hel1.your-objectstorage.com/s/v3/2c6b655e4049d6a3_image.png)
-![meeting kyren scene](https://hc-cdn.hel1.your-objectstorage.com/s/v3/8d63a30b63360a0c_image.png)
-![meeting king scene](https://hc-cdn.hel1.your-objectstorage.com/s/v3/dada105d5b3410c7_image.png)
-![scene with king and olivia](https://hc-cdn.hel1.your-objectstorage.com/s/v3/609a2761fd537c6e_image.png)
+![lucien cutscene](https://cdn.hackclub.com/019c256a-9c67-7648-9e76-1527f2ddf6e6/image.png)
+![prologue scene](https://cdn.hackclub.com/019c256a-a636-73b3-a55e-a9a6faa1d0b8/image.png)
+![meeting kyren scene](https://cdn.hackclub.com/019c256a-9dc1-7295-acfd-0c4cdd98fe22/image.png)
+![meeting king scene](https://cdn.hackclub.com/019c256a-a0aa-7ae5-85a5-0aa3416cb8ff/image.png)
+![scene with king and olivia](https://cdn.hackclub.com/019c256e-5718-79fc-a439-603069496ee5/image.png)
