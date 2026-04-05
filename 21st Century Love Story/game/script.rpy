@@ -17,6 +17,9 @@ init:
     transform move_left:
         easeout 0.3 xalign 0.25
 
+    transform move_left_and_zoom:
+        easeout 0.3 xalign 0.25
+
     # right side
     transform olivia_move_left:
         easeout 0.3 xalign 0.75
@@ -37,14 +40,17 @@ default gymbro = "King" #WinkedIn
 default meangirl = "Olivia"
 # if this is true, then olivia becomes your enemy - otherwise, you become friends
 default olivia_ticked_off = False
+default mall_with_gymbro = False
+# $ mall_with_gymbro == True
+default called_it_a_day = False
 # default know_gymbro = True
 
 # character define
 define mc = Character("[playername]", image="player")
 define cashier = Character("Cashier")
 define p = Character("[performative]", image="kyren")
-define n = Character("[narcissist]")
-define w = Character("[weeb]")
+define n = Character("[narcissist]", image="narcissist")
+define w = Character("[weeb]", image="weeb")
 define g = Character("[gymbro]", image="king")
 define teacher = Character("Mr. Teacher")
 define classmate = Character("classmate")
@@ -70,8 +76,21 @@ image king focused = "gymbro_focused.png"
 image cashier_neutral = "cashier.png"
 image classmate_neutral = "billG.jpg"
 
-image narcissist_neutral = "narcissist_neutral.png"
-image weeb_neutral = "weeb_neutral.png"
+image narcissist neutral = "narcissist_neutral.png"
+image narcissist blingneutral = "narcissist_bling_neutral.png"
+image narcissist blinghappy = "narcissist_bling_happy.png"
+
+image weeb neutral = "weeb_neutral.png"
+image weeb happy = "weeb_happy.png"
+image weeb confused = "weeb_confused.png"
+image weeb surprised = "weeb_surprised.png"
+
+image weeb noglasses_neutral = "weeb_neutral_OFF.png"
+image weeb noglasses_happy = "weeb_happy_OFF.png"
+image weeb noglasses_confused = "weeb_confused_OFF.png"
+image weeb noglasses_surprised = "weeb_surprised_OFF.png"
+
+# maybe rewrite...
 image b1_neutral = "bully1 neutral.png"
 image b2_neutral = "bully2 neutral.png"
 
@@ -110,6 +129,18 @@ image bg bedroom_morning = "room_morning_light_off.jpg"
 image bg bedroom_night = "room_night_light_off.jpg"
 image bg dining_room = "condo_Day 03.jpg"
 image bg living_room = "condo_Day 05.jpg"
+image bg street = "street_redux_day.webp"
+image bg park = "park_not_so_winter.webp"
+image bg mall_street = "mall_b_02 copy.webp"
+image bg mall_street_evening = "mall_e_02 copy.webp"
+image bg mall_street_2 = "mall_b_08 copy.webp"
+image bg mall_street_2_evening = "mall_e_08 copy.webp"
+image bg mall_street_4_evening = "mall_e_04 copy.webp"
+image bg bus_stop_night = "bus_stop_night.webp"
+image bg mall_food_court = "mall_b_07 copy.webp"
+image bg mall_food_court_2 = "mall_b_09 copy.webp"
+image bg mall_plaza = "mall_b_05 copy.webp"
+image bg inside_bus = "train_one.webp"
 
 # ========================AURA STUFF=============================
     
@@ -122,6 +153,11 @@ default g_aura = 1
 # default g_points = 0
 default w_aura = 1
 # default w_points = 0
+
+# default completed_p_date = False
+default completed_g_date = False
+default completed_n_date = False
+default completed_w_date = False
 
 # AURAAAAAAAAA SYSTEM ICONS
 screen p_heart_box():
@@ -183,6 +219,12 @@ screen g_heart_box():
         text "[g_aura]":
             xpos 0.9385
             ypos 0.49
+
+# label splashscreen:
+#     scene black
+#     with Pause(1)
+#     show text "21st Century Love Story" with dissolve
+#     with Pause(2)
 
 # The game starts here.
 
@@ -671,7 +713,10 @@ label episode_2_meeting:
     scene bg football_field with fade
 
     if choice == "care":
-        show narcissist_neutral with dissolve
+        show narcissist neutral with dissolve:
+            zoom 0.25
+            xcenter 0.5
+            yalign 1.0
         $ met_narcissist = True
         n "*grumbling* This game is for brokies."
         "The way this guy pouts kind of reminds you of an elementary school student."
@@ -679,22 +724,32 @@ label episode_2_meeting:
         menu:
             "Who are you?":
                 mc neutral "Who are you?"
-                show narcissist_neutral 
-                n "You don't know who I am?"
+                # show narcissist_neutral 
+                n neutral "You don't know who I am?"
             "Weirdo...":
                 mc deadpan "Weirdo..."
-                show narcissist_neutral
-                n "Are you talking to me, peasant?"
+                # show narcissist_neutral
+                n blingneutral "Are you talking to me, peasant?"
         
         $ narcissist = "Snobby Guy"
-        n "THE DISRESPECT! Just wait until I tell my father about this insolence!"
+        n neutral "THE DISRESPECT! Just wait until I tell my father about this insolence!"
         mc deadpan "(...Is everyone at this school this weird?)"
-        n "And since you're uneducated, I'll show some mercy and inform you about WHO I am exactly."
+        n blinghappy "And since you're uneducated, I'll show some mercy and inform you about WHO I am exactly."
+        hide narcissist neutral
         $ narcissist = "Ronan"
-        n "I am Ronan, Ronan X.Y. Sinclair! The first in line to inherit the reputable Sinclair X.Y. Industries!"
+        show narcissist blingneutral:
+            zoom 0.25
+            xcenter 0.5
+            yalign 1.0
+        n blingneutral "I am Ronan, Ronan X.Y. Sinclair! The first in line to inherit the reputable Sinclair X.Y. Industries!"
         mc neutral "(Sinclair X.Y. Industries... kind of rings a bell. I think they source parts from one of dad's subsidiaries?)"
         n "So, you-"
         n "..."
+        hide narcissist blingneutral
+        show narcissist neutral:
+            zoom 0.25
+            xcenter 0.5
+            yalign 1.0
         n "Why do you look familiar?"
         n "Have you ever worked for my family, peasant?"
         mc deadpan "...You've probably seen me on the news before."
@@ -712,11 +767,11 @@ label episode_2_meeting:
 
         "You notice the snobby guy's left eye twitch, but then he composes himself in a split second."
 
-        show narcissist_neutral
+        show narcissist neutral with dissolve
         n "...Ahem! Hohoho! Why didn't you say so sooner?"
 
         "Amidst your conversation, it appears that the football game has just ended."
-        hide narcissist_neutral
+        hide narcissist neutral
         show cashier_neutral with dissolve:
             zoom 1.5
             xcenter 0.5
@@ -731,9 +786,12 @@ label episode_2_meeting:
         hide cashier_neutral
 
         mc neutral "Yes, sir."
-        show narcissist_neutral
+        show narcissist neutral with dissolve:
+            zoom 0.25
+            xcenter 0.5
+            yalign 1.0
         n "*mumbling* Hmph, I wouldn't join otherwise."
-        hide narcissist_neutral
+        hide narcissist neutral
 
         jump episode_2_join
 
@@ -819,9 +877,12 @@ label episode_2_join:
     if met_narcissist == False:
         $ narcissist = "???"
 
-    show narcissist_neutral with dissolve
+    show narcissist blingneutral with dissolve:
+        zoom 0.25
+        xcenter 0.5
+        yalign 1.0
     n "Peasants, disperse!"
-    hide narcissist_neutral
+    hide narcissist blingneutral
 
     "In some unexplainable supernatural phenomenon, a burst of light shines upon you."
     mc shocked "What the..."
@@ -858,16 +919,27 @@ label episode_2_join:
     "Right, you all are still playing football."
     "Excusing themselves, the two peasants leave just as quickly as how you met them."
 
-    show narcissist_neutral with dissolve
+    show narcissist blinghappy with dissolve:
+        zoom 0.25
+        xcenter 0.5
+        yalign 1.0
     n "Hmph! That's more like it."
+
+    hide narcissist blinghappy
+
+    show narcissist blingneutral:
+        zoom 0.25
+        xcenter 0.5
+        yalign 1.0
     
-    "Then, Ronan and you make eye contact."
-    n "I bet you were wondering if this happens often. And yes, it does. It's natural that people are always stunned by presence!"
+    # "Then, Ronan and you make eye contact."
+    "Then, Ronan finally notices you standing here."
+    n blinghappy "I bet you were wondering if this happens often. And yes, it does. It's natural that people are always stunned by presence!"
 
     # 2do: update character n so we can use the emotion shorthand thingies
-    show narcissist_neutral with dissolve
+    # show narcissist_neutral with dissolve
     if met_narcissist:
-        n "Oh. It's that insolent brat."
+        n neutral "Oh. It's that insolent brat."
         menu:
             "Excuse me?":
                 n "You're excused!"
@@ -879,20 +951,20 @@ label episode_2_join:
                 pass
         "Ronan slicks his hair back. It's, like, the equivalent of a cool girl's hair flip."
         n "Hmph! I forgive you for your transgressions."
-        n "After all, I'm young, rich, tall, handsome, AND nice."
-        n "I recognize my kind when I see one."
+        n blingneutral "After all, I'm young, rich, tall, handsome, AND nice."
+        n neutral "I recognize my kind when I see one."
         "He sent you a wink~☆ but unfortunately, you blinked right then, so you didn't notice."
         mc deadpan "..."
         n "Dear me. You're quite slow. Be grateful for this opportunity to network with me, that is, RONAN X.Y. SINCLAIR!"
     else:
         mc neutral "...I don't believe we've met before."
-        n "What, have you been living under a rock all your life? Or do you really not know who I am?"
+        n neutral "What, have you been living under a rock all your life? Or do you really not know who I am?"
         $ narcissist = "Ronan"
-        n "I am Ronan, Ronan X.Y. Sinclair! The first in line to inherit the reputable Sinclair X.Y. Industries!"
+        n blingneutral "I am Ronan, Ronan X.Y. Sinclair! The first in line to inherit the reputable Sinclair X.Y. Industries!"
         mc neutral "(Sinclair X.Y. Industries... kind of rings a bell. I think they source parts from dad's company?)"
         n "So, you-"
         n "..."
-        n "Why do you look familiar?"
+        n neutral "Why do you look familiar?"
         n "Have you ever worked for my family, peasant?"
         mc deadpan "...You've probably seen me on the news before."
         n "..."
@@ -912,13 +984,12 @@ label episode_2_join:
     "Then Ronan looks at you expectantly, waiting for you to initiate the handshake and say \"It's an honor to meet you\" and whatnot."
     "But pity, you can't read his mind. And he doesn't realize that not everyone can read his mind since his closest attendants are so used to his habits and daily schedule."
     "So there's just 10 seconds of silent, awkward eye contact, until..."
-    
+    with hpunch
     mc shocked "WATCH OUT!!!!!"
+    hide narcissist neutral
     "*THWACK*"
     "In a perfect parabolic path, the football flies by and slaps Ronan right in the cheek."
     "As graceful as a swan, Ronan falls to the ground. And in slow motion, too. But at least he landed in the lush football field of fake grass."
-    
-    hide narcissist_neutral
 
     "*tweet*"
     "It's Mr. Teacher, blowing the whistle and dashing over."
@@ -972,7 +1043,11 @@ label episode_2_nurse:
 
     "20 minutes later..."
 
-    show narcissist_neutral
+    show narcissist neutral with dissolve:
+        zoom 0.25
+        xcenter 0.5
+        yalign 1.0
+
     n "Ugh, my head..."
     # "Wincing, Ronan tossed and turned until, finally, he could think more clearly. To some extent."
     "Slowly coming to, Ronan sat himself up."
@@ -999,8 +1074,8 @@ label episode_2_nurse:
     else:
         n "Insolent brat? No, I mean, my savior!"
         mc deadpan "(Dude, make up your mind.)"
-    n "Hmph. I give credit where it is due, and I commend your dedication to safeguard the life of the Sinclair X.Y. Industries heir."
-    n "That is me, Ronan X.Y. Sinclair! *Cool Hair Flip*"
+    n blinghappy "Hmph. I give credit where it is due, and I commend your dedication to safeguard the life of the Sinclair X.Y. Industries heir."
+    n neutral "That is me, Ronan X.Y. Sinclair! *Cool Hair Flip*"
 
     menu:
         "(Leave.)":
@@ -1025,6 +1100,7 @@ label episode_2_nurse:
                 "You're just like an elementary school student.":
                     mc neutral "You're just like an elementary school student."
                     n "Excuse me? How dare you! If I'm an elementary school student, then you're an old hag!"
+                    hide narcissist neutral
                     "*slink* Ronan pulls out the curtains, obscuring you from view. He just leaves a tiny enough opening to stick out his hand and motion you to scram."
                     mc happy "LOL."
                     "*silence*"
@@ -1170,7 +1246,10 @@ label episode_3_meeting_2:
 
     mc shocked "Ow!"
 
-    show weeb_neutral with dissolve
+    show weeb surprised with dissolve:
+        zoom 0.25
+        xcenter 0.5
+        yalign 1.0
 
     w "A-ah!"
 
@@ -1182,25 +1261,38 @@ label episode_3_meeting_2:
     "Brushing off your clothes, you stand up and extend a hand out to the boy."
 
     mc neutral "Are you alright?"
-    w "..."
+    w neutral "..."
     mc deadpan "...Hello?"
+
+    hide weeb surprised with dissolve
 
     "Without responding to you, the boy takes off his glasses with shaky hands and wipes the lenses with the bottom of his shirt before finally making eye contact with you."
     # cutscene start
+
+    # show weeb noglasses_neutral with dissolve:
+    #     zoom 0.25
+    #     xcenter 0.5
+    #     yalign 1.0
+
+    show weeb noglasses_confused with dissolve:
+        zoom 0.25
+        xcenter 0.5
+        yalign 1.0
+
     "And before you could repeat yourself, you can't help but notice the guy is..."
     "...oddly good looking for someone so disheveled?"
     # cutscene end
 
     mc deadpan "Um, I said, are you alright?"
-    w "..."
+    w noglasses_surprised "..."
     mc angry "Can't you hear me? I asked if-"
     w "Suzuki Haruka?!"
     mc deadpan "...What?"
     w "Y-y-y-you... y-y-y-you're a carbon copy!! She's... she's real!!! I knew it!!"
     mc angry "What are you talking about? Are you alright or not?"
-    w "Oh my god, oh my god, oh my god..."
+    w noglasses_neutral "Oh my god, oh my god, oh my god..."
 
-    hide weeb_neutral
+    hide weeb noglasses_neutral with dissolve
 
     "Before you could question what on earth this guy was talking about, a rowdy yell interrupts:"
     "\"Ugh, where did that kid go?!\""
@@ -1217,7 +1309,11 @@ label episode_3_meeting_2:
     b1 "Nepo baby! Why are you here?"
 
     hide b1_neutral
-    show weeb_neutral with dissolve
+    
+    show weeb noglasses_surprised with dissolve:
+        zoom 0.25
+        xcenter 0.5
+        yalign 1.0
 
     w "G-G-GAH!!!"
 
@@ -1226,7 +1322,8 @@ label episode_3_meeting_2:
     w "P-p-p-please save meeeeeeeeeeeeee!!!!!!"
     mc deadpan "...What's going on?"
     
-    hide weeb_neutral
+    hide weeb noglasses_surprised
+
     show b2_neutral with dissolve:
         zoom 0.3
         xalign 0.5
@@ -1248,11 +1345,15 @@ label episode_3_meeting_2:
     b1 "Right?"
 
     hide b1_neutral
-    show weeb_neutral
+
+    show weeb noglasses_neutral with dissolve:
+        zoom 0.25
+        xcenter 0.5
+        yalign 1.0
 
     w "...*Hic*"
 
-    hide weeb_neutral
+    hide weeb noglasses_neutral
     show b1_neutral with dissolve:
         zoom 0.25
         xalign 0.5
@@ -1285,15 +1386,18 @@ label episode_3_meeting_2:
 label episode_3_savior:
 
     scene bg school_hallway_2
-
     hide b1_neutral
     hide b2_neutral
-    show weeb_neutral with dissolve
+    
+    show weeb noglasses_neutral with dissolve:
+        zoom 0.25
+        xcenter 0.5
+        yalign 1.0
 
     w "Y-y-you... *sniff* you cannot break us apart!"
     w "I've been reading \"That Time I Got Reincarnated 21 Times in a Fantasy World\" since the first volume came out!"
-    w "A-a-and I've been loyal to my waifu, Suzuki Haruka, ever since!"
-    w "N-n-n-n-n-n-n-no matter what you do, you cannot tear this love apart!"
+    w noglasses_happy "A-a-and I've been loyal to my waifu, Suzuki Haruka, ever since!"
+    w noglasses_neutral "N-n-n-n-n-n-n-no matter what you do, you cannot tear this love apart!"
     w "This love, so fresh and whole, is bound to last forever!!!"
     w "I will not allow you to take my waifu away from me!!"
     mc shocked "..."
@@ -1328,7 +1432,11 @@ label episode_3_savior:
     b1 "What is That Time I Got... whatever world? What is a Suzu... what?"
 
     hide b1_neutral
-    show weeb_neutral
+
+    show weeb noglasses_neutral with dissolve:
+        zoom 0.25
+        xcenter 0.5
+        yalign 1.0
 
     w "No! Call her by her full name!"
     w "She is Princess Suzuki Haruka!"
@@ -1351,7 +1459,11 @@ label episode_3_savior:
     b1 "We're talking about how your lame self was hitting on my girl, Sophia."
 
     hide b1_neutral
-    show weeb_neutral with dissolve
+
+    show weeb noglasses_confused with dissolve:
+        zoom 0.25
+        xcenter 0.5
+        yalign 1.0
 
     w "...Huh? Who's Sophia?"
     mc shocked "..."
@@ -1386,8 +1498,11 @@ label episode_3_savior:
     b1 "...My girlfriend?"
 
     hide b1_neutral
-    show weeb_neutral with dissolve
 
+    show weeb noglasses_confused with dissolve:
+        zoom 0.25
+        xcenter 0.5
+        yalign 1.0
     w "Huh? I don't want her. My heart only belongs to my waifu!"
 
     hide weeb_neutral
@@ -1399,10 +1514,14 @@ label episode_3_savior:
     b2 "Then why were you looking so intensely?!"
 
     hide b2_neutral
-    show weeb_neutral with dissolve
+
+    show weeb noglasses_confused with dissolve:
+        zoom 0.25
+        xcenter 0.5
+        yalign 1.0
 
     w "..."
-    w "The poster on the wall above her had my waifu-"
+    w noglasses_happy "The poster on the wall above her had my waifu-"
 
     hide weeb_neutral
 
@@ -1442,7 +1561,11 @@ label episode_3_savior:
     b1 "Wha- Hey!"
 
     hide b1_neutral
-    show weeb_neutral with dissolve
+    
+    show weeb noglasses_neutral with dissolve:
+        zoom 0.25
+        xcenter 0.5
+        yalign 1.0
 
     w "*Hic* S-S-S-Suzuki Harukaaaaaaaa!!!! M-m-m-my savior!!!!"
 
@@ -1463,7 +1586,11 @@ label episode_3_savior:
 
     hide manga_run with dissolve
 
-    show weeb_neutral with dissolve
+    show weeb noglasses_neutral with dissolve:
+        zoom 0.25
+        xcenter 0.5
+        yalign 1.0
+
     w "B-b-b-b-but you really are her!!!"
 
     hide weeb_neutral
@@ -1476,7 +1603,10 @@ label episode_3_savior:
     mc neutral "Hey, are you good now-"
     mc shocked "..."
 
-    show weeb_neutral with dissolve
+    show weeb noglasses_neutral with dissolve:
+        zoom 0.25
+        xcenter 0.5
+        yalign 1.0
 
     w "*Huff* Y-you,"
     w "Ugh... *gasp*"
@@ -1489,7 +1619,7 @@ label episode_3_savior:
     mc deadpan "(...Are you serious?)"
     mc neutral "What's your name?"
     mc neutral "(So I can make sure to avoid you in the future.)"
-    w "Y-y-y-you... w-w-want to know MY name!?!?!?"
+    w noglasses_happy "Y-y-y-you... w-w-want to know MY name!?!?!?"
     w "Suzuki Haruka... it's an honor!!!"
     $ weeb = "Lucien"
     w "I-I-I-I am Lucien Kim!!! At your service, always!!!!"
@@ -1502,7 +1632,7 @@ label episode_3_savior:
     "+1 Aura!"
 
     mc neutral "Well... bye."
-    w "W-w-w-wait!! Suzuki Harukaaaaaaa!!!!"
+    w noglasses_surprised "W-w-w-wait!! Suzuki Harukaaaaaaa!!!!"
 
     jump episode_4
 
@@ -1526,7 +1656,7 @@ label episode_4:
             $ gymbro = "Tough-Looking Guy"
             
             mc neutral "(Yep, I won't bother getting up right now.)"
-            "You reach into your bag and take out your bento, which was prepared by your home cook before you woke up for school this morning."
+            "You reach into your bag and take out your bento, which was prepared by your personal chef before you woke up for school this morning."
             # fun cutscene idea: show the bento! WITH DELICIOUS SPARKLES like in genshin!!
             "Taking off the lid, you are delighted with a tender, butter-poached lobster (caught in the state of Maine) accompanied by a juicy, premium steak (only grass-fed, of course)."
 
@@ -1593,11 +1723,13 @@ label episode_4:
                     $ meangirl = "Olivia"
                     o "Olivia Johnson."
                     o neutral "But anyways, why would you give him a hundred bucks-"
-                    g angry "Don't interrupt me, female. I don't need it anyways."
+                    g angry "Don't interrupt me, Olivia. I don't need it anyways."
+                    "-1 Aura!"
+                    $ g_aura -= 1
                     g neutral "As a real man, I make my own money."
                     # g neutral "I even have a podcast and drive a Wamborghini."
                     g neutral "Wealth and success are merely byproducts of discipline."
-                    g disgusted "Besides, you're no better. You know you're only after Ronan for his money."
+                    g disgusted "Besides, Olivia, you're no better. You know you're only after Ronan for his money."
                     o angry "You take that back right now."
                     mc neutral "(Should I get involved?)"
 
@@ -1702,6 +1834,9 @@ label episode_4:
                     g neutral "You know what? Sure, okay."
                     g focused "Protein is protein."
 
+                    $ g_aura =+ 1
+                    "+1 Aura!"
+
                     show king neutral
                     "You serve King a lobster tail on a clean napkin."
 
@@ -1756,18 +1891,13 @@ label episode_4:
             
             jump episode_5
 
-            # g neutral "That made you angry? ...Women are so emotional."
-
-            g neutral "LOLOL!!! end!!!"
-            g neutral "bookmark!!!"
-
         "(Eat lunch outside.)":
             jump episode_4_outside
 
     jump episode_5
     return
 
-# CURRENTLY UNFINISHED: sayhi, walkpast
+# walkpast not written
 label episode_4_outside:
 
     scene bg quad_outside_arts_building with fade
@@ -1782,7 +1912,7 @@ label episode_4_outside:
         xcenter 0.5
         yalign 1.0
     
-    g disgusted "Wom... *sigh*"
+    g disgusted "*sigh of disapproval*"
     "That smell of coffee is probably coming from this tough-looking guy, who's leaving the classroom at the same time you are."
 
     menu:
@@ -1846,8 +1976,6 @@ label episode_4_outside:
                 "I didn't do anything.":
                     o happy "Aw, you're SUCH a humble queen."
                     mc deadpan "Uhh...thank you."
-                    # $ g_aura += 1
-                    # "+1 Aura!"
                 "No problem.":
                     $ olivia_temperament_counter += 1
                     pass
@@ -1863,8 +1991,6 @@ label episode_4_outside:
             menu:
                 "Thank you.":
                     mc neutral "Thank you."
-                    # $ g_aura += 1
-                    # "+1 Aura!"
                 "So you thought I was ugly and mean?":
                     mc angry "So you thought I was ugly and mean?"
                     $ olivia_temperament_counter += 1
@@ -1949,6 +2075,8 @@ label episode_4_outside:
                     "King looks at the ground for a moment, appearing to be in deep thought."
                     "Then, he looks up to make eye contact with you."
                     g "You're... more competent than you seem. Very impressive."
+                    $ g_aura += 1
+                    "+1 Aura!"
                     pass
                 "Not interested.":
                     mc neutral "Sorry, but I'm not interested."
@@ -1961,7 +2089,7 @@ label episode_4_outside:
                     mc angry "Why did you ignore me earlier?"
                     mc neutral "We met outside the classroom, and I wanted to say hi."
                     g neutral "Is that so?"
-                    g "Sorry. I didn't see you. Must be because I'm so tall- just so you know, I'm 6'2."
+                    g "Sorry. I probably didn't see you. Must be because I'm so tall- just so you know, I'm 6'2."
                     mc "Oh. Okay."
                     g "Truly sorry about that. And please consider my business proposal."
                     mc "..."
@@ -2069,8 +2197,6 @@ label episode_4_outside:
         #                     g focused "You're welcome."
                     
         #             g neutral "Anyways, tell me more about yourself. "
-
-
     jump episode_5
     return
 
@@ -2081,8 +2207,8 @@ label episode_5:
     "The next day..."
     # maybe a quick cutscene of mc going through her day
 
-    "Friday, 3:00 PM."
-    "Thankfully, your day was less... eventful compared to your first day of school."
+    "Friday, 3:00 PM. At home, after school."
+    "Thankfully, your second day was less... eventful compared to your first day of school."
     "However, you were quickly reminded that you are now a student at THE Milkyway High School..."
     "...meaning you have a mountain of homework and assignments to complete before Monday."
     "Let's lock in!"
@@ -2101,10 +2227,10 @@ label episode_5:
             mc neutral "An author of my choice?"
             mc neutral "Maybe I should head to the library to get ideas."
             jump episode_5_english
-        "Math homework":
-            mc happy "The math homework is pretty simple. I'll start with it first."
-            mc neutral "Maybe I should head to the library so I can concentrate."
-            jump episode_5_math
+        # "Math homework":
+        #     mc happy "The math homework is pretty simple. I'll start with it first."
+        #     mc neutral "Maybe I should head to the library so I can concentrate."
+        #     jump episode_5_math
 
     return
 
@@ -2317,7 +2443,7 @@ label episode_5_english:
             "You reach out to accept the earbud and insert it in your ear."
             $ p_aura += 1
             "+1 Aura!"
-            "What plays in your ear is a popular RnB song you've heard being played in the school cafe several times."
+            "What plays in your ear is a popular R&B song you've heard being played in the school cafe several times."
             "Glancing over to you again, Kyren softly whispers, only inches away from your face."
             p neutral "Do you know this song?"
             mc neutral "Yes, I've heard it before."
@@ -2328,7 +2454,7 @@ label episode_5_english:
             $ p_aura -= 1
             "-1 Aura!"
             "However, you realize that the earbuds must be of low quality, as you can hear his music spilling out."
-            "It's not too noticeable, but you identify a popular RnB song you've heard being played in the school cafe several times."
+            "It's not too noticeable, but you identify a popular R&B song you've heard being played in the school cafe several times."
     
     "Surprisingly, there's not too many people on the train."
     "The soft rumble of the train tracks and the shuffling of feet numb your mind, and you feel your eyelids growing heavy."
@@ -2398,41 +2524,952 @@ label episode_5_math:
     p neutral "I could never be smart enough to take those advanced math courses."
     p neutral "How many worksheets do you have to do?"
 
+    "To be continued - skip to episode 6"
     
     jump episode_6
     return
 
-# date w/ narcissist (kaylee)
-label episode_6:
+# filler doomscrolling scene, start saturday
+label episode_6: # MAYBE add short scrolling gameplay like osu?
 
-    jump episode_7
+    scene bg bedroom_night with fade
+    mc neutral "10:30 PM."
+    "You read the shiny numbers on your phone screen, which glows brighter than the moonlight, as seconds continue to pass."
+    "It's about time you went to bed..."
+    mc shocked "But it's Friday night. That's basically the weekend."
+    mc neutral "After a busy first week, a little screen time won't hurt."
+    mc happy "(What app should I check first?)"
+    menu:
+        "WheeChat":
+            "(I wonder what everyone's up to.)"
+        "Instagwam":
+            "Naturally, you open Instagwam; perhaps it's out of force of habit. "
+            menu:
+                "Doomscroll on Instagwam Weels.":
+                    $ n_aura += 1
+                    # mc shocked "No way... I can't believe Bigfoot lives in New York."
+                    mc happy "Let's see... those egg tarts look real tasty. I should ask the cook to make some soon."
+                    "*swipe*"
+                    mc shocked "Another school shooting happened?"
+                    mc neutral "This is so depressing to read, but I can't stop..."
+                    "*swipe*"
+                    mc neutral "Wow, that's a nice Wolex watch. I hope they have it in purple, too."
+                    "You save the post, and then tap to see the user's profile."
+                    mc neutral "..."
+                    mc shocked "Wait, huh? Ronan X.Y. Sinclair?"
+                    mc "This is Ronan's Instagwam account!"
+                    "You tap the button to follow the account."
+                    mc neutral "I didn't expect to see him on Instagwam, too."
+                    "*swipe*"
+                    "You continue scrolling, but fail to find anything else more interesting than Ronan's post of him showing off his Wolex watch."
+                    mc "That's enough Instagwam for now."
+                    menu:
+                        "Go to sleep.":
+                            pass
+            pass
+        "Weddit":
+            $ w_aura += 1
+            "Some subweddits are questionable, but it's honestly not a bad place to learn new things."
+            mc neutral "Let's see..."
+
+            menu:
+                "Check out w/ELI4.":
+                    mc neutral "\"Explain Like I'm Four: What happens to bugs that get stuck in cars and accidentally travel long distances?\""
+                    "The most agreed-upon answer seems to be that it depends on the species. One Wedditor comments that some species will perish due to being unable to find their usual food or shelter."
+                    "Another Wedditor says that the species could adapt and even dominate their new environment, potentially becoming an invasive species and permanently changing their environment. For the better, or worse."
+                    mc neutral "That's somewhat interesting. *swipe*"
+                    
+                    menu: 
+                        "Check out w/TIL":
+                            mc neutral "\"Today I Learned: in humans, the right lung has three lobes while the left only has 2.\""
+                            "You tap on the linked source and learn that the third lobe is the space for the human heart."
+                            mc "That makes sense."
+
+                            menu:
+                                "Check out w/ttigrtotiafw":
+                                    mc neutral "\"The princess appeared at my school yesterday.\""
+                                    "This Wedditor shares a heartfelt story: \"I'm honestly kind of a loner, but that's because I don't have many friends who I vibe with, you get me?\""
+                                    "\"'That Time I Got Reincarnated 21 Times in a Fantasy World' has been my only source of happiness these past few days.\""
+                                    "\"If only there were more people at my school who enjoy anime and manga as much as I do. They don't understand that liking anime and manga is not just a hobby, it's a lifestyle! If it was normalized, then I wouldn't be picked on so often :(\""
+                                    mc shocked "Woah, this is a really lengthy post. When does the princess come in?"
+                    
+                                    menu:
+                                        "Keep reading.":
+                                            "\"I know you guys won't believe me, but I'm telling the truth. These two bullies were picking on me again (this happens a lot, unfortunately, I know, I'm such a loser),\""
+                                            "\"and usually, no one cares enough to say anything, but today was different. A girl I had never seen around campus before took me by the hand, and then we ran away from the bullies together.\""
+                                            "\"I wasn't wearing my glasses, but her figure was all too familiar. That flowing hair, that cool style, the same beautiful features.\""
+                                            "\"I met Princess Suzuki Haruka in the flesh... and she saved me from those bullies. EDIT: She saved my life. Is this what people call fate?\""
+                                            mc deadpan "Suzuki Haruka again?"
+                                            "\"I really want to thank her and become closer to her, but I don't have much experience talking to girls... what do I do??? Ideas on how to start a conversation please. I don't want to blow this opportunity.\""
+                                            mc neutral "*swipe* Hmm, I don't see any replies."
+                                            pass
+                                        "Stop reading.":
+                                            pass
+                                    
+                            pass
+
+                        "Check out w/ttigrtotiafw":
+                            mc neutral "\"The princess appeared at my school yesterday.\""
+                            "This Wedditor shares a heartfelt story: \"I'm honestly kind of a loner, but that's because I don't have many friends who I vibe with, you get me?\""
+                            "\"'That Time I Got Reincarnated 21 Times in a Fantasy World' has been my only source of happiness these past few days.\""
+                            "\"If only there were more people at my school who enjoy anime and manga as much as I do. They don't understand that liking anime and manga is not just a hobby, it's a lifestyle! If it was normalized, then I wouldn't be picked on so often :(\""
+                            mc shocked "Woah, this is a really lengthy post. When does the princess come in?"
+                    
+                            menu:
+                                "Keep reading.":
+                                    "\"I know you guys won't believe me, but I'm telling the truth. These two bullies were picking on me again (this happens a lot, unfortunately, I know, I'm such a loser),\""
+                                    "\"and usually, no one cares enough to say anything, but today was different. A girl I had never seen around campus before took me by the hand, and then we ran away from the bullies together.\""
+                                    "\"I wasn't wearing my glasses, but her figure was all too familiar. That flowing hair, that cool style, the same beautiful features.\""
+                                    "\"I met Princess Suzuki Haruka in the flesh... and she saved me from those bullies. EDIT: She saved my life. Is this what people call fate?\""
+                                    mc deadpan "Suzuki Haruka again?"
+                                    "\"I really want to thank her and become closer to her, but I don't have much experience talking to girls... what do I do??? Ideas on how to start a conversation please. I don't want to blow this opportunity.\""
+                                    mc neutral "*swipe* Hmm, I don't see any replies."
+                                "Stop reading.":
+                                    pass
+                            
+                            menu:
+                                "Check out w/TIL":
+                                    mc "\"Today I Learned: in humans, the right lung has three lobes while the left only has 2.\""
+                                    "You tap on the linked source and learn that the third lobe is the space for the human heart."
+                                    mc "That makes sense."
+                            pass
+                    pass
+                "Check out w/TIL":
+                    mc "\"Today I Learned: in humans, the right lung has three lobes while the left only has 2.\""
+                    "You tap on the linked source and learn that the third lobe is the space for the human heart."
+                    mc "That makes sense."
+
+                    menu:
+                        "Check out w/ELI4":
+                            mc neutral "\"Explain Like I'm Four: What happens to bugs that get stuck in cars and accidentally travel long distances?\""
+                            "The most agreed-upon answer seems to be that it depends on the species. One Wedditor comments that some species will perish due to being unable to find their usual food or shelter."
+                            "Another Wedditor says that the species could adapt and even dominate their new environment, potentially becoming an invasive species and permanently changing their environment. For the better, or worse."
+                            mc neutral "That's somewhat interesting. *swipe*"
+
+                            menu:
+                                "Check out w/ttigrtotiafw":
+                                    mc neutral "\"The princess appeared at my school yesterday.\""
+                                    "This Wedditor shares a heartfelt story: \"I'm honestly kind of a loner, but that's because I don't have many friends who I vibe with, you get me?\""
+                                    "\"'That Time I Got Reincarnated 21 Times in a Fantasy World' has been my only source of happiness these past few days.\""
+                                    "\"If only there were more people at my school who enjoy anime and manga as much as I do. They don't understand that liking anime and manga is not just a hobby, it's a lifestyle! If it was normalized, then I wouldn't be picked on so often :(\""
+                                    mc shocked "Woah, this is a really lengthy post. When does the princess come in?"
+                    
+                                    menu:
+                                        "Keep reading.":
+                                            "\"I know you guys won't believe me, but I'm telling the truth. These two bullies were picking on me again (this happens a lot, unfortunately, I know, I'm such a loser),\""
+                                            "\"and usually, no one cares enough to say anything, but today was different. A girl I had never seen around campus before took me by the hand, and then we ran away from the bullies together.\""
+                                            "\"I wasn't wearing my glasses, but her figure was all too familiar. That flowing hair, that cool style, the same beautiful features.\""
+                                            "\"I met Princess Suzuki Haruka in the flesh... and she saved me from those bullies. EDIT: She saved my life. Is this what people call fate?\""
+                                            mc deadpan "Suzuki Haruka again?"
+                                            "\"I really want to thank her and become closer to her, but I don't have much experience talking to girls... what do I do??? Ideas on how to start a conversation please. I don't want to blow this opportunity.\""
+                                            mc neutral "*swipe* Hmm, I don't see any replies."
+                                        "Stop reading.":
+                                            pass
+                            pass
+                        "Check out w/ttigrtotiafw":
+                            mc neutral "\"The princess appeared at my school yesterday.\""
+                            "This Wedditor shares a heartfelt story: \"I'm honestly kind of a loner, but that's because I don't have many friends who I vibe with, you get me?\""
+                            "\"'That Time I Got Reincarnated 21 Times in a Fantasy World' has been my only source of happiness these past few days.\""
+                            "\"If only there were more people at my school who enjoy anime and manga as much as I do. They don't understand that liking anime and manga is not just a hobby, it's a lifestyle! If it was normalized, then I wouldn't be picked on so often :(\""
+                            mc shocked "Woah, this is a really lengthy post. When does the princess come in?"
+                    
+                            menu:
+                                "Keep reading.":
+                                    "\"I know you guys won't believe me, but I'm telling the truth. These two bullies were picking on me again (this happens a lot, unfortunately, I know, I'm such a loser),\""
+                                    "\"and usually, no one cares enough to say anything, but today was different. A girl I had never seen around campus before took me by the hand, and then we ran away from the bullies together.\""
+                                    "\"I wasn't wearing my glasses, but her figure was all too familiar. That flowing hair, that cool style, the same beautiful features.\""
+                                    "\"I met Princess Suzuki Haruka in the flesh... and she saved me from those bullies. EDIT: She saved my life. Is this what people call fate?\""
+                                    mc deadpan "Suzuki Haruka again?"
+                                    "\"I really want to thank her and become closer to her, but I don't have much experience talking to girls... what do I do??? Ideas on how to start a conversation please. I don't want to blow this opportunity.\""
+                                    mc neutral "*swipe* Hmm, I don't see any replies."
+                                "Stop reading.":
+                                    pass
+                    pass
+                "Check out w/ttigrtotiafw":
+                    $ w_aura += 1
+                    mc neutral "\"The princess appeared at my school yesterday.\""
+                    "This Wedditor shares a heartfelt story: \"I'm honestly kind of a loner, but that's because I don't have many friends who I vibe with, you get me?\""
+                    "\"'That Time I Got Reincarnated 21 Times in a Fantasy World' has been my only source of happiness these past few days.\""
+                    "\"If only there were more people at my school who enjoy anime and manga as much as I do. They don't understand that liking anime and manga is not just a hobby, it's a lifestyle! If it was normalized, then I wouldn't be picked on so often :(\""
+                    mc shocked "Woah, this is a really lengthy post. When does the princess come in?"
+                    
+                    menu:
+                        "Keep reading.":
+                            "\"I know you guys won't believe me, but I'm telling the truth. These two bullies were picking on me again (this happens a lot, unfortunately, I know, I'm such a loser),\""
+                            "\"and usually, no one cares enough to say anything, but today was different. A girl I had never seen around campus before took me by the hand, and then we ran away from the bullies together.\""
+                            "\"I wasn't wearing my glasses, but her figure was all too familiar. That flowing hair, that cool style, the same beautiful features.\""
+                            "\"I met Princess Suzuki Haruka in the flesh... and she saved me from those bullies. EDIT: She saved my life. Is this what people call fate?\""
+                            mc deadpan "Suzuki Haruka again?"
+                            "\"I really want to thank her and become closer to her, but I don't have much experience talking to girls... what do I do??? Ideas on how to start a conversation please. I don't want to blow this opportunity.\""
+                            mc neutral "*swipe* Hmm, I don't see any replies."
+                        "Stop reading.":
+                            pass
+                    pass
+
+            "I think that's enough screentime for today."
+            menu:
+                "Go to sleep.":
+                    pass
+
+            pass
+        "WinkedIn":
+            # mc happy "I will become a WinkedIn warrior!"
+            $ g_aura += 1
+            "It's been a hot minute since you last opened WinkedIn. Upon entering the app, you're bombarded with activity."
+            mc shocked "Wow, there are so many requests to connect."
+            mc neutral "*swipe*"
+            mc "Some nonprofit founder..."
+            mc "*swipe*"
+            mc "Student from Milkyway High School..."
+            mc "*swipe*"
+            "You scroll down a lengthy list of requests to connect from students at your school."
+            mc shocked "I literally just transferred to this school. I don't know most of these people, but there are so many of them!"
+            mc happy "Heh... am I already that popular?"
+            # for worldbuiling purposes - idk if i should keep this here or move it somewhere else
+            "Actually, this is just because Milkyway Academy is full of WinkedIn warriors."
+            "You may feel like you've been adjusting well to your new school as an exchange student. But for some kids, they still struggle to keep up with Milkyway's rigorous coursework, even after having attended the institution for a few years longer than you."
+            "And as if the rigorous coursework wasn't enough, there's always a pressure to find research positions or internships, if not jobs."
+            mc neutral "*swipe*"
+            mc "It's almost 11:00 PM now... guess I'll go to bed."
+            menu:
+                "Turn off your phone.":
+                    pass
+            pass
+
+    scene bg black_background with fade
+
+    "The next day..."
+    # maybe a quick cutscene of mc going through her day
+    # idkkkk
+
+    scene bg dining_room with fade
+
+    "Saturday, 11:00 AM. At home."
+    mc neutral "(Ugh, I feel so groggy...)"
+    "Since you woke up, you've been feeling some discomfort in your lower back. It doesn't necessarily hurt, but it's not that easy to ignore. Perhaps \"stiff\" is the right word?"
+    "Perhaps you could get some exercise outside to loosen up?"
+
+    menu:
+        "Walk around the park.":
+            mc happy "Hmm... I've been wanting to check out that park nearby."
+            jump episode_7
+        # "Explore the city.":
+        #     mc happy "Let's be adventurous today."
+        #     jump episode_8
+        
+        # SECRET 3RD OPTION?? work on later lolol
+
+        # "I don't want to go outside.":
+        #     mc neutral "(Eh... I'm feeling kinda sluggish today.)"
+        #     pass
+
     return
 
-# date w/ weeb (athena)
+# --> WALK AROUND THE PARK
+# date w/ looksmaxxer (kaylee)
 label episode_7:
     
-    jump episode_8
+    scene bg street with fade
+
+    $ completed_g_date = True
+
+    "Saturday, 12:00 PM. On the way to the park."
+    "You wince a bit because of how bright the sunlight shines on you today. It seems that New York's sky is clearer and bluer than Beijing's sky."
+    # i feel like this doesn't make sense lol maybe come back and replace this line
+    # "The language may be different, but the vibe is still the same. You find comfort in the pleasant breeze and crisp air that has already become routine this spring."
+    "The language may be different, but the vibe is still the same. You find comfort in people-watching and traffic-watching. Just don't stare at the cars for too long, or the the sun's reflection will blind you."
+
+    # mc happy "Ooh, a puppy!"
+    mc happy "Ooh, there's the park!"
+    scene bg park with fade
+
+    pause
+    # mc happy "The grass is so green!"
+
+    show king neutral with dissolve:
+        zoom 0.25
+        xcenter 0.5
+        yalign 1.0
+
+    g "!"
+    g neutral "[playername]? What are you doing here?"
+    $ gymbro = "King"
+    mc neutral "Oh."
+    mc "Hello, King."
+    mc "I was..."
+
+    menu:
+        "Getting some exercise.":
+            mc neutral "...just getting some exercise."
+            $ g_aura += 1
+            "+1 Aura!"
+            g focused "Good for you."
+            g neutral "If you aren't busy, want to join me for a walk?"
+            menu:
+                "Yes":
+                    mc neutral "Sure, why not."
+                    $ g_aura += 1
+                    "+1 Aura!"
+                    pass
+                "No":
+                    mc neutral "No thank you."
+                    g "Alright, then."
+                    hide king neutral
+                    "You turn around to walk the other way."
+                    "But you still hear the sound of footsteps close behind you..."
+                    show king disgusted with dissolve:
+                        zoom 0.25
+                        xcenter 0.5
+                        yalign 1.0
+                    g "I'm not following you. We're just going the same direction."
+                    mc neutral "Okay."
+                    hide king neutral
+                    # show king neutral
+                    "King waits for you to walk a good distance ahead, and then he continues walking farther behind you."
+                    "Only now, you can't shake off the feeling that he's probably staring at the back of your head."
+                    mc deadpan "(This is so awkward!)"
+                    $ g_aura -= 1
+                    "-1 Aura!"
+
+                    menu:
+                        "Accept his offer to walk together.":
+                            mc neutral "King, I accept your offer from earlier."
+                            mc "If we're going to walk the same way, we might as well go togther."
+                            "King hastens his pace to catch up with you."
+                            show king focused with dissolve:
+                                zoom 0.25
+                                xcenter 0.5
+                                yalign 1.0
+                            g "Alright, then."
+                            pass
+                        # "Take a bus downtown.":
+                        #     pass
+            pass
+        "Trying to loosen up my back.":
+            mc neutral "...just trying to loosen up my back."
+            mc "I must have slept in a weird position, because my back has been feeling stiff all morning."
+            g neutral "I wake up in pain, too. And then I train. At the gym."
+            # g focused "Pain is just weakness leaving the body."
+            mc deadpan "Um... I don't get it."
+            g neutral "..."
+            mc neutral "..."
+            mc "(Soooo awkward.)"
+            $ g_aura -= 1
+            "-1 Aura!"
+            g disgusted "*sigh*"
+            # g neutral "You should probably get a better mattress."
+            g neutral "Just get a better mattress."
+            mc "Okay... I'm not too familiar with the area, though. Do you know where I can buy a mattress?"
+            g neutral "If you walk towards Overglade Street and then take the crossing..."
+            g focused "You know what, forget it. I'm supposed to be a man of few words."
+            g neutral "Follow me. I'll lead the way."
+
+            $ mall_with_gymbro = True 
+            jump episode_8
+    
+    "You and King embark on a leisurely stroll along the park trail."
+    "The two of you engage in meaningful conversation regarding health and wellness strategies, after you complain about what ails you. King recommends you a few brands for vitamins and supplements."
+    # g neutral "In fact, I'm have some on me right now."
+    # "King hands you a small red packet."
+    g neutral "...And, well, I personally wouldn't call these supplements, but here."
+    g focused "Ginseng candy."
+    "King hands you a pebble-sized candy, encased in a red and gold wrapper. You peel the wrapper to find that the candy itself is a shiny, hard, and luxuriously blood-red in color."
+    # INVENTORY BRUHHH
+    mc happy "Thanks."
+    "The candy tastes strongly earthy. It's mildly sweet, but also just as bitter. You definitely feel more energized."
+    mc neutral "(First back pain... then going for a walk... and now eating ginseng candy...)"
+    mc neutral "(I feel like I've reached retirement age.)"
+
+    g neutral "...[playername]!"
+    mc shocked "Huh? Yes?"
+    g neutral "What do you think of the ginseng candy?"
+
+    menu:
+        "Not my style.":
+            mc neutral "To be honest, it's not my style."
+            g neutral "I see."
+            g neutral "Well... if you ever want to buy some, Mimo Mall sells them."
+        "It has a rich flavor.":
+            mc neutral "It has a rich flavor."
+            $ g_aura += 1
+            "+1 Aura!"
+            g focused "Right?"
+            g neutral "If you ever want to buy some, Mimo Mall sells them."
+
+    "It's the huge plaza on Overglade Street."
+    mc neutral "Got it, thanks."
+    g focused "Yeah."
+    g neutral "Anyways... I'll be heading to the gym now. This is where we part ways."
+    menu:
+        "Can I come too?":
+            $ g_aura += 1
+            # future version maybe? if you have high enough aura then u can go to the gym with him
+            mc neutral "Can I come too?"
+            g neutral "You want to come to the gym?"
+            mc neutral "*nod*"
+            if g_aura >= 3:
+                g neutral "Hmm. Maybe another time."
+            else:
+                g disgusted "Uhh... maybe another time."
+            pass
+        "Bye.":
+            mc neutral "Bye."
+
+    "King leaves first. As he gets further and further away, he begins jogging. And before you know it, he's out of sight."
+    "What will you do next?"
+
+    if n_aura < 3:
+        menu:
+            "Call it a day.":
+                $ called_it_a_day = True
+                jump episode_9
+            "Check out Mimo Mall.":
+                $ mall_with_gymbro = False
+                jump episode_8
+    else:
+        menu:
+            "Call it a day.":
+                $ called_it_a_day = True
+                jump episode_9
+                pass
+
     return
 
-# date w/ looksmaxxer (kaylee)
+# mc tryna go 2 mall but she gets on wrong train (stuck on train w/ weeb for an hour)
+# eventually they split so weeb goes to anime convention/weddit meetup, since he is the 21cls subweddit moderator
+# mc goes 2 mall and sees ronan and king together
+# run into king when he picks up weeb from the train station
+
+# ---> EXPLORE THE CITY
+# date w/ Ronan, narcissist (kaylee)
+# meet lucien, weeb when going home
+# for now, only option is to go with gymbro
 label episode_8:
+    # MALL EPISODE
+    $ completed_n_date = True
+
+    scene bg mall_street with fade
+    
+    # gymbro meets ronan
+    if mall_with_gymbro == True:
+        "Saturday, 3:00 PM. Mimo Mall."
+        show king focused with dissolve:
+            zoom 0.25
+            xcenter 0.5
+            yalign 1.0
+        g "We're here."
+        mc happy "Yay!"
+        if g_aura <= 3:
+            g disgusted "What's got you so giddy?"
+        else:
+            g neutral "What's got you so giddy?"
+        mc neutral "Since I came to Milkyway Academy, this is my first time going to an American mall."
+        g disgusted "Right... you're the exchange student everyone's been raving about."
+        g neutral "Of course everything is new to you."
+        mc deadpan "By the way, um, how come people are \"raving\" about me?"
+        scene bg mall_street_2 with dissolve 
+        # maybe move it to weeb encounter? idk
+        show king neutral with dissolve:
+            zoom 0.25
+            xcenter 0.5
+            yalign 1.0
+        g "Well... not only are you an exchange student, but you're the first ever exchange student."
+        g "My buddies are excited about the exchange program because they think Milkyway is heading in a new direction."
+        mc neutral "A new direction...?"
+        g "Our school's pretty infamous for the hard classes and grind culture. But because Milkyway started the exchange program, people think that the school is trying to mellow that culture."
+        g "There's rumors that this year, the school will give a large chunk of funds to clubs, sports, and programs like yours."
+        g "You coming here gives proof of that."
+        mc "(I think I might have heard about that before.)"
+        g focused "If you ask me, though, I think the school is just worried about their dropout rate."
+        g neutral "That time-"
+        g "..."
+        mc neutral "?"
+        g angry "Woah... this is so unlike me. I don't usually talk this much. I'm usually very nonchalant."
+        mc neutral "Um, it's okay for you to talk."
+        g neutral "You don't hate it?"
+        menu:
+            "Actually, I do hate it.":
+                mc neutral "Actually, I do hate it."
+                mc neutral "What I meant to say was, sometimes I hate when people ramble on and on. But it's okay if it's you."
+                mc deadpan "(Those words just slipped out of my mouth.)"
+                mc neutral "(Nice recovery!)"
+                pass
+            "Why would I?":
+                mc shocked "Why would I?"
+                mc neutral "I enjoy listening to you."
+                $ g_aura += 1
+                "+1 Aura!"
+                pass
+        mc happy "I learn so much through our conversations. They're quite valuable to me."
+        g "That's so..."
+        "SO CUTE!"
+        mc shocked "!?"
+
+        # hide king neutral
+
+        show narcissist neutral with dissolve:
+            zoom 0.25
+            xcenter 0.2
+            yalign 1.0
+        
+        n "I said, that's so cute!"
+        n blingneutral "I think it's so cute when people use the word \"valuable.\""
+        show narcissist blingneutral at move_left_and_zoom
+        show king disgusted:
+            zoom 0.25
+            xcenter 0.5
+            yalign 1.0
+        show king disgusted at olivia_move_left
+        g disgusted "I hate being interrupted..."
+        g angry "Especially when it's you, Ronan!"
+        mc neutral "Ronan, what are you doing here?"
+        show king disgusted
+        n blinghappy "Hoho. It feels awesome being the center of attention."
+        n neutral "But, if you must know, I'm here on extremely important business!"
+        n neutral "I formally announce..."
+        n blingneutral "On behalf of Sinclair X.Y. Industries, I'm going to buy this mall!"
+        n blingneutral "And..."
+        n blinghappy "It will be gifted to Fuyu Group to symbolize the beginning of our grand partnership!"
+        mc deadpan "(I have never heard of this partnership before...)"
+        g disgusted "What is going through your head, bro?"
+        n blingneutral "I ain't your bro. I'm Ronan X.Y. Sinclair."
+        n neutral "Anyhow, Mimo Mall needs some serious renovating."
+        n neutral "There are so many random shops that no one needs... like, there's a store that sells mattresses and even a store that sells ginseng candies."
+        n neutral "Wouldn't you agree, [playername]?"
+        mc neutral "I..."
+
+        menu:
+            "Agree.":
+                mc neutral "...I agree. I wouldn't think to buy mattresses and ginseng candies at a mall."
+                n neutral "Right? Since this is an American mall, after all, we should really emphasize the food court and luxury stores that appeal to everyone."
+                n neutral "Instead of niche things like mattresses and ginseng candies!"
+                g neutral "..."
+                n "Anyhow, [playername], I'm really glad we see eye-to-eye."
+                n "I hope you, on behalf of Fuyu Group will take Mimo Mall as an opportunity to expand your business in America."
+                n "And don't forget--it's a gift from Sinclair X.Y. Industries."
+                n blinghappy "Ahem. That's all I wanted to say! Farewell, you two!"
+                hide narcissist blinghappy
+                show king angry at move_back_to_middle
+                g "[playername]. What's this all about?"
+                mc neutral "I have no idea. Fuyu Group and Sinclair X.Y. Industries have never worked together before..."
+                mc "I'm not sure what partnership he's talking about."
+                g neutral "Hmph."
+                $ g_aura -=1
+                "-1 Aura!"
+            "Disagree.":
+                mc neutral "...I disagree. The mattresses and ginseng candies bring variety and a touch of uniqueness to the mall."
+                $ g_aura += 1
+                "+1 Aura!"
+                g focused "Yeah. *nod of approval*"
+                n neutral "Well, okay. Whatever." 
+                n blingneutral "This conversation has dragged on for too long."
+                n "I'm out of here!"
+                hide narcissist blingneutral
+                show king neutral at move_back_to_middle
+                mc deadpan "..."
+                g angry "*SIGH*"
+                mc neutral "Ronan coming out of nowhere really caught me off guard."
+                g "No shot."
+            
+        scene bg mall_street_2_evening with dissolve
+        
+        "What feels like an hour passes by as you two walk side-by-side."
+        "It's quiet, except for the sounds of the city all around you."
+        "The air is clear, and the sun is setting."
+        "When you eventually return to China, you'll probably reminiscence on this scene."
+
+        show king neutral with dissolve:
+            zoom 0.25
+            xcenter 0.5
+            yalign 1.0
+        g focused "Hold on."
+        "King slides his phone out of his back pocket, just pausing to glance at the clock."
+        mc neutral "What time is it?"
+        g neutral "Time for me to go to the gym."
+        mc neutral "Oh, okay. Bye."
+
+        # if aura is high enough then he will offer to take you home? maybe?
+        g neutral "Wait, are you okay getting home by yourself?"
+
+        menu:
+            "Yes.":
+                mc neutral "Yeah, I'm good. I'll just call my chauffeur."
+                $ g_aura += 1
+                "+1 Aura!"
+                "As you dial up your chauffeur, King walks away. Of course, he transitions into a jog."
+                "You watch him speedily disappear into the distance."
+            "No":
+                mc neutral "No."
+                g neutral "Then, follow me. I'll take you walk you over to the bus stop."
+                "King speed-walks ahead of you."
+                mc angry "Hey, why are you walking so fast?"
+                g focused "Nah, you just gotta keep up."
+                "By the time those words come out of his mouth, King's already a good 5 meters ahead."
+                "And in American units, that's about 16.4 feet."
+                scene bg mall_street_4_evening with fade
+                show king neutral with dissolve:
+                    zoom 0.25
+                    xcenter 0.5
+                    yalign 1.0
+                g neutral "There's a bus stop just up ahead."
+                g "If you can't see it, that means you need glasses."
+                mc angry "I see it, thanks."
+                g "Yeah. I'm leaving now."
+                mc neutral "See you."
+                hide king neutral with fade
+                scene bg mall_street_4_evening at blur_screen
+
+                "Soon enough, you hop on a bus that has stopped by."
+                "You close your eyes, just for a moment."
+                scene bg bus_stop_night
+                "And then you're back onto a familiar street."
+                mc happy "(It's been a long day.)"
+                mc neutral "(What I thought would be a short outing turned into a full-on side quest...)"
+                mc "(I'm just gonna go straight home and rest.)"
+
+                scene bg black_background with fade
+                
+                pass
+
+        # menu:
+        #     "I'm here to buy a mattress.":
+        #         mc neutral "I'm here to buy a mattress."
+        #         n neutral "What? Do you not already have a [[insert fancy brand name] mattress for your luxurious, king-sized bed?"
+        #         mc neutral "Of course I have one. But it's a bit too fancy for me. It kind of hurts my back."
+        #     "I'm here to buy ginseng candies.":
+        #         $ g_aura += 1
+        #         "+1 Aura!"
+        #         mc neutral "I'm here to buy ginseng candies."
+        #         g focused "Yes. The ginseng candies at Mimo Mall are the best."
+        #         pass
+        # "For the sake of this demo, here's a short summary of what happened in between now and the next episode:"
+        # "You either sided with King or Ronan. Depending on your accumulated choices, you became enemies with one of them."
+        # "Your outing ended on a bit of a sour note, so you went home right after, and then just rested for the remaining part of your weekend."
+
+    else: # when gymbro is not at the mall
+        #by yourself, but run into weeb?
+        scene bg mall_street with fade
+        "Saturday, 3:00 PM. Mimo Mall."
+
+        "It's a weekend afternoon, so Mimo Mall's parking lot is packed to the brim."
+        "The cars are lined up like sardines in a can, while a few unlucky cars circle around the lot in search of a clearing."
+
+        mc neutral "(I should check to see if the traffic is better before I call my chauffeur later.)"
+        mc happy "Anyways... where to first?"
+        "*growl*"
+
+        mc deadpan "Woah, I just realized how hungry I am."
+        mc "Definitely going to the food court first."
+
+        menu:
+            "Check out the food court.":
+                scene bg mall_food_court with fade
+                "Something smells really good. Probably... the aroma of some freshly baked bread. You look to your left, and then to your right. There's hungry people everywhere."
+                
+                show olivia angry with dissolve:
+                    zoom 0.25
+                    xcenter 0.5
+                    yalign 1.0
+                o "OMG. Why is this guy taking so long to order?"
+                o neutral "This is so lame. I'm outta here."
+                hide olivia angry with dissolve
+
+                "\"Um...uh.... I-I-I...\""
+                "\"Ugh, hurry up!\""
+
+                show weeb neutral with dissolve:
+                    zoom 0.25
+                    xcenter 0.5
+                    yalign 1.0
+
+                w "S-sorry..."
+                w "C-c-c-c-c-c-can I get n-number t-th-thir-thir-thirteen?"
+
+                hide weeb neutral
+
+                show cashier_neutral with dissolve:
+                    zoom 1.5
+                    xcenter 0.5
+                    yalign 1.0
+                cashier "Sorry, what would you like?"
+
+                mc neutral "He asked for number 13."
+                
+                hide cashier_neutral
+
+                $ w_aura += 1
+                "+1 Aura!"
+
+                show weeb surprised with dissolve:
+                    zoom 0.25
+                    xcenter 0.5
+                    yalign 1.0
+
+                w "S-S-S-Suzuki H-Haruka!!!!!!"
+                mc neutral "Is that you, Lucien?"
+                w happy "Oh... y-you remembered my name!!"
+                mc neutral "Yeah."
+                mc neutral "(But you didn't remember my name...)"
+
+                hide weeb surprised
+                show cashier_neutral with dissolve:
+                    zoom 1.5
+                    xcenter 0.5
+                    yalign 1.0
+                cashier "And you, miss, will you be ordering anything today?"
+                
+                menu:
+                    "Order number 13.":
+                        mc neutral "Number 13 as well, please."
+                        $ order_with_lucien = 13
+                        $ w_aura += 1
+                        "+1 Aura!"
+                    "Order number 4.":
+                        "Glancing at the menu, \"number 4\" is some kind of rice dish. That should be a safe bet."
+                        mc neutral "Number 4, please."
+                        $ order_with_lucien = 4
+                
+                cashier "Okay. Are you paying together?"
+                mc neutral "Yes, I'll pay."
+                $ w_aura += 1
+                "+1 Aura!"
+                cashier "Your total will be $32.72. And your order number is 51."
+                mc happy "Thank you."
+
+                hide cashier_neutral
+
+                "You and Lucien find a table for two, sitting down to wait for your food."
+                
+                show weeb neutral with dissolve:
+                    zoom 0.25
+                    xcenter 0.5
+                    yalign 1.0
+                w "I-I-I should h-have p-paid for you..."
+                mc neutral "Don't worry about it."
+                mc neutral "(Otherwise, I'd still be waiting in line right now.)"
+                w happy "Y-you're so perfect... now that I'm wearing my glasses, you look way prettier in real life..."
+                mc deadpan "In real life?"
+                w neutral "I m-mean, y-y-you're also pretty in the manga too..."
+                mc neutral "What are you on about? I am not... Suzuki Haruka."
+                w confused "Huh? No, you're definitely my Princess Suzuki Haruka! You two look and talk the exact same. There's no way-"
+                mc deadpan "..."
+                w neutral "But..."
+                mc neutral "My name is [playername]."
+                w "Okay, fine... but you're still my savior, [playername]!!!!!"
+                w "You helped me w-with those bullies when we first met, and then again here. I'm not sure what I should do to repay your kindness."
+                
+                hide weeb neutral
+
+                "*bzzt*"
+                "The buzzer on the table is telling you that your food is ready."
+                # show weeb neutral with dissolve:
+                #     zoom 0.25
+                #     xcenter 0.5
+                #     yalign 1.0
+                # w happy "Well. Let's go get our food."
+                # hide weeb neutral
+                
+                mc happy "Well. Let's go get our food."
+                
+                "At the pick-up counter, you're given a somewhat heavy bag holding utensils, napkins, and, of course, your food enclosed in paper containers."
+                show weeb neutral with dissolve:
+                    zoom 0.25
+                    xcenter 0.5
+                    yalign 1.0
+                w "U-um... I'll hold it for you."
+                mc neutral "Thanks."
+                hide weeb neutral
+
+                "When you two return to your spot, absolutely starving, you find that an elderly couple has usurped your table. It looks like they're having a delightful conversation."
+
+                mc neutral "(Man... I don't have the heart to ask them to leave.)"
+                mc neutral "Lucien, do you have time? Can we eat and walk around Mimo Mall's plaza area?"
+                show weeb surprised with dissolve:
+                    zoom 0.25
+                    xcenter 0.5
+                    yalign 1.0
+                w "O-of c-c-c-course!"
+                hide weeb surprised
+
+                # AT THE PLAZA =============================
+                scene bg mall_plaza with fade
+                
+                "After walking around the plaza, the two of you are pleased to find a more spacious table, underneath the cool shade of the surrounding trees."
+                
+                show weeb neutral with dissolve:
+                    zoom 0.25
+                    xcenter 0.5
+                    yalign 1.0
+
+                if order_with_lucien == 13:
+                    w "Um, since we both ordered 13, you can take this one."
+                    hide weeb neutral
+                    "Lucien hands you a container."
+                    "You open it and, not gonna lie, this is a sad looking sandwich."
+                    "But once you take a bite..."
+                    "A burst of flavors dance on your tongue. Juicy tomato, soft cheese, something sweet..."
+                    mc happy "(And I was so worried that the bread would be too dry. Silly me, it was just nicely toasted.)"
+                    $ w_aura += 1
+                else:
+                    w "Okay, 13 is mine... and here's your food."
+                    hide weeb neutral
+                    "Lucien hands you a container."
+                    "It's rice, just like you thought. But... amidst heaps of meat and veggies, the portion is much bigger than you had imagined."
+                    mc neutral "(So these are American-sized portions.)"
+                    mc "I'm going to conquer this rice."
+                
+                show weeb happy with dissolve:
+                    zoom 0.25
+                    xcenter 0.5
+                    yalign 1.0
+                w "Itadakimasu!"
+
+                hide weeb happy
+                
+                "Lucien is just ecstatic to be eating lunch with you, and the two of you devour your food like cavemen. In this moment, there is no judgement."
+                "1 hour later..."
+
+                show weeb neutral with dissolve:
+                    zoom 0.25
+                    xcenter 0.5
+                    yalign 1.0
+                w "I'm so full..."
+                mc neutral "Me too."
+
+                w "I-I think I should start heading home now... I have to start reading the newest chapter before it's leaked everywhere on Weddit..."
+                w surprised "[playername], are you heading home soon? W-w-we can take the bus t-t-together."
+
+                mc neutral "(Hmm... I do want to see what an American bus is like.)"
+                mc "Okay, sounds good."
+
+                "The two of you start walking to the bus stop."
+
+                scene bg mall_street_evening
+
+                "By now, the sun is beginning to set. The sky has turned peachy orange."
+
+                if w_aura >= 5:
+                    show weeb neutral with dissolve:
+                        zoom 0.25
+                        xcenter 0.5
+                        yalign 1.0
+                    w "Now I'm kind of craving peaches..."
+                    mc shocked "Woah, how did you read my mind?"
+                    w happy "H-huh? I was just thinking that the color of the sky is like peach ice cream..."
+                    mc "Peach ice cream sounds delicious."
+                    w neutral "A-a-a-actually I-I know a good ice cream s-shop in our city!"
+                    w "You should-I mean, we should go sometime."
+
+                    $ w_aura += 1
+                    "+1 Aura!"
+                
+                # menu:
+                #     "Yes":
+                #         mc happy "I'd like that."
+                #         $ w_aura += 1
+                #         "+1 Aura!"
+                #         w happy "Okay then."
+                #     "No.":
+                #         mc "Nah, that's okay."
+                #         w "Okay then."
+
+                "Soon enough, you and Lucien get to the bus stop, where you briefly wait for the next bus."
+
+                scene bg inside_bus with dissolve
+
+                show weeb happy with dissolve:
+                    zoom 0.25
+                    xcenter 0.5
+                    yalign 1.0
+                
+                w "That was a lot of fun, don't you think?"
+                w neutral "Um, w-what I meant to say was, I had fun. Thanks, [playername]."
+
+                menu:
+                    "I had fun too":
+                        mc happy "I had fun too."
+                    "I can't wait to be home.":
+                        mc neutral "I can't wait to be home."
+                        w "Oh... haha, yeah..."
+                        pass
+            
+                "Now, you're starting to feel the food coma after filling your belly to your heart's content. You close your eyes to rest."
+                "And before you know it, you're back to the familiar street where your penthouse is."
 
     jump episode_9
     return
 
-# confessions
+# at home, after dates and before confessions
 label episode_9:
+
+    if called_it_a_day == True:
+        scene bg living_room with fade
+        "1:00 PM. At home."
+        "As you remove your shoes, you realize that your back pain has greatly subsided. You feel considerably more joyful and light."
+        mc neutral "Finally back home..."
+        mc deadpan "I really didn't expect to run into King at the park."
+        mc happy "But honestly, that walk made me feel much better."
+        mc neutral "I guess all I needed was some movement after lying down for so long."
+        "*growl*"
+        mc neutral "..."
+        mc angry "But now I'm so hungry!!!!!!"
+        mc angry "I deserve a hearty meal!!!"
+        scene bg dining_room with dissolve
+        "Fortunately, your reliable personal chef had prepared an appetizing pasta spread while you were away at the park."
+        mc neutral "?"
+        mc neutral "Wait, what's this?"
+        "Something bright and yellow catches your attention."
+        "On the dining table, there's a yellow sticky note, which you thought was a pickled radish at first glance. Perhaps the chef left it?"
+        "Picking up the sticky note, you read:"
+        mc neutral "(\"If you rush too quickly, you'll make mistakes, which will have consequences.\")"
+        mc "(\"But fear not. Tomorrow is a new day, and thus, a second chance.\")"
+        mc "...How strange. It's not like Chef to talk so poetically like this."
+
+        "Besides the strange note you found, the rest of your weekend is nothing but calm and peaceful. You could get definitely get used to this."
+        "Enjoy it before you have to go back to school on Monday."
+        mc angry "Ugh."
+        scene bg black_background with fade
+
+    else:
+        scene bg bedroom_night
+        
+        "Saturday, 11:00 PM."
+        mc neutral "Woah, I dozed off for quite a bit."
+        mc "I guess the outing took a toll on me. I don't think I'll do much more by the time the school week starts."
+
+        mc "Should I doomscroll?"
+
+        if g_aura >= 10:
+            pass
+        elif p_aura >= 10:
+            pass
+        elif n_aura >= 10:
+            pass
+        elif w_aura >= 10:
+            pass
+
+        mc "Nah, forget it... I'll just go back to sleep."
+        mc "I don't know why, but I get the feeling that a lot will happen next week."
+
+        pass
+    
+    jump episode_10
+    return
+
+# confessions
+label episode_10:
 
     # if u see this, after u finish ep 4 im gonna tweak the beginning of this ep so it flows nicely
     scene bg black_background with fade
 
-    "After an... interesting first day of school, you decided to go to bed early to relax."
+    # "After an... interesting first day of school, you decided to go to bed early to relax."
+    "To complete your weekend of recharging, you decided to go to bed early to relax."
     "However, ever since you woke up this morning, you feel as if there's been signs telling you that today won't be so typical either."
     "Let's take a look, shall we?"
 
     scene bg bedroom_dusk with fade
 
-    "Friday, 5:00 AM."
+    "Monday, 5:00 AM."
     "*RING!*"
     "..."
     "*RING!* *RING!*"
@@ -2462,7 +3499,7 @@ label episode_9:
 
     scene bg living_room with fade
 
-    "Friday, 6:00 AM."
+    "Monday, 6:00 AM."
     mc neutral "Cleaning up the glass was annoying."
     mc happy "It's fine. Nothing's better than starting the day with a fulfilling meal!"
     mc happy "And at least the weather's nice today."
@@ -2484,7 +3521,7 @@ label episode_9:
 
     scene bg school_street with fade
 
-    "Friday, 7:30 AM."
+    "Monday, 7:30 AM."
     "After those two unfortunate events, you still managed to get yourself together and go to school."
     "Once your chauffeur dropped you off, you decided to explore the shops near the school until class started."
 
@@ -2497,15 +3534,19 @@ label episode_9:
     mc neutral "(Hm? What's this?)"
     cashier "Young lady! Good morning! Would you like to purchase a good luck charm? Only sold today!"
     mc neutral "Why are they only being sold today?"
-    cashier "Hoho! Look at a calendar! What day is it today?"
-    mc deadpan "It's Friday, but so what?"
+    # cashier "Hoho! Look at a calendar! What day is it today?"
+    # mc deadpan "It's Friday, but so what?"
 
-    "Taking out your phone, you quickly glance at the top of the screen where it shows the date."
+    # "Taking out your phone, you quickly glance at the top of the screen where it shows the date."
 
-    mc neutral "It's the 13th...?"
-    cashier "Exactly! Friday the 13th! The unluckiest day of the year!"
-    cashier "Young lady, with such a beautiful face and a heart of gold like yours, you can't take any risks on such an unlucky day!"
-    mc neutral "(Isn't this just a superstition? What could possibly happen today out of all days?)"
+    # mc neutral "It's the 13th...?"
+    # cashier "Exactly! Friday the 13th! The unluckiest day of the year!"
+    # cashier "Young lady, with such a beautiful face and a heart of gold like yours, you can't take any risks on such an unlucky day!"
+    # mc neutral "(Isn't this just a superstition? What could possibly happen today out of all days?)"
+    cashier "Tsk tsk. Magical items are in high demand and little supply. Who knows when I'll be able to sell these charms again?"
+    cashier "Perhaps fate led you to my stall today... and perhaps you can have a shot at changing your fate that will soon come."
+    cashier "That is, if you buy a good luck charm!"
+    mc neutral "(What could possibly happen today, a random Monday, out of all days?)"
     mc neutral "(Whatever. Twenty dollars is just twenty dollars.)"
     mc neutral "Here you go."
     cashier "Hehehe... Thank you for your purchase!! A lucky charm for a lucky girl! Have a good day!"
@@ -2536,10 +3577,11 @@ label episode_9:
     # mmight do some interactive stuff with the morning classes, like how going to class in persona5 works
     scene bg cafe_outside with fade 
 
-    "Friday, 12:00 PM."
+    "Monday, 12:00 PM."
     "Thankfully, your morning classes went smoothly, and nothing was out of the ordinary. After all, superstitions are just superstitions."
     "More importantly, it's time for lunch!"
-    "You head over to the same cafe from the day before to get something to eat."
+    # "You head over to the same cafe from the day before to get something to eat."
+    "You head over to the same cafe from the week before to get something to eat."
 
     mc happy "(I'm starving...)"
     mc neutral "(I didn't look too closely at the menu yesterday, hopefuly they have something filling.)"
@@ -2629,7 +3671,7 @@ label episode_9:
         xcenter 0.5
         yalign 1.0
     
-    "Kyren Miller, the guy you met yesterday morning."
+    "Kyren Miller, the guy you met last week."
 
     p neutral "Hey, [playername], what a coincidence!"
     p happy "I didn't think you would be up here as well."
@@ -2671,5 +3713,21 @@ label episode_9:
     "Again, this guy just doesn't know when to stop talking nonsense."
     "What will you do?"
 
-
+    scene bg black with dissolve
+    "Thank you for playing 21st Century Love Story!"
     return
+
+# story wireframe
+# ideas false promises, told his mom about u, jumping the gun
+# red flags: doesn't treat siblings well but tells you that they do
+# e.g. "they robbed me of that award"
+# try not to glamorize toxicity tho! just satirize it so it appears off putting
+
+# performative: insecure about height, my life sucks, still wants to buy you a ring, at least i'm good at school
+# my life is SOOOO hard..."
+
+# mc "He asked for"
+# backhanded compliments to your face,,
+# gymbro switchup - kind of bipolar...? pretends to be nice
+
+#when you're ready, ctrl f COMEBACKHERE

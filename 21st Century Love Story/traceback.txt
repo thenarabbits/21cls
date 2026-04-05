@@ -1,34 +1,28 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 1587, in script
-    show olivia shocked with dissolve_plus_moveright:
-Exception: Parameter 'new_widget' is not known by ATL Transform.
+  File "game/script.rpy", line 2888, in script
+    if mall_with_gymbro == True:
+  File "game/script.rpy", line 2888, in <module>
+    if mall_with_gymbro == True:
+NameError: name 'mall_with_gymbro' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 1587, in script
-    show olivia shocked with dissolve_plus_moveright:
-  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\ast.py", line 1363, in execute
-    renpy.exports.with_statement(trans, paired=paired)
-  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\exports.py", line 1782, in with_statement
-    return renpy.game.interface.do_with(trans, paired, clear=clear)
-  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\display\core.py", line 1549, in do_with
-    return self.interact(trans_pause=True,
-  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\display\core.py", line 2166, in interact
-    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
-  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\display\core.py", line 2609, in interact_core
-    trans = instantiate_transition(None, old_root, layers_root)
-  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\display\core.py", line 2519, in instantiate_transition
-    trans = self.ongoing_transition[layer](
-  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\display\transition.py", line 1113, in ComposeTransition
-    return trans(new_widget=new, old_widget=old)
-  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\atl.py", line 617, in __call__
-    raise Exception('Parameter %r is not known by ATL Transform.' % k)
-Exception: Parameter 'new_widget' is not known by ATL Transform.
+  File "game/script.rpy", line 2888, in script
+    if mall_with_gymbro == True:
+  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\ast.py", line 1845, in execute
+    if renpy.python.py_eval(condition):
+  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\python.py", line 1209, in py_eval
+    return py_eval_bytecode(code, globals, locals)
+  File "C:\Users\Andreas\Downloads\renpy-8.2.3-sdk\renpy\python.py", line 1202, in py_eval_bytecode
+    return eval(bytecode, globals, locals)
+  File "game/script.rpy", line 2888, in <module>
+    if mall_with_gymbro == True:
+NameError: name 'mall_with_gymbro' is not defined
 
-Windows-10-10.0.26100 AMD64
+Windows-10-10.0.26200 AMD64
 Ren'Py 8.2.3.24061702
 21st Century Love Story 1.0
-Tue Jan  6 19:28:21 2026
+Fri Apr  3 18:15:46 2026

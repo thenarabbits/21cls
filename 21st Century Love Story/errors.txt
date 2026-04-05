@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 1586: Line is indented, but the preceding show statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
-    zoom 0.25
-    ^
+File "game/script.rpy", line 3282: expected 'simple_expression' not found.
+    scene bg mall_plaza with with fade
+                             ^
 
 Ren'Py Version: Ren'Py 8.2.3.24061702
-Tue Jan  6 19:29:48 2026
+Fri Apr  3 21:25:06 2026
