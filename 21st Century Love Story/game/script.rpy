@@ -1199,11 +1199,14 @@ label episode_3_meeting:
     mc deadpan "(What is going on? Aren't these two supposed to still be in class?)"
     mc neutral "(And who is that?)"
 
-    show weeb_neutral with dissolve
+    show weeb neutral with dissolve:
+        zoom 0.25
+        xcenter 0.5
+        yalign 1.0
 
     w "Y-y-y-y-y-y-y-you cannot threaten me! This pure love is everlasting!"
 
-    hide weeb_neutral
+    hide weeb neutral
     show b1_neutral with dissolve:
         zoom 0.25
         xalign 0.5
@@ -1402,7 +1405,7 @@ label episode_3_savior:
     w "I will not allow you to take my waifu away from me!!"
     mc shocked "..."
 
-    hide weeb_neutral
+    hide weeb noglasses_neutral
     show b1_neutral with dissolve:
         zoom 0.25
         xalign 0.5
@@ -1441,7 +1444,7 @@ label episode_3_savior:
     w "No! Call her by her full name!"
     w "She is Princess Suzuki Haruka!"
 
-    hide weeb_neutral
+    hide weeb noglasses_neutral
     show b2_neutral with dissolve:
         zoom 0.3
         xalign 0.5 
@@ -1468,7 +1471,7 @@ label episode_3_savior:
     w "...Huh? Who's Sophia?"
     mc shocked "..."
 
-    hide weeb_neutral
+    hide weeb noglasses_confused
     show b1_neutral with dissolve:
         zoom 0.25
         xalign 0.5
@@ -1505,7 +1508,7 @@ label episode_3_savior:
         yalign 1.0
     w "Huh? I don't want her. My heart only belongs to my waifu!"
 
-    hide weeb_neutral
+    hide weeb noglasses_confused
     show b2_neutral with dissolve:
         zoom 0.3
         xalign 0.5
@@ -1523,7 +1526,7 @@ label episode_3_savior:
     w "..."
     w noglasses_happy "The poster on the wall above her had my waifu-"
 
-    hide weeb_neutral
+    hide weeb noglasses_happy
 
     window hide
 
@@ -1569,7 +1572,7 @@ label episode_3_savior:
 
     w "*Hic* S-S-S-Suzuki Harukaaaaaaaa!!!! M-m-m-my savior!!!!"
 
-    hide weeb_neutral
+    hide weeb noglasses_neutral
 
     window hide
 
@@ -1593,7 +1596,7 @@ label episode_3_savior:
 
     w "B-b-b-b-but you really are her!!!"
 
-    hide weeb_neutral
+    hide weeb noglasses_neutral
 
     "...Maybe you should've just let this guy get beat."
     "After a few more minutes of running through the halls, you slow down to glance at a nearby clock."
